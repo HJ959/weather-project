@@ -70,9 +70,9 @@ iframe {
     overflow: hidden;
     width: 100%;
     height: 100%;
-    -webkit-border-radius: 128;
-    -moz-border-radius: 128px;
-    border-radius: 128px;
+    -webkit-border-radius: 512;
+    -moz-border-radius: 512px;
+    border-radius: 512px;
 }
 
 /* Setup the iframe wrapper and two videos within so they overlap */
