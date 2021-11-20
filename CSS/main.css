@@ -4,11 +4,11 @@
     .container {
         display: grid;
 
-        grid-template-columns: 30px 1fr;
+        grid-template-columns: 1fr;
         grid-template-rows: 1fr 2fr 11fr;
 
         grid-template-areas:
-        "header header"
+        "header"
         "sidebar"
         "main";
 
