@@ -5,11 +5,12 @@
         display: grid;
 
         grid-template-columns: 30px 1fr;
-        grid-template-rows: 1fr 11fr;
+        grid-template-rows: 1fr 2fr 11fr;
 
         grid-template-areas:
-        "sidebar header"
-        ". main";
+        "header header"
+        "sidebar"
+        "main";
 
         column-gap: 10px;
         row-gap: 15px;
