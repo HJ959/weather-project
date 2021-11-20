@@ -140,10 +140,10 @@ iframe {
     z-index: 1;
 }
 
-#ytplayer-one {
+#playerOne {
     opacity: .5;
 }
 
-#ytplayer-two {
+#playerTwo {
     opacity: 1.0;
 }

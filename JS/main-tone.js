@@ -70,14 +70,34 @@ function httpGet(theUrl) {
 }
 
 /////////////////////////////////////////////////////////////////////////
-function makeid(length) {
-    var result = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() *
-            charactersLength));
-    }
-    var youtubeID = 'https://www.youtube.com/embed/' + result + '?autoplay=1&mute=1&enablejsapi=1&controls=0&rel=0'
-    return youtubeID;
-}
+  // 2. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // 3. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('playerOne', {
+      videoId: 'JJqXeRFsLjE',
+      playerVars: { 'autoplay': 1, 'mute': 1, 'controls': 0, 'rel': 0 },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+    playerTwo = new YT.Player('playerTwo', {
+        videoId: 'qQZILMyW88o',
+        playerVars: { 'autoplay': 1, 'mute': 1, 'controls': 0, 'rel': 0 },
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+  }
+
+  // 4. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
