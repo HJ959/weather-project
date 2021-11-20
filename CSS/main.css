@@ -40,14 +40,6 @@
     box-shadow: 0px 0px 2px 2px rgb(230, 230, 230);
 }
 
-.item-d {
-    grid-area: footer;
-    color: none;
-    padding: 10px;
-    box-shadow: 0px 0px 2px 2px rgb(230, 230, 230);
-
-}
-
 
 /* ------ Body stuff ------ */
 html,
