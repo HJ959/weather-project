@@ -43,7 +43,8 @@ html,
 body,
 main {
     height: 96%;
-    background-color: rgb(245, 245, 245);
+    /*background-color: rgb(245, 245, 245);*/
+    background-color: black;
 }
 
 /* Buttons */
