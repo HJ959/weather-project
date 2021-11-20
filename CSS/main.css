@@ -4,12 +4,11 @@
     display: grid;
 
     grid-template-columns: 1fr 3% 11fr;
-    grid-template-rows: 30px 1fr 30px;
+    grid-template-rows: 30px 1fr;
 
     grid-template-areas:
         "header header header"
-        "sidebar . main"
-        "footer footer footer";
+        "sidebar . main";
 
     column-gap: 10px;
     row-gap: 15px;
