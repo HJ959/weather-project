@@ -3,7 +3,6 @@ let filter, filterTwo, filterThree, filterFour, pingPong
 
 /////////////////////////////////////////////////////////////////////////
 function setup() {
-    console.log(process.env.youtubeAPIkey);
     // add some super nice mega ping pong delay
     pingPong = new Tone.PingPongDelay(30, 0.7).toDestination();
 
