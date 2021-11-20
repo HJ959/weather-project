@@ -104,6 +104,10 @@ iframe {
     z-index: 1;
 }
 
+#ytplayer-one {
+    opacity: .5;
+}
+
 #ytplayer-two {
-    opacity: 0.5;
+    opacity: 1.0;
 }
