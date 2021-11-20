@@ -102,5 +102,8 @@ iframe {
     grid-column-start: 1;
     grid-row-start: 1;
     z-index: 1;
+}
+
+#ytplayer-two {
     opacity: 0.5;
 }
