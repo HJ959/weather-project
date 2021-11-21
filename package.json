@@ -1,0 +1,28 @@
+{
+  "name": "weather-synth",
+  "version": "1.0.0",
+  "description": "Project reads weather information and combines with youtube videos",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HJ959/weather-project.git"
+  },
+  "keywords": [
+    "art",
+    "weather",
+    "climate",
+    "action"
+  ],
+  "author": "Henry James",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HJ959/weather-project/issues"
+  },
+  "homepage": "https://github.com/HJ959/weather-project#readme",
+  "dependencies": {
+    "node-fetch": "3.1.0"
+  }
+}
