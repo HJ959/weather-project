@@ -112,3 +112,28 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady(event) {
   event.target.playVideo();
 }
+
+
+/////////////////////////////////////////////////////////////////////
+// Function using fetch to POST to our API endpoint
+function getYoutubeSearch(data) {
+  return fetch('/.netlify/functions/scripts.js', {
+    body: JSON.stringify(data),
+    method: 'POST'
+  }).then(response => {
+    return response.json()
+  })
+}
+
+// Search data
+const youtubeSearch = {
+  title: 'live webcam feed'
+}
+
+// create it!
+getYoutubeSearch(youtubeSearch).then((response) => {
+  console.log('API response', response)
+  // set app state
+}).catch((error) => {
+  console.log('API error', error)
+})
