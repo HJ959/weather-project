@@ -125,7 +125,7 @@ function getYoutubeSearch(data) {
   })
 }
 
-const youtubeSearch = JSON.parse('{"search": "live%webcam%feed"}')
+const youtubeSearch = '{"search": "live%webcam%feed"}'
 
 // create it!
 getYoutubeSearch(youtubeSearch).then((response) => {
