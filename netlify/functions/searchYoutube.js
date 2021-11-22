@@ -1,4 +1,5 @@
 //import fetch from "node-fetch"
+var fetch = require('node-fetch'); 
 
 exports.handler = async (event, context, callback) => {
   /* parse the string body into a useable JS object */
