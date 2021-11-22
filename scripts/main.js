@@ -132,6 +132,6 @@ getYoutubeSearch(youtubeSearch).then((response) => {
   console.log('API response', response)
   // set app state
 }).catch((error) => {
-  console.log('API error', error)
+  console.log('API error', response.status)
 })
 
