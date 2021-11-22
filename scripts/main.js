@@ -117,7 +117,7 @@ function onPlayerReady(event) {
 /////////////////////////////////////////////////////////////////////
 // Function using fetch to POST to our API endpoint
 function getYoutubeSearch(data) {
-  return fetch('/.netlify/functions/scripts.js', {
+  return fetch('/.netlify/functions/searchYoutube.js', {
     body: JSON.stringify(data),
     method: 'POST'
   }).then(response => {
