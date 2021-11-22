@@ -115,21 +115,23 @@ function onPlayerReady(event) {
 
 
 /////////////////////////////////////////////////////////////////////
-fetch('.netlify/functions/searchYoutube')
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-          response.status);
-        return;
-      }
+// Function using fetch to POST to our API endpoint
+function getYoutubeSearch(data) {
+  return fetch('/.netlify/functions/searchYoutube', {
+    body: JSON.stringify(data),
+    method: 'POST'
+  }).then(response => {
+    return response.json()
+  })
+}
 
-      // Examine the text in the response
-      response.json().then(function(data) {
-        console.log(data);
-      });
-    }
-  )
-  .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-  });
+const youtubeSearch = {"search": "live%webcam%feed"}
+
+// create it!
+getYoutubeSearch(youtubeSearch).then((response) => {
+  console.log('API response', response)
+  // set app state
+}).catch((error) => {
+  console.log('API error', error)
+})
+
