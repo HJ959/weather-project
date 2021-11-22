@@ -127,7 +127,7 @@ fetch('/.netlify/functions/searchYoutube')
 
       // Examine the text in the response
       response.json().then(function(data) {
-        const object = await response.json() 
+        object = await response.json() 
       });
     }
   )
