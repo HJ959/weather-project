@@ -125,10 +125,7 @@ function getYoutubeSearch(data) {
   })
 }
 
-// Search data
-const youtubeSearch = {
-  title: 'live webcam feed'
-}
+const youtubeSearch = '{"search": "live%webcam%feed"}'
 
 // create it!
 getYoutubeSearch(youtubeSearch).then((response) => {
