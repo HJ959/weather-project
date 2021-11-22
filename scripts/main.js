@@ -114,6 +114,8 @@ function onPlayerReady(event) {
 }
 
 //////////////////////////////////////////////////////////////////////////
+let youtubeSearchData;
+
 fetch('/.netlify/functions/searchYoutube')
   .then(
     function(response) {
@@ -125,7 +127,7 @@ fetch('/.netlify/functions/searchYoutube')
 
       // Examine the text in the response
       response.json().then(function(data) {
-        console.log(data);
+        youtubeSearchData = data;
       });
     }
   )
