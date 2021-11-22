@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "weather-synth",
   "version": "1.0.0",
   "description": "Project reads weather information and combines with youtube videos",
