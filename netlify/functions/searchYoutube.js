@@ -5,7 +5,7 @@ YOUTUBE_API_ENDPOINT = 'https://youtube.googleapis.com/youtube/v3/search?part=sn
 exports.handler = async (event, context) => {
   let response
   try {
-    response = await fetch(YOUTUBE_API_ENDPOINT + '${process.env.YT_API_KEY}')
+    response = await fetch(YOUTUBE_API_ENDPOINT + String(process.env.YT_API_KEY))
     // handle response
   } catch (err) {
     return {
