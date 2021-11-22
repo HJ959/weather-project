@@ -115,7 +115,7 @@ function onPlayerReady(event) {
 
 
 /////////////////////////////////////////////////////////////////////
-fetch('.netlify/functions/searchYoutube.js')
+fetch('.netlify/functions/searchYoutube')
   .then(
     function(response) {
       if (response.status !== 200) {
