@@ -11,9 +11,9 @@ exports.handler = async (event, context) => {
     return {
       statusCode: err.statusCode || 500,
       body: JSON.stringify({
-        error: process.env.YT_API_KEY
+        error: err.message
       })
     }
   }
-  return process.env.YT_API_KEY
+  return response
 }
