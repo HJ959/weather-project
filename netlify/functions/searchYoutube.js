@@ -15,5 +15,9 @@ exports.handler = async (event, context) => {
       })
     }
   }
-  return response
+
+  return {
+    statusCode: 200,
+    body: response
+  }
 }
