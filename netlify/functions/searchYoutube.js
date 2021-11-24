@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      data: YOUTUBE_API_ENDPOINT
+      data: response
     })
   }
 }
