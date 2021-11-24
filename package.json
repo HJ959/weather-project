@@ -23,7 +23,11 @@
   },
   "homepage": "https://github.com/HJ959/weather-project#readme",
   "dependencies": {
+    "@google-cloud/local-auth": "^1.0.1",
+    "google-auth-library": "^7.10.2",
+    "googleapis": "^91.0.0",
+    "https": "^1.0.0",
     "node-fetch": "^2.3.0",
-    "https": "^1.0.0"
+    "path": "^0.12.7"
   }
 }
