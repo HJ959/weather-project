@@ -136,7 +136,7 @@ let youtubeSearchData;
 //     console.log('Fetch Error :-S', err);
 //   });
 
-  fetch('/.netlify/functions/searchYoutube')
+  youtubeSearchData = await fetch('/.netlify/functions/searchYoutube')
   .then(function(response) {
     if (!response.ok) {
       throw new Error("HTTP error, status = " + response.status);
