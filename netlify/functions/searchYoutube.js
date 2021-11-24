@@ -11,7 +11,7 @@ const youtube = google.youtube('v3');
 exports.handler = async (event, context) => {
   try {
     const auth = await authenticate({
-      keyfilePath: process.env.OAUTH_JSON,
+      keyfilePath: path.join(__dirname, process.env.OAUTH_JSON),
       scopes: ['https://www.googleapis.com/auth/youtube'],
     });
     google.options({auth});
