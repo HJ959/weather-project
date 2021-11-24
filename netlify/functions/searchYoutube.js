@@ -12,13 +12,13 @@ exports.handler = async (event, context) => {
   try {
     const auth = await authenticate({
       keyfilePath: JSON.stringify(process.env.OAUTH_JSON),
-      scopes: ['https://www.googleapis.com/auth/youtube'],
+      scopes: ['https://www.googleapis.com/auth/youtube']
     });
     google.options({auth});
 
     const res = await youtube.search.list({
       part: 'id,snippet',
-      q: 'Node.js on Google Cloud',
+      q: 'Node.js on Google Cloud'
     });
 
   } catch (err) {
