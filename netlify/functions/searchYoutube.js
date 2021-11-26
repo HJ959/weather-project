@@ -16,6 +16,8 @@ exports.handler = async function (event, context) {
   });
   google.options({auth});
 
+  return "bad"
+
   // const res = await youtube.search.list({
   //   part: 'id,snippet',
   //   q: 'Node.js on Google Cloud',
