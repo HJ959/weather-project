@@ -15,9 +15,10 @@ exports.handler = async function (event, context) {
   //   scopes: ['https://www.googleapis.com/auth/youtube'],
   // });
   // google.options({auth});
-
-  return JSON.stringify(YOUTUBE_API_ENDPOINT);
-
+  return  {
+    statusCode: 200,
+    body: JSON.stringify(YOUTUBE_API_ENDPOINT)
+  }
   // const res = await youtube.search.list({
   //   part: 'id,snippet',
   //   q: 'Node.js on Google Cloud',
