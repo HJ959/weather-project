@@ -1,7 +1,7 @@
-const {google} = require('googleapis');
-const path = require('path');
-const {authenticate} = require('@google-cloud/local-auth');
-var OAuth2 = google.auth.OAuth2;
+// const {google} = require('googleapis');
+// const path = require('path');
+// const {authenticate} = require('@google-cloud/local-auth');
+// var OAuth2 = google.auth.OAuth2;
 
 YOUTUBE_API_ENDPOINT = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=live%20public%20webcam&key=' + String(process.env.YT_API_KEY)
 
