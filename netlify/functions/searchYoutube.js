@@ -10,13 +10,13 @@ const youtube = google.youtube('v3');
 
 exports.handler = async function (event, context) {
   // a very simple example of searching for youtube videos
-  const auth = await authenticate({
-    keyfilePath: JSON.parse(process.env.OAUTH_JSON),
-    scopes: ['https://www.googleapis.com/auth/youtube'],
-  });
-  google.options({auth});
+  // const auth = await authenticate({
+  //   keyfilePath: JSON.parse(process.env.OAUTH_JSON),
+  //   scopes: ['https://www.googleapis.com/auth/youtube'],
+  // });
+  // google.options({auth});
 
-  return "bad"
+  return YOUTUBE_API_ENDPOINT;
 
   // const res = await youtube.search.list({
   //   part: 'id,snippet',
