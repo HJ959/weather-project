@@ -11,7 +11,7 @@ const youtube = google.youtube('v3');
 exports.handler = async (event, context) => {
   try {
     const auth = await authenticate({
-      keyfilePath: JSON.stringify(process.env.OAUTH_JSON),
+      keyfilePath: JSON.parse(process.env.OAUTH_JSON),
       scopes: ['https://www.googleapis.com/auth/youtube']
     });
     google.options({auth});
@@ -25,7 +25,8 @@ exports.handler = async (event, context) => {
     return {
       statusCode: err.statusCode || 500,
       body: JSON.stringify({
-        error: err.message
+        error: err.message,
+        "json": JSON.parse(process.env.OAUTH_JSON)
       })
     }
   }
