@@ -16,7 +16,7 @@ exports.handler = async function (event, context) {
   // });
   // google.options({auth});
 
-  return YOUTUBE_API_ENDPOINT;
+  return JSON.stringify(YOUTUBE_API_ENDPOINT);
 
   // const res = await youtube.search.list({
   //   part: 'id,snippet',
