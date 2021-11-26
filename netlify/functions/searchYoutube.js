@@ -8,32 +8,17 @@ YOUTUBE_API_ENDPOINT = 'https://youtube.googleapis.com/youtube/v3/search?part=sn
 // initialize the Youtube API library
 const youtube = google.youtube('v3');
 
-exports.handler = async (event, context) => {
-  try {
-    const auth = await authenticate({
-      keyfilePath: JSON.parse(process.env.OAUTH_JSON),
-      scopes: ['https://www.googleapis.com/auth/youtube']
-    });
-    google.options({auth});
+exports.handler = async function (event, context) {
+  // a very simple example of searching for youtube videos
+  const auth = await authenticate({
+    keyfilePath: JSON.parse(process.env.OAUTH_JSON),
+    scopes: ['https://www.googleapis.com/auth/youtube'],
+  });
+  google.options({auth});
 
-    const res = await youtube.search.list({
-      part: 'id,snippet',
-      q: 'Node.js on Google Cloud'
-    });
-
-  } catch (err) {
-    return {
-      statusCode: err.statusCode || 500,
-      body: JSON.stringify({
-        error: location.hostname
-      })
-    }
-  }
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      data: res
-    })
-  }
+  const res = await youtube.search.list({
+    part: 'id,snippet',
+    q: 'Node.js on Google Cloud',
+  });
+  console.log(res.data);
 }
