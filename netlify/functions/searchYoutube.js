@@ -5,8 +5,8 @@
 
 YOUTUBE_API_ENDPOINT = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=live%20public%20webcam&key=' + String(process.env.YT_API_KEY)
 
-// initialize the Youtube API library
-const youtube = google.youtube('v3');
+// // initialize the Youtube API library
+// const youtube = google.youtube('v3');
 
 exports.handler = async function (event, context) {
   // a very simple example of searching for youtube videos
