@@ -134,5 +134,4 @@ fetch('/.netlify/functions/searchYoutube')
   )
   .catch(function(err) {
     console.log('Fetch Error :-S', err);
-    console.log(response);
   });

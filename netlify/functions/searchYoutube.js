@@ -25,8 +25,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: err.statusCode || 500,
       body: JSON.stringify({
-        error: err.message,
-        "json": JSON.parse(process.env.OAUTH_JSON)
+        error: err.message
       })
     }
   }
