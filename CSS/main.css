@@ -87,7 +87,7 @@ html,
 body,
 main {
     height: 96%;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(8, 8, 8);
 }
 
 /* Buttons */
@@ -140,10 +140,20 @@ iframe {
     z-index: 1;
 }
 
+.iframe-three {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    z-index: 1;
+}
+
 #playerOne {
     opacity: .5;
 }
 
 #playerTwo {
-    opacity: 1.0;
+    opacity: .5;
+}
+
+#playerTwo {
+    opacity: 0.5;
 }
