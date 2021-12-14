@@ -25,8 +25,8 @@ function showPosition(position) {
   lat = position.coords.latitude;
   lon = position.coords.longitude;
   latLon = {
-    latitude: lat,
-    longitude: lon
+    "latitude": lat,
+    "longitude": lon
   }
 }
 getLocation();
