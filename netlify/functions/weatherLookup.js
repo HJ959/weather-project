@@ -37,13 +37,12 @@ const checkStatus = (res) => {
 exports.handler = async function(event, context, callback) {
   try {
     const coords = JSON.parse(event.body)
-    const coordsData = {coordsData: coordsData}
-    const response = await fetch('https://cat-fact.herokuapp.com/facts')
+    const response = await fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + coords.latitude + "&lon=" + coords.longitude + "&units=metric&appid=" + process.env.WEATHER_API_KEY)
     const data = await checkStatus(response)
     callback(null, {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(coordsData)
+      body: JSON.stringify(data)
     })
   } catch (error) {
     callback(error)
