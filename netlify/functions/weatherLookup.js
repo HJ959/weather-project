@@ -37,12 +37,13 @@ const checkStatus = (res) => {
 exports.handler = async function(event, context, callback) {
   try {
     const coords = JSON.parse(event.body)
+    const coordsData = {coordsData: coordsData}
     const response = await fetch('https://cat-fact.herokuapp.com/facts')
     const data = await checkStatus(response)
     callback(null, {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(coords)
+      body: JSON.stringify(coordsData)
     })
   } catch (error) {
     callback(error)
