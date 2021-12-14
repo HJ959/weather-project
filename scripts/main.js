@@ -6,7 +6,7 @@ let meter, meterTwo, meterThree;
 let rms, rmsTwo, rmsThree;
 
 // location vars
-let lat, lon, lonLat;
+let lat, lon, latLon;
 
 // video vars
 let youtubeIDs;
