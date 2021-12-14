@@ -28,29 +28,7 @@ function showPosition(position) {
 getLocation();
 
 //////////////////////////////////////////////////////////////////////////////
-// Function using fetch to POST to our API endpoint
-function weatherLookup(data) {
-  return fetch('/.netlify/functions/weatherLookup', {
-    body: JSON.stringify(data),
-    method: 'POST'
-  }).then(response => {
-    return response.json()
-  })
-}
 
-// Todo data
-lonLat = {
-  latitude: lat,
-  longitude: lon,
-}
-
-// create it!
-weatherLookup(lonLat).then((response) => {
-  console.log('API response', response)
-  // set app state
-}).catch((error) => {
-  console.log('API error', error)
-})
 //////////////////////////////////////////////////////////////////////////////
 
 
@@ -108,6 +86,29 @@ oscFour = new Tone.PulseOscillator({
 
 /////////////////////////////////////////////////////////////////////////
 function songStart(time) {
+  // Function using fetch to POST to our API endpoint
+function weatherLookup(data) {
+  return fetch('/.netlify/functions/weatherLookup', {
+    body: JSON.stringify(data),
+    method: 'POST'
+  }).then(response => {
+    return response.json()
+  })
+}
+
+// Todo data
+lonLat = {
+  latitude: lat,
+  longitude: lon,
+}
+
+// create it!
+weatherLookup(lonLat).then((response) => {
+  console.log('API response', response)
+  // set app state
+}).catch((error) => {
+  console.log('API error', error)
+})
   filter.start();
   oscOne.start();
   oscTwo.start();
