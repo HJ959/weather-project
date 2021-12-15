@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  id="wholePage" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -15,26 +15,34 @@
         <div class="item-a"></div>
         <div class="item-b">
             <div class="iframe-wrapper">
-                <div class="iframe-one">
+                <div id="crop" class="cropper"></div>
+                <div id="video1" class="iframe-one">
                     <div id="playerOne"></div>
                 </div>
-                <div class="iframe-two">
+                <div id="video2" class="iframe-two">
                     <div id="playerTwo"></div>
                 </div>
-                <div class="iframe-three">
+                <div id="video3" class="iframe-three">
                     <div id="playerThree"></div>
+                </div>
+                <div id="video4" class="iframe-four">
+                    <div id="playerFour"></div>
+                </div>
+                <div id="video5" class="iframe-five">
+                    <div id="playerFive"></div>
                 </div>
             </div>
         </div>
-        <div class="item-c">
-            <button onclick="songStart()" type="button" class="item-sidebar">Start</button>
-            <button onclick="songStop()" type="button" class="item-sidebar">Stop</button>
-        </div>
+        <!-- <div class="item-c">
+        </div> -->
     </main>
 </body>
 
 <footer>
-    <script src="scripts/main.js"></script>
+    <script src="scripts/weatherLookup.js"></script>
+    <script src="scripts/video.js"></script>
+    <script src="scripts/sound.js"></script>
+    <script src="scripts/userInteraction.js"></script>
 </footer>
 
 </html>
