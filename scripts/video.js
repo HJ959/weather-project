@@ -50,9 +50,9 @@ vidElement2 = document.getElementById('playerTwo');
 vidElement3 = document.getElementById('playerThree');
 vidElement4 = document.getElementById('playerFour');
 
-vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 7)] + 'deg)';
-vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 6)] + 'deg)';
-vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 5)] + 'deg)';
+vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 1)] + 'deg)';
+vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 1)] + 'deg)';
+vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 1)] + 'deg)';
 
 // 2. This code loads the IFrame Player API code asynchronously.
 tag = document.createElement('script');
@@ -89,9 +89,9 @@ function step(timestamp) {
 
   if (previousTimeStamp !== timestamp) {
     // iterate over 5 videos with different rates
-    opacityValues = opacityIter(opacityValues, video1, steps[getRandomInt(0,5)]);
-    opacityValues2 = opacityIter(opacityValues2, video2, steps[getRandomInt(0,5)]);
-    opacityValues3 = opacityIter(opacityValues3, video3, steps[getRandomInt(0,5)]);
+    opacityValues = opacityIter(opacityValues, video1, steps[getRandomInt(0,8)]);
+    opacityValues2 = opacityIter(opacityValues2, video2, steps[getRandomInt(0,6)]);
+    opacityValues3 = opacityIter(opacityValues3, video3, steps[getRandomInt(0,7)]);
     opacityValues4 = opacityIter(opacityValues4, video4, steps[getRandomInt(0,5)]);
   }
   previousTimeStamp = timestamp
