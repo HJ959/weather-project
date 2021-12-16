@@ -31,7 +31,7 @@ var playerVars = {
 }
 
 // list of potential steps for iteration over
-const steps = [0,1,2,5,10,20]
+const steps = [0,1,2,5,10,20,40,80,120]
 
 // List of random youtube embeded IDs
 let youtubeIDs = ['lXoH1oQJvHo', '3rDjPLvOShM', 'BlVJviK0ci4', '9Ej-0VRWmI8', 'nMAzchVWTis', 'UuWr5TCbumI']
