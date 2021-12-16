@@ -50,10 +50,9 @@ vidElement2 = document.getElementById('playerTwo');
 vidElement3 = document.getElementById('playerThree');
 vidElement4 = document.getElementById('playerFour');
 
-vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 8)] + 'deg)';
-vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 8)] + 'deg)';
-vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 8)] + 'deg)';
-vidElement4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 8)] + 'deg)';
+vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 7)] + 'deg)';
+vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 6)] + 'deg)';
+vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 5)] + 'deg)';
 
 // 2. This code loads the IFrame Player API code asynchronously.
 tag = document.createElement('script');
