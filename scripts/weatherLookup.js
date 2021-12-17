@@ -6,7 +6,7 @@ let weatherJSON;
 let windowHash = window.location.hash;
 
 // grab the latLon from the window hash send from the landing page
-let windowHashAttributes = windowHash.split("#"); 
+let windowHashAttributes = windowHash.split("#");
 
 // assign to the latLon object
 let latLon = {
@@ -26,15 +26,22 @@ async function weatherLookup(data) {
 // grab the weather data from the API on mousedown
 // send the lat and lon as an object to the AWS Lambada function
 weatherLookup(latLon).then((response) => {
-  console.log('API lol', response)
+  console.log('API lol', response);
   weatherJSON = response;
   // set app state
 }).catch((error) => {
-  console.log('API error', error)
+  console.log('API error', error);
 })
 
 // organise the json data into some useful variables for use later
-
+if (isEmpty(weatherJSON) === true) {
+  // set some default synth params as lookup failed
+  let maxOpacity = 70000
+  // maybe flash a warning to the user
+}
+if (isEmpty(weatherJSON) === false) {
+  let maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 30000, 70000);
+}
 
 // some useful functions
 //////////////////////////////////////////////////////////////////////////
@@ -49,3 +56,10 @@ function scale(number, inMin, inMax, outMin, outMax) {
   return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 /////////////////////////////////////////////////////////////////////////////////
+function isEmpty(obj) {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key))
+      return false;
+  }
+  return true;
+}

@@ -105,7 +105,7 @@ function opacityIter(opacityValues, element, incrementValue) {
     element.style.opacity = String(opacityValues.vidOpacity / 10000);
     element.style.filter = 'alpha(opacity=' + String(opacityValues.vidOpacity);
     opacityValues.vidOpacity = opacityValues.vidOpacity + incrementValue;
-    if (opacityValues.vidOpacity % 7000 === 0 || opacityValues.vidOpacity > 7000) {
+    if (opacityValues.vidOpacity % maxOpacity === 0 || opacityValues.vidOpacity > maxOpacity) {
       opacityValues.vidReverse = !opacityValues.vidReverse;
     }
     return {
