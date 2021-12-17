@@ -32,15 +32,20 @@ weatherLookup(latLon).then((response) => {
   // organise the json data into some useful variables for use later
   if (isEmpty(weatherJSON) === true) {
     // set some default synth params as lookup failed
-    maxOpacity = 70000
+    maxOpacity = 7000
     // maybe flash a warning to the user
   }
   if (isEmpty(weatherJSON) === false) {
-    maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 30000, 70000);
+    maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 3000, 7000);
   }
   // set app state
 }).catch((error) => {
   console.log('API error', error);
+  if (isEmpty(weatherJSON) === true) {
+    // set some default synth params as lookup failed
+    maxOpacity = 7000
+    // maybe flash a warning to the user
+  }
 })
 
 // some useful functions
