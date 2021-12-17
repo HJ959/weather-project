@@ -34,7 +34,7 @@ var playerVars = {
 const steps = [0,1,2,5,10,20,40,80,120]
 
 // List of random youtube embeded IDs
-let youtubeIDs = ['lXoH1oQJvHo', '3rDjPLvOShM', 'BlVJviK0ci4', '9Ej-0VRWmI8', 'nMAzchVWTis', 'UuWr5TCbumI']
+let youtubeIDs = ['lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9Ej-0VRWmI8', 'nMAzchVWTis', 'UuWr5TCbumI', 'wnhvanMdx4s']
 
 // rotate potential values
 let rotateValues = ['0', '180']
@@ -105,7 +105,7 @@ function opacityIter(opacityValues, element, incrementValue) {
     element.style.opacity = String(opacityValues.vidOpacity / 10000);
     element.style.filter = 'alpha(opacity=' + String(opacityValues.vidOpacity);
     opacityValues.vidOpacity = opacityValues.vidOpacity + incrementValue;
-    if (opacityValues.vidOpacity % 10000 === 0 || opacityValues.vidOpacity > 10000) {
+    if (opacityValues.vidOpacity % 7000 === 0 || opacityValues.vidOpacity > 7000) {
       opacityValues.vidReverse = !opacityValues.vidReverse;
     }
     return {

@@ -2,6 +2,7 @@
 
 // location vars
 let lat, lon, latLon;
+let weatherJSON;
 
 // Function using fetch to POST to our API endpoint
 async function weatherLookup(data) {
@@ -41,7 +42,7 @@ function handlePermission() {
       // create it!
       weatherLookup(latLon).then((response) => {
         console.log('API response', response)
-        // set app state
+        weatherJSON = response.data;
       }).catch((error) => {
         console.log('API error', error)
       })
@@ -60,6 +61,9 @@ function handlePermission() {
 function report(state) {
   console.log('Permission ' + state);
 }
+
+// organise the json data into some useful variables for use later
+
 
 // some useful functions
 //////////////////////////////////////////////////////////////////////////
