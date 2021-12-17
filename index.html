@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  id="wholePage" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,38 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Synth</title>
     <link rel="stylesheet" href="CSS/main.css">
-    <script src="scripts/Tone.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <main class="container">
         <div class="item-b">
-            <div class="iframe-wrapper">
-                <div id="crop" class="cropper"></div>
-                <div id="video1" class="iframe-one">
-                    <div id="playerOne"></div>
-                </div>
-                <div id="video2" class="iframe-two">
-                    <div id="playerTwo"></div>
-                </div>
-                <div id="video3" class="iframe-three">
-                    <div id="playerThree"></div>
-                </div>
-                <div id="video4" class="iframe-four">
-                    <div id="playerFour"></div>
-                </div>
-            </div>
+            <h1 id="landing">Welcome to {piece name}, a project that uses your location (if you will allow) to check the
+                weather where you are and tune my drone synth and video faders. Meditate, sit for a while, then be on
+                your way :)
+                <a onclick="takeMeToYourLeader()">Click here to continue and send your location</a></h1>
         </div>
-        <!-- <div class="item-c">
-        </div> -->
+        <div class="item-c">
+        </div>
     </main>
 </body>
 
 <footer>
-    <script src="scripts/weatherLookup.js"></script>
-    <script src="scripts/video.js"></script>
-    <script src="scripts/sound.js"></script>
-    <script src="scripts/userInteraction.js"></script>
+    <script src="scripts/getLocation.js"></script>
 </footer>
 
 </html>

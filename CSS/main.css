@@ -82,7 +82,6 @@
 
     grid-area: sidebar;
     justify-content: center;
-    padding: 10px;
 }
 
 
@@ -156,4 +155,20 @@ iframe {
 #playerThree,
 #playerFour {
     opacity: 0.6;
+}
+
+/* Format the landing page */
+
+a:hover,
+a:active {
+    color: violet;
+}
+
+#landing {
+    color: white;
+    font-family: 'Bakbak One', cursive;
+    text-align: justify;
+    font-size: 4.3vmax;
+    width: 96%;
+    height: 96%;
 }

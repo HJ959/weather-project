@@ -1,8 +1,18 @@
 "use strict";
 
 // location vars
-let lat, lon, latLon;
+let lat, lon;
 let weatherJSON;
+let windowHash = window.location.hash;
+
+// grab the latLon from the window hash send from the landing page
+let windowHashAttributes = windowHash.split("#"); 
+
+// assign to the latLon object
+let latLon = {
+  "latitude": windowHashAttributes[1],
+  "longitude": windowHashAttributes[2]
+}
 
 // Function using fetch to POST to our API endpoint
 async function weatherLookup(data) {
@@ -13,29 +23,8 @@ async function weatherLookup(data) {
   return await response.json();
 }
 
-// on script load get the location and store to lat and lon
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
-}
-
-function showPosition(position) {
-  lat = position.coords.latitude;
-  lon = position.coords.longitude;
-  latLon = {
-    "latitude": lat,
-    "longitude": lon
-  }
-}
-getLocation();
-
-//////////////////////////////////////////////////////////////////////////////
-
-// organise the json data into some useful variables for use later
 // grab the weather data from the API on mousedown
+// send the lat and lon as an object to the AWS Lambada function
 weatherLookup(latLon).then((response) => {
   console.log('API response', response)
   weatherJSON = response.data;
@@ -43,6 +32,9 @@ weatherLookup(latLon).then((response) => {
 }).catch((error) => {
   console.log('API error', error)
 })
+
+// organise the json data into some useful variables for use later
+
 
 // some useful functions
 //////////////////////////////////////////////////////////////////////////
