@@ -4,6 +4,7 @@
 let lat, lon;
 let weatherJSON;
 let windowHash = window.location.hash;
+let maxOpacity;
 
 // grab the latLon from the window hash send from the landing page
 let windowHashAttributes = windowHash.split("#");
@@ -36,11 +37,11 @@ weatherLookup(latLon).then((response) => {
 // organise the json data into some useful variables for use later
 if (isEmpty(weatherJSON) === true) {
   // set some default synth params as lookup failed
-  let maxOpacity = 70000
+  maxOpacity = 70000
   // maybe flash a warning to the user
 }
 if (isEmpty(weatherJSON) === false) {
-  let maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 30000, 70000);
+  maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 30000, 70000);
 }
 
 // some useful functions
