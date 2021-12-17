@@ -29,20 +29,19 @@ async function weatherLookup(data) {
 weatherLookup(latLon).then((response) => {
   console.log('API lol', response);
   weatherJSON = response;
+  // organise the json data into some useful variables for use later
+  if (isEmpty(weatherJSON) === true) {
+    // set some default synth params as lookup failed
+    maxOpacity = 70000
+    // maybe flash a warning to the user
+  }
+  if (isEmpty(weatherJSON) === false) {
+    maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 30000, 70000);
+  }
   // set app state
 }).catch((error) => {
   console.log('API error', error);
 })
-
-// organise the json data into some useful variables for use later
-if (isEmpty(weatherJSON) === true) {
-  // set some default synth params as lookup failed
-  maxOpacity = 70000
-  // maybe flash a warning to the user
-}
-if (isEmpty(weatherJSON) === false) {
-  maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 30000, 70000);
-}
 
 // some useful functions
 //////////////////////////////////////////////////////////////////////////
