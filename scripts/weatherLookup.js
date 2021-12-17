@@ -26,8 +26,8 @@ async function weatherLookup(data) {
 // grab the weather data from the API on mousedown
 // send the lat and lon as an object to the AWS Lambada function
 weatherLookup(latLon).then((response) => {
-  console.log('API response', response)
-  weatherJSON = response.data;
+  console.log('API lol', response)
+  weatherJSON = response;
   // set app state
 }).catch((error) => {
   console.log('API error', error)
