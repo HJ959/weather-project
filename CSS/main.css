@@ -150,3 +150,12 @@ a:active {
     width: 96%;
     height: 96%;
 }
+
+.svg {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 3;
+    height: 7%;
+    width: 7%;
+}
