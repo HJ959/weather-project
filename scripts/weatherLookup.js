@@ -38,7 +38,8 @@ weatherLookup(latLon).then((response) => {
   }
   if (isEmpty(weatherJSON) === false) {
     maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 3000, 7000);
-    filterLFOSpeed =  weatherJSON.current.wind_speed * 0.1;
+    filterLFOSpeed = (Math.round(weatherJSON.current.wind_speed * 100) / 100) * 0.1;
+
   }
   // set app state
 }).catch((error) => {
