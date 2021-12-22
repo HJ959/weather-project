@@ -11,7 +11,7 @@ let rms, rmsTwo, rmsThree;
 pingPong = new Tone.PingPongDelay(30, 0.7).toDestination();
 
 // filter to make less horrible
-filter = new Tone.AutoFilter(0.13).toDestination().connect(pingPong);
+filter = new Tone.AutoFilter(filterLFOSpeed).toDestination().connect(pingPong);
 filterTwo = new Tone.AutoFilter(0.05).toDestination().connect(pingPong);
 filterThree = new Tone.AutoFilter(0.07).toDestination().connect(pingPong);
 filterFour = new Tone.AutoFilter(0.11).toDestination().connect(pingPong);
