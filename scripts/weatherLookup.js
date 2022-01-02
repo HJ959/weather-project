@@ -36,12 +36,12 @@ weatherLookup(latLon).then((response) => {
     currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 3000, 7000);
     currentWindSpeed = weatherJSON.current.wind_speed * 0.1;
     // turn rain in mm from 0.0 - 1.5 into decibles -36db to 0db string
-    if (isEmpty(weatherJSON.current.rain["1h"]) === false) {
+    if (typeof weatherJSON.current.rain == 'undefined') {
       currentRainmm = "-" + String(scale(weatherJSON.current.rain["1h"], 0.0, 1.5, 36, 1));
     }
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value
-    if (isEmpty(weatherJSON.current.rain["1h"]) === true) {
+    if (typeof weatherJSON.current.rain == 'undefined') {
       currentRainmm = "-36";
     }
   }
