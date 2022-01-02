@@ -2,9 +2,9 @@
 // Tone JS vars
 let oscOne, oscTwo, oscThree, oscFour;
 let filter, filterTwo, filterThree, filterFour, pingPong;
-let meter, meterTwo, meterThree;
-let rms, rmsTwo, rmsThree;
 let pitchFilter;
+let noise, noiseHiPass;
+let pitchShift;
 
 // TONE JS SECTION
 
@@ -12,7 +12,7 @@ let pitchFilter;
 pitchFilter = new Tone.AutoFilter(0.01).toDestination()
 
 // create a pitch shift with some feedback
-const pitchShift = new Tone.PitchShift({
+pitchShift = new Tone.PitchShift({
   delayTime: 0,
   feedback: 0.7,
   pitch: 7,
@@ -20,14 +20,24 @@ const pitchShift = new Tone.PitchShift({
   windowSize: 0.1
 }).connect(pitchFilter);
 
+
 // add some super nice mega ping pong delay
 pingPong = new Tone.PingPongDelay(30, 0.7).toDestination();
 
 // filter to make less horrible
-filter = new Tone.AutoFilter(filterLFOSpeed).connect(pingPong);
+filter = new Tone.AutoFilter(currentWindSpeed).connect(pingPong);
 filterTwo = new Tone.AutoFilter(0.05).connect(pingPong);
 filterThree = new Tone.AutoFilter(0.07).connect(pingPong);
 filterFour = new Tone.AutoFilter(0.11).connect(pingPong);
+
+// initialize the noise and start
+// noise will be blended into the piece as more 
+// percipitation is present in the local weather
+noiseHiPass = new Tone.Filter(4000, "bandpass", "-24").connect(filter).connect(filterTwo).connect(filterThree).connect(filterFour);
+noise = new Tone.Noise({
+  type: "pink",
+  volume: currentRainmm
+}).connect(noiseHiPass);
 
 // create ocsillator one
 oscOne = new Tone.PulseOscillator({

@@ -4,7 +4,9 @@
 let lat, lon;
 let weatherJSON;
 let windowHash = window.location.hash;
-let maxOpacity, filterLFOSpeed;
+let currentClouds = 7000;
+let currentWindSpeed = 0.13;
+let currentRainmm = "-24";
 
 // grab the latLon from the window hash send from the landing page
 let windowHashAttributes = windowHash.split("#");
@@ -30,26 +32,15 @@ weatherLookup(latLon).then((response) => {
   console.log('API lol', response);
   weatherJSON = response;
   // organise the json data into some useful variables for use later
-  if (isEmpty(weatherJSON) === true) {
-    // set some default synth params as lookup failed
-    maxOpacity = 7000
-    filterLFOSpeed = 0.13
-    // maybe flash a warning to the user
-  }
   if (isEmpty(weatherJSON) === false) {
-    maxOpacity = scale((100 - weatherJSON.current.clouds), 0, 100, 3000, 7000);
-    filterLFOSpeed = weatherJSON.current.wind_speed * 0.1;
-
+    currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 3000, 7000);
+    currentWindSpeed = weatherJSON.current.wind_speed * 0.1;
+    // turn rain in mm from 0.0 - 1.5 into decibles -36db to 0db string
+    currentRainmm = "-" + String(scale(weatherJSON.current.rain["1h"], 0.0, 1.5, 36, 1));
   }
   // set app state
 }).catch((error) => {
   console.log('API error', error);
-  if (isEmpty(weatherJSON) === true) {
-    // set some default synth params as lookup failed
-    maxOpacity = 7000
-    filterLFOSpeed = 0.13
-    // maybe flash a warning to the user
-  }
 })
 
 // some useful functions

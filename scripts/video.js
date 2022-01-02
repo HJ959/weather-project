@@ -89,23 +89,23 @@ function step(timestamp) {
 
   if (previousTimeStamp !== timestamp) {
     // iterate over 5 videos with different rates
-    opacityValues = opacityIter(opacityValues, video1, steps[getRandomInt(0,8)], maxOpacity);
-    opacityValues2 = opacityIter(opacityValues2, video2, steps[getRandomInt(0,6)], maxOpacity);
-    opacityValues3 = opacityIter(opacityValues3, video3, steps[getRandomInt(0,7)], maxOpacity);
-    opacityValues4 = opacityIter(opacityValues4, video4, steps[getRandomInt(0,5)], maxOpacity);
+    opacityValues = opacityIter(opacityValues, video1, steps[getRandomInt(0,8)], currentClouds);
+    opacityValues2 = opacityIter(opacityValues2, video2, steps[getRandomInt(0,6)], currentClouds);
+    opacityValues3 = opacityIter(opacityValues3, video3, steps[getRandomInt(0,7)], currentClouds);
+    opacityValues4 = opacityIter(opacityValues4, video4, steps[getRandomInt(0,5)], currentClouds);
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);
 }
 
-function opacityIter(opacityValues, element, incrementValue, maxOpacity) {
+function opacityIter(opacityValues, element, incrementValue, currentClouds) {
   // iterate up
   if (opacityValues.vidReverse === false) {
     // control the players opacity
     element.style.opacity = String(opacityValues.vidOpacity / 10000);
     element.style.filter = 'alpha(opacity=' + String(opacityValues.vidOpacity);
     opacityValues.vidOpacity = opacityValues.vidOpacity + incrementValue;
-    if (opacityValues.vidOpacity % maxOpacity === 0 || opacityValues.vidOpacity > maxOpacity) {
+    if (opacityValues.vidOpacity % currentClouds === 0 || opacityValues.vidOpacity > currentClouds) {
       opacityValues.vidReverse = !opacityValues.vidReverse;
     }
     return {

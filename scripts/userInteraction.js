@@ -11,6 +11,7 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscTwo.start();
     oscThree.start();
     oscFour.start();
+    noise.start();
 
     pingPong.wet.value = 0.7
     pitchShift.wet.value = 0.6
@@ -39,6 +40,7 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscTwo.stop();
     oscThree.stop();
     oscFour.stop();
+    noise.stop();
 
     pingPong.wet.value = 0
     pitchShift.wet.value = 0.0

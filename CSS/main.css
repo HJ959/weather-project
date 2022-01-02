@@ -140,15 +140,17 @@ iframe {
 a:hover,
 a:active {
     color: violet;
+    cursor: pointer;
 }
 
 #landing {
     color: white;
     font-family: 'Bakbak One', cursive;
-    text-align: justify;
-    font-size: 4.3vmax;
-    width: 96%;
-    height: 96%;
+    text-align:start;
+    font-size: 3.3vmax;
+    /* width: 96%;
+    height: 96%; */
+    margin: 3vmax;
 }
 
 .svg {
