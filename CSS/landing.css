@@ -1,0 +1,85 @@
+/*===============================================================*/
+/* Mobile Styles */
+@media only screen and (max-width: 600px) {
+}
+
+/*===============================================================*/
+/* Tablet Styles */
+@media only screen and (min-width: 601px) and (max-width: 960px) {
+}
+
+/*===============================================================*/
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+}
+
+/* ------ GRID stuff ------ */
+.container {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 3fr 3fr 5fr;
+
+    grid-template-areas:
+        "header-one"
+        "header-two"
+        "header-three"
+        "header-four";
+}
+
+.header-one {
+    grid-area: header-one;
+}
+
+.header-two {
+    grid-area: header-two;
+}
+
+.header-three {
+    grid-area: header-three;
+}
+
+.header-four {
+    grid-area: header-four;
+}
+
+/* ------ Body stuff ------ */
+html,
+body,
+main {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(0, 0, 0);
+}
+
+/* Format the landing page */
+
+a:hover,
+a:active {
+    color: violet;
+    cursor: pointer;
+}
+
+a, u {
+    text-decoration: none;
+    color: rgb(157, 234, 236);
+  }
+
+#landing {
+    color: white;
+    font-family: 'Lexend', sans-serif;
+    text-align: justify;
+    font-size: 3.3vmax;
+    margin: 2vmax;
+    padding-right: 5%;
+}
+
+th, td {
+    border: 1px solid rgb(255, 255, 255);
+    color: white;
+    font-family: 'Lexend', sans-serif;
+    margin: 3vmax;
+    padding-right: 5%;
+    font-size: 2.3vmax;
+}

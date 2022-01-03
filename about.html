@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Synth</title>
+    <link rel="stylesheet" href="CSS/about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Lexend:wght@200&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="container">
+        <div class="header-one">
+            <h1 id="back"><a href="index.html"><<<</a></h1>
+            <h1 id="landing">Created by <a href="https://linktr.ee/henry.james">Henry James</a></h1>
+        </div>
+        <div class="header-two">
+            <h1 id="landing">The synth is powered by <a href="https://tonejs.github.io/">Tone.js</a> and the visuals powered by YouTube's iframe API and some JavaScript to fade the videos</h1>
+        </div>
+        <div class="header-three">
+            <h1 id="landing">Below is a mapping of the weather data to the parts of the piece</h1>
+        </div>
+        <div class="header-four">
+            <table>
+                <tr>
+                  <th>Weather data</th>
+                  <th>Weather Drone</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>Current cloudiness 0-100%</td>
+                  <td>Max video opacity</td>
+                  <td>Cloudiness controls how vibrant the videos are</td>
+                </tr>
+                <tr>
+                  <td>Current wind speed</td>
+                  <td>Auto filter LFO speed</td>
+                  <td>The faster the current wind the faster the filters oscillation</td>
+                </tr>
+                <tr>
+                    <td>Current rin in mm</td>
+                    <td>Pink noise volume</td>
+                    <td>The more rain per mm the louder the pink noise becomes</td>
+                  </tr>
+              </table> 
+        </div>
+    </main>
+</body>
+
+<footer>
+    <script src="scripts/getLocation.js"></script>
+</footer>
+
+</html>

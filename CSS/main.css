@@ -145,12 +145,14 @@ a:active {
 
 #landing {
     color: white;
-    font-family: 'Bakbak One', cursive;
-    text-align:start;
+    font-family: 'Lexend', sans-serif;
+
+    text-align: justify;
     font-size: 3.3vmax;
     /* width: 96%;
     height: 96%; */
     margin: 3vmax;
+    padding-right: 5%;
 }
 
 .svg {
