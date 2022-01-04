@@ -71,9 +71,8 @@ a, u {
     color: white;
     font-family: 'Lexend', sans-serif;
     text-align: justify;
-    font-size: 3.3vmax;
+    font-size: 5.3vmin;
     margin: 2vmax;
-    padding-right: 5%;
 }
 
 th, td {
