@@ -11,6 +11,9 @@ let dayOneClouds = 6000;
 let dayTwoClouds = 5000;
 let dayThreeClouds = 8000;
 let currentWindSpeed = 0.13;
+let dayOneWindSpeed = 0.05;
+let dayTwoWindSpeed = 0.07;
+let dayThreeWindSpeed = 0.11;
 let currentRainmm = "-24";
 
 // grab the latLon from the window hash send from the landing page
@@ -46,6 +49,9 @@ weatherLookup(latLon).then((response) => {
 
     // wind speed controls each auto filter frequency
     currentWindSpeed = weatherJSON.current.wind_speed * 0.1;
+    dayOneWindSpeed = weatherJSON.daily[1].wind_speed * 0.1;
+    dayTwoWindSpeed = weatherJSON.daily[2].wind_speed * 0.1;
+    dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.1;
     
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value

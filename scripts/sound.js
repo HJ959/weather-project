@@ -26,9 +26,9 @@ pingPong = new Tone.PingPongDelay(30, 0.7).toDestination();
 
 // filter to make less horrible
 filter = new Tone.AutoFilter(currentWindSpeed).connect(pingPong);
-filterTwo = new Tone.AutoFilter(0.05).connect(pingPong);
-filterThree = new Tone.AutoFilter(0.07).connect(pingPong);
-filterFour = new Tone.AutoFilter(0.11).connect(pingPong);
+filterTwo = new Tone.AutoFilter(dayOneWindSpeed).connect(pingPong);
+filterThree = new Tone.AutoFilter(dayTwoWindSpeed).connect(pingPong);
+filterFour = new Tone.AutoFilter(dayThreeWindSpeed).connect(pingPong);
 
 // initialize the noise and start
 // noise will be blended into the piece as more 
