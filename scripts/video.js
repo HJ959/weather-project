@@ -1,6 +1,5 @@
 "use strict";
 // video vars
-let randomInt = 0;
 let player, playerTwo, playerThree, playerFour;
 let vidElement1, vidElement2, vidElement3, vidElement4;
 let wholeScreen;
@@ -30,9 +29,6 @@ var playerVars = {
   'controls': 0,
   'rel': 0
 }
-
-// list of potential steps for iteration over
-const steps = [1,2,5,10]
 
 // List of random youtube embeded IDs
 let youtubeIDs = ['5NS_RGXqljA', 'lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9Ej-0VRWmI8', 'fh3EdeGNKus','nMAzchVWTis', 'UuWr5TCbumI', 'wnhvanMdx4s']
@@ -91,11 +87,10 @@ function step(timestamp) {
   
   if (previousTimeStamp !== timestamp) {
     // iterate over 5 videos with different rates
-    randomInt = getRandomInt(0,4);
-    opacityValues = opacityIter(opacityValues, video1, steps[randomInt], currentClouds);
-    opacityValues2 = opacityIter(opacityValues2, video2, steps[randomInt], dayOneClouds);
-    opacityValues3 = opacityIter(opacityValues3, video3, steps[randomInt], dayTwoClouds);
-    opacityValues4 = opacityIter(opacityValues4, video4, steps[randomInt], dayThreeClouds);
+    opacityValues = opacityIter(opacityValues, video1, 1, currentClouds);
+    opacityValues2 = opacityIter(opacityValues2, video2, 1, dayOneClouds);
+    opacityValues3 = opacityIter(opacityValues3, video3, 1, dayTwoClouds);
+    opacityValues4 = opacityIter(opacityValues4, video4, 1, dayThreeClouds);
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);
