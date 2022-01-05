@@ -67,7 +67,7 @@ a, u {
     color: rgb(157, 234, 236);
   }
 
-#landing {
+.landing {
     color: white;
     font-family: 'Lexend', sans-serif;
     text-align: justify;
