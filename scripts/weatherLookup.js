@@ -48,10 +48,10 @@ weatherLookup(latLon).then((response) => {
     dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 5000, 7000);
 
     // wind speed controls each auto filter frequency
-    currentWindSpeed = weatherJSON.current.wind_speed * 0.1;
-    dayOneWindSpeed = weatherJSON.daily[1].wind_speed * 0.1;
-    dayTwoWindSpeed = weatherJSON.daily[2].wind_speed * 0.1;
-    dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.1;
+    currentWindSpeed = weatherJSON.current.wind_speed * 0.01;
+    dayOneWindSpeed = weatherJSON.daily[1].wind_speed * 0.01;
+    dayTwoWindSpeed = weatherJSON.daily[2].wind_speed * 0.01;
+    dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.01;
     
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value
