@@ -40,9 +40,9 @@ weatherLookup(latLon).then((response) => {
   if (isEmpty(weatherJSON) === false) {
     // cloudiness controls each max opacity for the videos
     currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 3000, 7000);
-    dayOneClouds = scale((100 - weatherJSON.daily[0].clouds), 0, 100, 3000, 7000);
-    dayTwoClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 3000, 7000);
-    dayThreeClouds = scale((100 - weatherJSON.daily[2].clouds), 0, 100, 3000, 7000);
+    dayOneClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 3000, 7000);
+    dayTwoClouds = scale((100 - weatherJSON.daily[2].clouds), 0, 100, 3000, 7000);
+    dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 3000, 7000);
 
     // wind speed controls each auto filter frequency
     currentWindSpeed = weatherJSON.current.wind_speed * 0.1;
