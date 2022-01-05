@@ -4,7 +4,12 @@
 let lat, lon;
 let weatherJSON;
 let windowHash = window.location.hash;
+
+// set up some default params for if the weather lookup fails
 let currentClouds = 7000;
+let dayOneClouds = 6000;
+let dayTwoClouds = 5000;
+let dayThreeClouds = 8000;
 let currentWindSpeed = 0.13;
 let currentRainmm = "-24";
 
@@ -33,8 +38,15 @@ weatherLookup(latLon).then((response) => {
   weatherJSON = response;
   // organise the json data into some useful variables for use later
   if (isEmpty(weatherJSON) === false) {
+    // cloudiness controls each max opacity for the videos
     currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 3000, 7000);
+    dayOneClouds = scale((100 - weatherJSON.daily[0].clouds), 0, 100, 3000, 7000);
+    dayTwoClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 3000, 7000);
+    dayThreeClouds = scale((100 - weatherJSON.daily[2].clouds), 0, 100, 3000, 7000);
+
+    // wind speed controls each auto filter frequency
     currentWindSpeed = weatherJSON.current.wind_speed * 0.1;
+    
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value
     if (typeof weatherJSON.current.rain == 'undefined') {

@@ -1,5 +1,6 @@
 "use strict";
 // video vars
+let randomInt = 0;
 let player, playerTwo, playerThree, playerFour;
 let vidElement1, vidElement2, vidElement3, vidElement4;
 let wholeScreen;
@@ -31,7 +32,7 @@ var playerVars = {
 }
 
 // list of potential steps for iteration over
-const steps = [0,1,2,5,10,20,40,80,120]
+const steps = [1,2,5,10]
 
 // List of random youtube embeded IDs
 let youtubeIDs = ['5NS_RGXqljA', 'lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9Ej-0VRWmI8', 'fh3EdeGNKus','nMAzchVWTis', 'UuWr5TCbumI', 'wnhvanMdx4s']
@@ -50,9 +51,10 @@ vidElement2 = document.getElementById('playerTwo');
 vidElement3 = document.getElementById('playerThree');
 vidElement4 = document.getElementById('playerFour');
 
-vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 1)] + 'deg)';
-vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 1)] + 'deg)';
-vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 1)] + 'deg)';
+vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+vidElement4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
 
 // 2. This code loads the IFrame Player API code asynchronously.
 tag = document.createElement('script');
@@ -84,15 +86,16 @@ function onYouTubeIframeAPIReady() {
 
 function step(timestamp) {
   if (start === undefined)
-    start = timestamp;
+  start = timestamp;
   const elapsed = timestamp - start;
-
+  
   if (previousTimeStamp !== timestamp) {
     // iterate over 5 videos with different rates
-    opacityValues = opacityIter(opacityValues, video1, steps[getRandomInt(0,8)], currentClouds);
-    opacityValues2 = opacityIter(opacityValues2, video2, steps[getRandomInt(0,6)], currentClouds);
-    opacityValues3 = opacityIter(opacityValues3, video3, steps[getRandomInt(0,7)], currentClouds);
-    opacityValues4 = opacityIter(opacityValues4, video4, steps[getRandomInt(0,5)], currentClouds);
+    randomInt = getRandomInt(0,4);
+    opacityValues = opacityIter(opacityValues, video1, steps[randomInt], currentClouds);
+    opacityValues2 = opacityIter(opacityValues2, video2, steps[randomInt], dayOneClouds);
+    opacityValues3 = opacityIter(opacityValues3, video3, steps[randomInt], dayTwoClouds);
+    opacityValues4 = opacityIter(opacityValues4, video4, steps[randomInt], dayThreeClouds);
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);
