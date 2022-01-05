@@ -22,7 +22,11 @@ pitchShift = new Tone.PitchShift({
 
 
 // add some super nice mega ping pong delay
-pingPong = new Tone.PingPongDelay(30, 0.7).toDestination();
+pingPong = new Tone.PingPongDelay({
+  "delayTime": 0.1,
+  "feedback": 0.9,
+}).toDestination();
+
 
 // filter to make less horrible
 filter = new Tone.AutoFilter(currentWindSpeed).connect(pingPong);
