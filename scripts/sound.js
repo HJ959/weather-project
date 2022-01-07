@@ -49,7 +49,7 @@ function droneSynth() {
   // create ocsillator one
   oscOne = new Tone.PulseOscillator({
     "detune": 5,
-    "frequency": "F3",
+    "frequency": tempToNote(),
     "phase": 0.25,
     "volume": -24
   }).connect(filter).connect(pitchShift);
@@ -57,7 +57,7 @@ function droneSynth() {
   // create ocsillator two
   oscTwo = new Tone.PulseOscillator({
     "detune": -5,
-    "frequency": "C3",
+    "frequency": tempToNote(),
     "phase": -0.25,
     "volume": -24
   }).connect(filterTwo);
@@ -65,7 +65,7 @@ function droneSynth() {
   // create ocsillator three
   oscThree = new Tone.PulseOscillator({
     "detune": 7,
-    "frequency": "E3",
+    "frequency": tempToNote(),
     "phase": 0.5,
     "volume": -24
   }).connect(filterThree);
@@ -73,7 +73,7 @@ function droneSynth() {
   // create ocsillator four
   oscFour = new Tone.PulseOscillator({
     "detune": -7,
-    "frequency": "G3",
+    "frequency": tempToNote(),
     "phase": 0.3,
     "volume": -24
   }).connect(filterFour);
