@@ -22,6 +22,11 @@ const notes = ["F#", "G#", "A#", "C#", "D#"]
 const octaves = ["2", "3", "4", "5", "6"]
 
 function tempToNote() {
+  // TO DO
+  // get this to be controlled by the temp
+  // there is daily average and max and min
+  // so somehow translate the next 5 days temp
+  // into some notes from the above arrays
   return(notes[getRandomInt(0,5)] + octaves[getRandomInt(0,5)]);
 }
 
