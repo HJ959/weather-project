@@ -33,7 +33,7 @@ filter = new Tone.AutoFilter(currentWindSpeed).connect(pingPong);
 filterTwo = new Tone.AutoFilter(dayOneWindSpeed).connect(pingPong);
 filterThree = new Tone.AutoFilter(dayTwoWindSpeed).connect(pingPong);
 filterFour = new Tone.AutoFilter(dayThreeWindSpeed).connect(pingPong);
-
+console.log(currentWindSpeed);
 // initialize the noise and start
 // noise will be blended into the piece as more 
 // percipitation is present in the local weather
