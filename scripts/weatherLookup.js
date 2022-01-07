@@ -62,10 +62,17 @@ weatherLookup(latLon).then((response) => {
     else {
       currentRainmm = "-" + String(scale(weatherJSON.current.rain["1h"], 0.0, 1.5, 36, 1));
     }
+
+    // call the sound and video elements now we have the weather data
+    videoPlayers();
+    droneSynth();
   }
   // set app state
 }).catch((error) => {
   console.log('API error', error);
+  // playing default values
+  videoPlayers();
+  droneSynth();
 })
 
 // some useful functions
