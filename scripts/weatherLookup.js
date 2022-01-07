@@ -40,7 +40,6 @@ weatherLookup(latLon).then((response) => {
   weatherJSON = response;
   // organise the json data into some useful variables for use later
   if (isEmpty(weatherJSON) === false) {
-    console.log("lookup worked! Created params")
     // cloudiness controls each max opacity for the videos
     currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 5000, 10000);
     dayOneClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 5000, 10000);

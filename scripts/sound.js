@@ -10,7 +10,7 @@ let pitchShift;
 
 function droneSynth() {
   "use strict";
-  
+
   // main filter pitch shift
   pitchFilter = new Tone.AutoFilter(0.01).toDestination()
 
@@ -36,7 +36,7 @@ function droneSynth() {
   filterTwo = new Tone.AutoFilter(dayOneWindSpeed).connect(pingPong);
   filterThree = new Tone.AutoFilter(dayTwoWindSpeed).connect(pingPong);
   filterFour = new Tone.AutoFilter(dayThreeWindSpeed).connect(pingPong);
-  console.log(currentWindSpeed);
+
   // initialize the noise and start
   // noise will be blended into the piece as more 
   // percipitation is present in the local weather
