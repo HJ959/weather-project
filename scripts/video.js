@@ -6,19 +6,19 @@ let wholeScreen;
 let video1, video2, video3, video4;
 let start, previousTimeStamp;
 let opacityValues = {
-  vidOpacity: 0,
+  vidOpacity: getRandomInt(1000,4000),
   vidReverse: false
 };
 let opacityValues2 = {
-  vidOpacity: 0,
+  vidOpacity: getRandomInt(1000,4000),
   vidReverse: false
 };
 let opacityValues3 = {
-  vidOpacity: 0,
+  vidOpacity: getRandomInt(1000,4000),
   vidReverse: false
 };
 let opacityValues4 = {
-  vidOpacity: 0,
+  vidOpacity: getRandomInt(1000,4000),
   vidReverse: false
 };
 // for the youtube object  
