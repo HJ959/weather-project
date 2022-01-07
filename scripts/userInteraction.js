@@ -31,6 +31,8 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     playerThree.unMute();
     playerFour.unMute();
     startStopFlag = 'Stop'
+
+    window.requestAnimationFrame(step);
     return
   }
   // if mousedown and the flag is set to Start
@@ -55,4 +57,3 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
   }
 });
 
-window.requestAnimationFrame(step);

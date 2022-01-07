@@ -39,7 +39,7 @@ let rotateValues = ['0', '180']
 // function to call after weather lookup successful
 function videoPlayers() {
   "use strict";
-  
+
   video1 = document.getElementById('video1');
   video2 = document.getElementById('video2');
   video3 = document.getElementById('video3');
@@ -83,52 +83,52 @@ function videoPlayers() {
       playerVars: playerVars
     });
   }
+}
 
-  function step(timestamp) {
-    if (start === undefined)
-      start = timestamp;
-    const elapsed = timestamp - start;
+function step(timestamp) {
+  if (start === undefined)
+    start = timestamp;
+  const elapsed = timestamp - start;
 
-    if (previousTimeStamp !== timestamp) {
-      // iterate over 5 videos with different rates
-      opacityValues = opacityIter(opacityValues, video1, 1, currentClouds);
-      opacityValues2 = opacityIter(opacityValues2, video2, 1, dayOneClouds);
-      opacityValues3 = opacityIter(opacityValues3, video3, 1, dayTwoClouds);
-      opacityValues4 = opacityIter(opacityValues4, video4, 1, dayThreeClouds);
-    }
-    previousTimeStamp = timestamp
-    window.requestAnimationFrame(step);
+  if (previousTimeStamp !== timestamp) {
+    // iterate over 5 videos with different rates
+    opacityValues = opacityIter(opacityValues, video1, 1, currentClouds);
+    opacityValues2 = opacityIter(opacityValues2, video2, 1, dayOneClouds);
+    opacityValues3 = opacityIter(opacityValues3, video3, 1, dayTwoClouds);
+    opacityValues4 = opacityIter(opacityValues4, video4, 1, dayThreeClouds);
   }
+  previousTimeStamp = timestamp
+  window.requestAnimationFrame(step);
+}
 
-  function opacityIter(opacityValues, element, incrementValue, currentClouds) {
-    // iterate up
-    if (opacityValues.vidReverse === false) {
-      // control the players opacity
-      element.style.opacity = String(opacityValues.vidOpacity / 10000);
-      element.style.filter = 'alpha(opacity=' + String(opacityValues.vidOpacity);
-      opacityValues.vidOpacity = opacityValues.vidOpacity + incrementValue;
-      if (opacityValues.vidOpacity % currentClouds === 0 || opacityValues.vidOpacity > currentClouds) {
-        opacityValues.vidReverse = !opacityValues.vidReverse;
-      }
-      return {
-        vidOpacity: opacityValues.vidOpacity,
-        vidReverse: opacityValues.vidReverse
-      };
+function opacityIter(opacityValues, element, incrementValue, currentClouds) {
+  // iterate up
+  if (opacityValues.vidReverse === false) {
+    // control the players opacity
+    element.style.opacity = String(opacityValues.vidOpacity / 10000);
+    element.style.filter = 'alpha(opacity=' + String(opacityValues.vidOpacity);
+    opacityValues.vidOpacity = opacityValues.vidOpacity + incrementValue;
+    if (opacityValues.vidOpacity % currentClouds === 0 || opacityValues.vidOpacity > currentClouds) {
+      opacityValues.vidReverse = !opacityValues.vidReverse;
     }
-    // iterate down
-    if (opacityValues.vidReverse === true) {
-      // control the players opacity
-      element.style.opacity = String(opacityValues.vidOpacity / 10000);
-      element.style.filter = 'alpha(opacity=' + String(opacityValues.vidOpacity);
-      opacityValues.vidOpacity = opacityValues.vidOpacity - incrementValue;
-      if (opacityValues.vidOpacity === 0 || opacityValues.vidOpacity < 0) {
-        opacityValues.vidReverse = !opacityValues.vidReverse;
-      }
-      return {
-        vidOpacity: opacityValues.vidOpacity,
-        vidReverse: opacityValues.vidReverse
-      };
+    return {
+      vidOpacity: opacityValues.vidOpacity,
+      vidReverse: opacityValues.vidReverse
+    };
+  }
+  // iterate down
+  if (opacityValues.vidReverse === true) {
+    // control the players opacity
+    element.style.opacity = String(opacityValues.vidOpacity / 10000);
+    element.style.filter = 'alpha(opacity=' + String(opacityValues.vidOpacity);
+    opacityValues.vidOpacity = opacityValues.vidOpacity - incrementValue;
+    if (opacityValues.vidOpacity === 0 || opacityValues.vidOpacity < 0) {
+      opacityValues.vidReverse = !opacityValues.vidReverse;
     }
+    return {
+      vidOpacity: opacityValues.vidOpacity,
+      vidReverse: opacityValues.vidReverse
+    };
   }
 }
 /////////////////////////////////////////////////////////////////////////////////
