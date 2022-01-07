@@ -37,10 +37,10 @@ async function weatherLookup(data) {
 // grab the weather data from the API on mousedown
 // send the lat and lon as an object to the AWS Lambada function
 weatherLookup(latLon).then((response) => {
-  console.log('API lol', response);
   weatherJSON = response;
   // organise the json data into some useful variables for use later
   if (isEmpty(weatherJSON) === false) {
+    console.log("lookup worked! Created params")
     // cloudiness controls each max opacity for the videos
     currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 5000, 10000);
     dayOneClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 5000, 10000);
