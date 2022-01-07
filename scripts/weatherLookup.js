@@ -64,14 +64,14 @@ weatherLookup(latLon).then((response) => {
     }
 
     // call the sound and video elements now we have the weather data
-    videoPlayers();
+    window.requestAnimationFrame(step);
     droneSynth();
   }
   // set app state
 }).catch((error) => {
   console.log('API error', error);
   // playing default values
-  videoPlayers();
+  window.requestAnimationFrame(step);
   droneSynth();
 })
 

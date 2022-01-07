@@ -36,54 +36,50 @@ let youtubeIDs = ['5NS_RGXqljA', 'lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9
 // rotate potential values
 let rotateValues = ['0', '180']
 
-// function to call after weather lookup successful
-function videoPlayers() {
-  "use strict";
+video1 = document.getElementById('video1');
+video2 = document.getElementById('video2');
+video3 = document.getElementById('video3');
+video4 = document.getElementById('video4');
 
-  video1 = document.getElementById('video1');
-  video2 = document.getElementById('video2');
-  video3 = document.getElementById('video3');
-  video4 = document.getElementById('video4');
+// to rotate the videos randomly to create interesting overlaps
+vidElement1 = document.getElementById('playerOne');
+vidElement2 = document.getElementById('playerTwo');
+vidElement3 = document.getElementById('playerThree');
+vidElement4 = document.getElementById('playerFour');
 
-  // to rotate the videos randomly to create interesting overlaps
-  vidElement1 = document.getElementById('playerOne');
-  vidElement2 = document.getElementById('playerTwo');
-  vidElement3 = document.getElementById('playerThree');
-  vidElement4 = document.getElementById('playerFour');
+vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+vidElement4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
 
-  vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
-  vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
-  vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
-  vidElement4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+// 2. This code loads the IFrame Player API code asynchronously.
+tag = document.createElement('script');
 
-  // 2. This code loads the IFrame Player API code asynchronously.
-  tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  tag.src = "https://www.youtube.com/iframe_api";
-  firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  // 3. This function creates an <iframe> (and YouTube player)
-  //    after the API code downloads.
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('playerOne', {
-      videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-      playerVars: playerVars
-    });
-    playerTwo = new YT.Player('playerTwo', {
-      videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-      playerVars: playerVars
-    });
-    playerThree = new YT.Player('playerThree', {
-      videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-      playerVars: playerVars
-    });
-    playerFour = new YT.Player('playerFour', {
-      videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-      playerVars: playerVars
-    });
-  }
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('playerOne', {
+    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+    playerVars: playerVars
+  });
+  playerTwo = new YT.Player('playerTwo', {
+    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+    playerVars: playerVars
+  });
+  playerThree = new YT.Player('playerThree', {
+    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+    playerVars: playerVars
+  });
+  playerFour = new YT.Player('playerFour', {
+    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+    playerVars: playerVars
+  });
 }
+
 
 function step(timestamp) {
   if (start === undefined)
