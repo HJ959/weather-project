@@ -16,19 +16,18 @@ let dayTwoWindSpeed = 0.07;
 let dayThreeWindSpeed = 0.11;
 let currentRainmm = "-24";
 let currentDewPoint = 0.5;
+let dayOneMaxTemp = 0
+let dayTwoMaxTemp = 1
+let dayThreeMaxTemp = 2 
+let dayFourMaxTemp = 3
+let dayOneMinTemp = 0
+let dayTwoMinTemp = 2
+let dayThreeMinTemp = 3 
+let dayFourMinTemp = 4
 
 // create some consts for picking notes 
 const notes = ["F#", "G#", "A#", "C#", "D#"]
 const octaves = ["2", "3", "4", "5", "6"]
-
-function tempToNote() {
-  // TO DO
-  // get this to be controlled by the temp
-  // there is daily average and max and min
-  // so somehow translate the next 5 days temp
-  // into some notes from the above arrays
-  return(notes[getRandomInt(0,5)] + octaves[getRandomInt(0,5)]);
-}
 
 // grab the latLon from the window hash send from the landing page
 let windowHashAttributes = windowHash.split("#");
@@ -65,10 +64,10 @@ weatherLookup(latLon).then((response) => {
     dayOneWindSpeed = weatherJSON.daily[1].wind_speed * 0.01;
     dayTwoWindSpeed = weatherJSON.daily[2].wind_speed * 0.01;
     dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.01;
-    
+
     // grab the dew point for the delay time of the ping pong delay
     currentDewPoint = weatherJSON.current.dew_point;
-    
+
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value
     if (typeof weatherJSON.current.rain == 'undefined') {
@@ -79,7 +78,15 @@ weatherLookup(latLon).then((response) => {
       currentRainmm = "-" + String(scale(weatherJSON.current.rain["1h"], 0.0, 1.5, 36, 1));
     }
 
-
+    // grab the max min temps then wrap 5 so that they can pick somethign from the array
+    dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 5
+    dayTwoMaxTemp = parseInt(weatherJSON.daily[1].temp.max) % 5
+    dayThreeMaxTemp = parseInt(weatherJSON.daily[2].temp.max) % 5
+    dayFourMaxTemp = parseInt(weatherJSON.daily[3].temp.max) % 5
+    dayOneMinTemp = parseInt(weatherJSON.daily[0].temp.min) % 5
+    dayTwoMinTemp = parseInt(weatherJSON.daily[1].temp.min) % 5
+    dayThreeMinTemp = parseInt(weatherJSON.daily[2].temp.min) % 5
+    dayFourMinTemp = parseInt(weatherJSON.daily[3].temp.min) % 5
 
     // call the sound and video elements now we have the weather data
     window.requestAnimationFrame(step);

@@ -17,11 +17,12 @@
 <body>
     <main class="container">
         <div class="header-one">
-            <h1 id="back"><a href="index.html"><<<</a></h1>
+            <h1 id="back"><a href="index.html"><<<<<<<<</a></h1> 
             <h1 id="landing">Created by <a href="https://linktr.ee/henry.james">Henry James</a></h1>
         </div>
         <div class="header-two">
-            <h1 id="landing">The synth is powered by <a href="https://tonejs.github.io/">Tone.js</a> and the visuals powered by YouTube's iframe API and some JavaScript to fade the videos</h1>
+            <h1 id="landing">The synth is powered by <a href="https://tonejs.github.io/">Tone.js</a> and the visuals
+                powered by YouTube's iframe API and some JavaScript to fade the videos</h1>
         </div>
         <div class="header-three">
             <h1 id="landing">Below is a mapping of the weather data to the parts of the piece</h1>
@@ -29,26 +30,36 @@
         <div class="header-four">
             <table>
                 <tr>
-                  <th>Weather data</th>
-                  <th>Weather Drone</th>
-                  <th>Description</th>
+                    <th>Weather data</th>
+                    <th>Weather Drone</th>
+                    <th>Description</th>
                 </tr>
                 <tr>
-                  <td>Current cloudiness 0-100% and daily cloudiness</td>
-                  <td>Max opacity</td>
-                  <td>Cloudiness controls how vibrant the videos are</td>
+                    <td>Current cloudiness 0-100% and daily cloudiness</td>
+                    <td>Max opacity</td>
+                    <td>Cloudiness controls how vibrant the videos are</td>
                 </tr>
                 <tr>
-                  <td>Current wind speed and future wind speed</td>
-                  <td>Auto filter LFO speeds</td>
-                  <td>The faster the current and future wind the faster the filters oscillate</td>
+                    <td>Current wind speed and future wind speed</td>
+                    <td>Auto filter LFO speeds</td>
+                    <td>The faster the current and future wind the faster the filters oscillate</td>
                 </tr>
                 <tr>
-                    <td>Current rin in mm</td>
+                    <td>Current rain in mm</td>
                     <td>Pink noise volume</td>
                     <td>The more rain per mm the louder the pink noise becomes</td>
-                  </tr>
-              </table> 
+                </tr>
+                <tr>
+                    <td>Current dew point</td>
+                    <td>The ping pong delay's delay time</td>
+                    <td>This will have a metallic effect on the audio the lower the dew point</td>
+                </tr>
+                <tr>
+                    <td>Daily min and max temperature</td>
+                    <td>Selected notes for the oscillators</td>
+                    <td>An array of notes in the G-flat pentatonic scale and an array of octaves are used with the max and min temperature for the first 4 days forecast, each temperature is wrapped to 5 using the modulo operator.</td>
+                </tr>
+            </table>
         </div>
     </main>
 </body>
