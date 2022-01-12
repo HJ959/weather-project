@@ -15,7 +15,7 @@
     #crop {
         border: 2rem solid rgb(0, 0, 0);
         border-radius: 16px;
-        z-index: 2;
+        z-index: 20;
     }
 }
 
@@ -36,7 +36,7 @@
     #crop {
         border: 5rem solid rgb(0, 0, 0);
         border-radius: 16px;
-        z-index: 2;
+        z-index: 20;
     }
 }
 
@@ -57,7 +57,7 @@
     #crop {
         border: 5rem solid rgb(0, 0, 0);
         border-radius: 16px;
-        z-index: 2;
+        z-index: 20;
     }
 
 }
