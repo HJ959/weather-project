@@ -19,17 +19,17 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     player.seekTo(getRandomInt(0, 10800));
     playerTwo.seekTo(getRandomInt(0, 10800));
     playerThree.seekTo(getRandomInt(0, 10800));
-    playerFour.seekTo(getRandomInt(0, 10800));
+    // playerFour.seekTo(getRandomInt(0, 10800));
 
     player.playVideo();
     playerTwo.playVideo();
     playerThree.playVideo();
-    playerFour.playVideo();
+    // playerFour.playVideo();
 
     player.unMute();
     playerTwo.unMute();
     playerThree.unMute();
-    playerFour.unMute();
+    // playerFour.unMute();
     startStopFlag = 'Stop'
     return
   }
@@ -48,7 +48,7 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     player.pauseVideo();
     playerTwo.pauseVideo();
     playerThree.pauseVideo();
-    playerFour.pauseVideo();
+    // playerFour.pauseVideo();
 
     startStopFlag = 'Start'
     return

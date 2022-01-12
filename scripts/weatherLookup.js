@@ -15,14 +15,14 @@ let dayOneWindSpeed = 0.05;
 let dayTwoWindSpeed = 0.07;
 let dayThreeWindSpeed = 0.11;
 let currentRainmm = "-24";
-let currentDewPoint = 0.5;
+let currentDewPoint = 50.6;
 let dayOneMaxTemp = 0
 let dayTwoMaxTemp = 1
 let dayThreeMaxTemp = 2 
 let dayFourMaxTemp = 3
-let dayOneMinTemp = 0
+let dayOneMinTemp = 1
 let dayTwoMinTemp = 2
-let dayThreeMinTemp = 3 
+let dayThreeMinTemp = 2
 let dayFourMinTemp = 4
 
 // create some consts for picking notes 

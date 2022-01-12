@@ -39,18 +39,18 @@ let rotateValues = ['0', '180']
 video1 = document.getElementById('video1');
 video2 = document.getElementById('video2');
 video3 = document.getElementById('video3');
-video4 = document.getElementById('video4');
+// video4 = document.getElementById('video4');
 
 // to rotate the videos randomly to create interesting overlaps
 vidElement1 = document.getElementById('playerOne');
 vidElement2 = document.getElementById('playerTwo');
 vidElement3 = document.getElementById('playerThree');
-vidElement4 = document.getElementById('playerFour');
+// vidElement4 = document.getElementById('playerFour');
 
 vidElement1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
 vidElement2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
 vidElement3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
-vidElement4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+// vidElement4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
 
 // 2. This code loads the IFrame Player API code asynchronously.
 tag = document.createElement('script');
@@ -74,10 +74,10 @@ function onYouTubeIframeAPIReady() {
     videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
     playerVars: playerVars
   });
-  playerFour = new YT.Player('playerFour', {
-    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-    playerVars: playerVars
-  });
+  // playerFour = new YT.Player('playerFour', {
+  //   videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+  //   playerVars: playerVars
+  // });
 }
 
 
@@ -91,7 +91,7 @@ function step(timestamp) {
     opacityValues = opacityIter(opacityValues, video1, 1, currentClouds);
     opacityValues2 = opacityIter(opacityValues2, video2, 1, dayOneClouds);
     opacityValues3 = opacityIter(opacityValues3, video3, 1, dayTwoClouds);
-    opacityValues4 = opacityIter(opacityValues4, video4, 1, dayThreeClouds);
+    // opacityValues4 = opacityIter(opacityValues4, video4, 1, dayThreeClouds);
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);
