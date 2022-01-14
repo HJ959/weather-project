@@ -51,7 +51,7 @@ function droneSynth() {
     "detune": dayOneFeelsLikeTemp,
     "frequency": notes[dayOneMaxTemp] + octaves[dayOneMinTemp],
     "phase": dayOneMoonPhase,
-    "volume": -24
+    "volume": dayOneHumidity
   }).connect(filter).connect(pitchShift);
 
   // create ocsillator two
@@ -59,7 +59,7 @@ function droneSynth() {
     "detune": dayTwoFeelsLikeTemp,
     "frequency": notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp],
     "phase": dayTwoMoonPhase,
-    "volume": -24
+    "volume": dayTwoHumidity
   }).connect(filterTwo);
 
   // create ocsillator three
@@ -67,14 +67,14 @@ function droneSynth() {
     "detune": dayThreeFeelsLikeTemp,
     "frequency": notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp],
     "phase": dayThreeMoonPhase,
-    "volume": -24
+    "volume": dayThreeHumidity
   }).connect(filterThree);
 
   // create ocsillator four
   oscFour = new Tone.PulseOscillator({
     "detune": dayFourFeelsLikeTemp,
     "frequency": notes[dayFourMaxTemp] + octaves[dayFourMinTemp],
-    "phase": dayFourMoonPhase,
+    "phase": dayFourHumidity,
     "volume": -24
   }).connect(filterFour);
 }
