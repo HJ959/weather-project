@@ -7,7 +7,10 @@ Below is a mapping of the weather data to the parts of the piece
 
 #### Cloudiness controls how vibrant the videos are
 
-#### The faster the current wind the faster the filters oscillation
+#### The faster the current and future wind the faster the filters oscillate
 
 #### The more rain per mm the louder the pink noise becomes
 
+#### Dew point will have a metallic effect on the audio the lower the dew point
+
+#### An array of notes in the G-flat pentatonic scale and an array of octaves are used with the max and min temperature for the first 4 days forecast, each temperature is wrapped to 5 using the modulo operator.
