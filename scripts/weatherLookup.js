@@ -41,7 +41,7 @@ let dayFourMoonPhase = 0.70;
 
 // create some consts for picking notes 
 const notes = ["F#", "G#", "A#", "C#", "D#"]
-const octaves = ["2", "3", "4", "5", "1"]
+const octaves = ["2", "3", "4", "3", "1"]
 
 // grab the latLon from the window hash send from the landing page
 let windowHashAttributes = windowHash.split("#");
