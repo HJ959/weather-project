@@ -1,4 +1,4 @@
-# Weather Drone
+# WeatherHum
 
 This project uses your location (if you allow) to check your local weather and use the data to tune a drone synth and calibrate some video faders.
 
