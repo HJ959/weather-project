@@ -2,11 +2,13 @@
 
 // user functionality vars
 let startStopFlag = 'Start';
+let pressToStartDiv = document.getElementById('pressToStartDiv');
 
 // if mousedown event un mute all youtube videos
 document.querySelector('#wholePage')?.addEventListener('mousedown', function (event) {
   // if mousedown and the flag is set to Start
   if (startStopFlag === 'Start') {
+    pressToStartDiv.style.display = "none"; 
     oscOne.start();
     oscTwo.start();
     oscThree.start();
@@ -31,6 +33,7 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     playerThree.unMute();
     playerFour.unMute();
     startStopFlag = 'Stop'
+
     return
   }
   // if mousedown and the flag is set to Start

@@ -30,6 +30,8 @@ var playerVars = {
   'rel': 0
 }
 
+let countPlayersReady = 0;
+
 // List of random youtube embeded IDs
 let youtubeIDs = ['5NS_RGXqljA', 'lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9Ej-0VRWmI8', 'fh3EdeGNKus', 'nMAzchVWTis', 'UuWr5TCbumI', 'wnhvanMdx4s']
 
@@ -66,22 +68,36 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('playerOne', {
     videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-    playerVars: playerVars
-  });
+    playerVars: playerVars,
+    events: {
+      'onReady': onPlayerReady,
+    }});
   playerTwo = new YT.Player('playerTwo', {
     videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-    playerVars: playerVars
-  });
+    playerVars: playerVars,
+    events: {
+      'onReady': onPlayerReady,
+    }});
   playerThree = new YT.Player('playerThree', {
     videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-    playerVars: playerVars
-  });
+    playerVars: playerVars,
+    events: {
+      'onReady': onPlayerReady,
+    }});
   playerFour = new YT.Player('playerFour', {
     videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-    playerVars: playerVars
-  });
+    playerVars: playerVars,
+    events: {
+      'onReady': onPlayerReady,
+    }});
 }
 
+function onPlayerReady() {
+  countPlayersReady++;
+  if (countPlayersReady === 3) {
+    document.getElementById('waitingText').innerHTML = "Click to beging playing!";;
+  }
+}
 
 function step(timestamp) {
   if (start === undefined)
