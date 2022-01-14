@@ -95,7 +95,7 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady() {
   countPlayersReady++;
   if (countPlayersReady === 3) {
-    document.getElementById('waitingText').innerHTML = "Click to beging playing!";;
+    document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, click to beging playing!";;
   }
 }
 
