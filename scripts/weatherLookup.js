@@ -10,24 +10,34 @@ let currentClouds = 7000;
 let dayOneClouds = 6000;
 let dayTwoClouds = 5000;
 let dayThreeClouds = 8000;
+
 let currentWindSpeed = 0.13;
 let dayOneWindSpeed = 0.05;
 let dayTwoWindSpeed = 0.07;
 let dayThreeWindSpeed = 0.11;
+
 let currentRainmm = "-24";
+
 let currentDewPoint = 50.6;
+
 let dayOneMaxTemp = 0
 let dayTwoMaxTemp = 1
-let dayThreeMaxTemp = 2 
+let dayThreeMaxTemp = 2
 let dayFourMaxTemp = 3
 let dayOneMinTemp = 1
 let dayTwoMinTemp = 2
 let dayThreeMinTemp = 2
 let dayFourMinTemp = 4
+
 let dayOneFeelsLikeTemp = 20;
 let dayTwoFeelsLikeTemp = -10;
 let dayThreeFeelsLikeTemp = 10;
 let dayFourFeelsLikeTemp = -17;
+
+let dayOneMoonPhase = 0.25;
+let dayTwoMoonPhase = 0.50;
+let dayThreeMoonPhase = 0.60;
+let dayFourMoonPhase = 0.70;
 
 // create some consts for picking notes 
 const notes = ["F#", "G#", "A#", "C#", "D#"]
@@ -96,8 +106,14 @@ weatherLookup(latLon).then((response) => {
     // make some numbers either negative or positive for better tuning
     dayOneFeelsLikeTemp = (weatherJSON.daily[0].feels_like.day) / 10
     dayTwoFeelsLikeTemp = (weatherJSON.daily[1].feels_like.day * -1) / 10
-    dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day ) / 10
+    dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day) / 10
     dayFourFeelsLikeTemp = (weatherJSON.daily[3].feels_like.day * -1) / 10
+
+    // control the phase of the oscillators with the daily moon phase
+    dayOneMoonPhase = weatherJSON.daily[0].moon_phase;
+    dayTwoMoonPhase = weatherJSON.daily[2].moon_phase;
+    dayThreeMoonPhase = weatherJSON.daily[4].moon_phase;
+    dayFourMoonPhase = weatherJSON.daily[7].moon_phase;
 
     // call the sound and video elements now we have the weather data
     window.requestAnimationFrame(step);
