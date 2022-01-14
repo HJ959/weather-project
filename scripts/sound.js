@@ -48,7 +48,7 @@ function droneSynth() {
 
   // create ocsillator one
   oscOne = new Tone.PulseOscillator({
-    "detune": 5,
+    "detune": dayOneFeelsLikeTemp,
     "frequency": notes[dayOneMaxTemp] + octaves[dayOneMinTemp],
     "phase": 0.25,
     "volume": -24
@@ -56,7 +56,7 @@ function droneSynth() {
 
   // create ocsillator two
   oscTwo = new Tone.PulseOscillator({
-    "detune": -5,
+    "detune": dayTwoFeelsLikeTemp,
     "frequency": notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp],
     "phase": -0.25,
     "volume": -24
@@ -64,7 +64,7 @@ function droneSynth() {
 
   // create ocsillator three
   oscThree = new Tone.PulseOscillator({
-    "detune": 7,
+    "detune": dayThreeFeelsLikeTemp,
     "frequency": notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp],
     "phase": 0.5,
     "volume": -24
@@ -72,7 +72,7 @@ function droneSynth() {
 
   // create ocsillator four
   oscFour = new Tone.PulseOscillator({
-    "detune": -7,
+    "detune": dayFourFeelsLikeTemp,
     "frequency": notes[dayFourMaxTemp] + octaves[dayFourMinTemp],
     "phase": 0.3,
     "volume": -24

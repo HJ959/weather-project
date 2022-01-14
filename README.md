@@ -16,3 +16,5 @@ Below is a mapping of the weather data to the parts of the piece
 #### Dew point will have a metallic effect on the audio the lower the dew point
 
 #### An array of notes in the G-flat pentatonic scale and an array of octaves are used with the max and min temperature for the first 4 days forecast, each temperature is wrapped to 5 using the modulo operator.
+
+#### Day 1 to 4 daytime feels like temperature controls how detuned the oscillators are

@@ -106,10 +106,10 @@ function step(timestamp) {
 
   if (previousTimeStamp !== timestamp) {
     // iterate over 5 videos with different rates
-    opacityValues = opacityIter(opacityValues, video1, 1, currentClouds);
-    opacityValues2 = opacityIter(opacityValues2, video2, 1, dayOneClouds);
-    opacityValues3 = opacityIter(opacityValues3, video3, 1, dayTwoClouds);
-    opacityValues4 = opacityIter(opacityValues4, video4, 1, dayThreeClouds);
+    opacityValues = opacityIter(opacityValues, video1, 10, currentClouds);
+    opacityValues2 = opacityIter(opacityValues2, video2, 10, dayOneClouds);
+    opacityValues3 = opacityIter(opacityValues3, video3, 10, dayTwoClouds);
+    opacityValues4 = opacityIter(opacityValues4, video4, 10, dayThreeClouds);
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);

@@ -24,6 +24,10 @@ let dayOneMinTemp = 1
 let dayTwoMinTemp = 2
 let dayThreeMinTemp = 2
 let dayFourMinTemp = 4
+let dayOneFeelsLikeTemp = 20;
+let dayTwoFeelsLikeTemp = -10;
+let dayThreeFeelsLikeTemp = 10;
+let dayFourFeelsLikeTemp = -17;
 
 // create some consts for picking notes 
 const notes = ["F#", "G#", "A#", "C#", "D#"]
@@ -87,6 +91,13 @@ weatherLookup(latLon).then((response) => {
     dayTwoMinTemp = parseInt(weatherJSON.daily[1].temp.min) % 5
     dayThreeMinTemp = parseInt(weatherJSON.daily[2].temp.min) % 5
     dayFourMinTemp = parseInt(weatherJSON.daily[3].temp.min) % 5
+
+    // grab the feels like temp for the next 4 days to set the oscillators tuning
+    // make some numbers either negative or positive for better tuning
+    dayOneFeelsLikeTemp = (weatherJSON.daily[0].feels_like.day) / 10
+    dayTwoFeelsLikeTemp = (weatherJSON.daily[1].feels_like.day * -1) / 10
+    dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day ) / 10
+    dayFourFeelsLikeTemp = (weatherJSON.daily[3].feels_like.day * -1) / 10
 
     // call the sound and video elements now we have the weather data
     window.requestAnimationFrame(step);
