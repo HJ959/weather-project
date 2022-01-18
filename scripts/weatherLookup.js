@@ -127,8 +127,8 @@ weatherLookup(latLon).then((response) => {
     dayFourHumidity = scale(weatherJSON.daily[3].humidity, 0, 100, 100, 1000);
 
     // call the sound and video elements now we have the weather data
-    window.requestAnimationFrame(step);
     droneSynth();
+    window.requestAnimationFrame(step);
   }
   // set app state
 }).catch((error) => {
