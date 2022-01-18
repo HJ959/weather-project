@@ -39,10 +39,10 @@ let dayTwoMoonPhase = 0.50;
 let dayThreeMoonPhase = 0.60;
 let dayFourMoonPhase = 0.70;
 
-let dayOneHumidity = 65;
-let dayTwoHumidity = 80;
-let dayThreeHumidity = 50;
-let dayFourHumidity = 74;
+let dayOneHumidity = -24;
+let dayTwoHumidity = -25;
+let dayThreeHumidity = -26;
+let dayFourHumidity = -25.5;
 
 // create some consts for picking notes 
 const notes = ["F#", "G#", "A#", "C#", "D#"]
