@@ -30,12 +30,27 @@ function droneSynth() {
     "feedback": 0.9,
   }).toDestination();
 
-
   // filter to make less horrible
-  filter = new Tone.AutoFilter(currentWindSpeed).connect(pingPong);
-  filterTwo = new Tone.AutoFilter(dayOneWindSpeed).connect(pingPong);
-  filterThree = new Tone.AutoFilter(dayTwoWindSpeed).connect(pingPong);
-  filterFour = new Tone.AutoFilter(dayThreeWindSpeed).connect(pingPong);
+  filter = new Tone.AutoFilter({
+    "frequency": currentWindSpeed,
+    "baseFrequency": dayOneHumidity,
+     "octaves": octaves[dayOneMinTemp]
+    }).connect(pingPong);
+  filterTwo = new Tone.AutoFilter({
+    "frequency": dayOneWindSpeed,
+    "baseFrequency": dayTwoHumidity,
+     "octaves": octaves[dayTwoMinTemp]
+    }).connect(pingPong);
+  filterThree = new Tone.AutoFilter({
+    "frequency": dayTwoWindSpeed,
+    "baseFrequency": dayThreeHumidity,
+     "octaves": octaves[dayThreeMinTemp]
+    }).connect(pingPong);
+  filterFour = new Tone.AutoFilter({
+    "frequency": dayThreeWindSpeed,
+    "baseFrequency": dayFourHumidity,
+     "octaves": octaves[dayFourMinTemp]
+    }).connect(pingPong);
 
   // initialize the noise and start
   // noise will be blended into the piece as more 
@@ -55,7 +70,9 @@ function droneSynth() {
   }).connect(filter).connect(pitchShift);
 
   // create ocsillator two
-  oscTwo = new Tone.PulseOscillator({
+  oscTwo = new Tone.FatOscillator({
+    "type": "sawtooth",
+    "spread": 20,
     "detune": dayTwoFeelsLikeTemp,
     "frequency": notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp],
     "phase": dayTwoMoonPhase,

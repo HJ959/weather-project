@@ -111,10 +111,10 @@ function step(timestamp) {
     opacityValues3 = opacityIter(opacityValues3, video3, 10, dayTwoClouds);
     opacityValues4 = opacityIter(opacityValues4, video4, 10, dayThreeClouds);
 
-    oscOne.volume.value = scale(opacityValues.vidOpacity, 5000, 10000, -30, -20);
-    oscTwo.volume.value = scale(opacityValues2.vidOpacity, 5000, 10000, -30, -20);
-    oscThree.volume.value = scale(opacityValues3.vidOpacity, 5000, 10000, -30, -20);
-    oscFour.volume.value = scale(opacityValues4.vidOpacity, 5000, 10000, -30, -20);
+    oscOne.volume.value = scale(opacityValues.vidOpacity, 5000, 10000, -30, -24);
+    oscTwo.volume.value = scale(opacityValues2.vidOpacity, 5000, 10000, -30, -24);
+    oscThree.volume.value = scale(opacityValues3.vidOpacity, 5000, 10000, -30, -24);
+    oscFour.volume.value = scale(opacityValues4.vidOpacity, 5000, 10000, -30, -24);
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);
