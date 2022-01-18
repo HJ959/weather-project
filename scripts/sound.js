@@ -74,8 +74,8 @@ function droneSynth() {
   oscFour = new Tone.PulseOscillator({
     "detune": dayFourFeelsLikeTemp,
     "frequency": notes[dayFourMaxTemp] + octaves[dayFourMinTemp],
-    "phase": dayFourHumidity,
-    "volume": -24
+    "phase": dayFourMoonPhase,
+    "volume": dayFourHumidity
   }).connect(filterFour);
 }
 /////////////////////////////////////////////////////////////////////////////////
