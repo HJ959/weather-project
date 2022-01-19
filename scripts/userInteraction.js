@@ -15,6 +15,7 @@ document.addEventListener("visibilitychange", event => {
     noise.stop();
     pingPong.wet.value = 0
     pitchShift.wet.value = 0.0
+    pitchShift.feedback.value = 0.0
     player.pauseVideo();
     playerTwo.pauseVideo();
     playerThree.pauseVideo();
@@ -35,7 +36,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     noise.start();
 
     pingPong.wet.value = 0.7
-    pitchShift.wet.value = 0.6
 
     player.seekTo(getRandomInt(0, 10800));
     playerTwo.seekTo(getRandomInt(0, 10800));
@@ -66,6 +66,7 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
 
     pingPong.wet.value = 0
     pitchShift.wet.value = 0.0
+    pitchShift.feedback.value = 0.0
 
     player.pauseVideo();
     playerTwo.pauseVideo();
