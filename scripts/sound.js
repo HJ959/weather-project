@@ -66,7 +66,7 @@ function droneSynth() {
     "detune": dayOneFeelsLikeTemp,
     "frequency": notes[dayOneMaxTemp] + octaves[dayOneMinTemp],
     "phase": dayOneMoonPhase,
-    "volume": dayOneHumidity
+    "volume": -24
   }).connect(filter).connect(pitchShift);
 
   // create ocsillator two
@@ -76,7 +76,7 @@ function droneSynth() {
     "detune": dayTwoFeelsLikeTemp,
     "frequency": notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp],
     "phase": dayTwoMoonPhase,
-    "volume": dayTwoHumidity
+    "volume": -24
   }).connect(filterTwo);
 
   // create ocsillator three
@@ -84,7 +84,7 @@ function droneSynth() {
     "detune": dayThreeFeelsLikeTemp,
     "frequency": notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp],
     "phase": dayThreeMoonPhase,
-    "volume": dayThreeHumidity
+    "volume": -24
   }).connect(filterThree);
 
   // create ocsillator four
@@ -92,7 +92,7 @@ function droneSynth() {
     "detune": dayFourFeelsLikeTemp,
     "frequency": notes[dayFourMaxTemp] + octaves[dayFourMinTemp],
     "phase": dayFourMoonPhase,
-    "volume": dayFourHumidity
+    "volume": -24
   }).connect(filterFour);
 }
 /////////////////////////////////////////////////////////////////////////////////
