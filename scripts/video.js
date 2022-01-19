@@ -119,11 +119,11 @@ function step(timestamp) {
     oscThree.volume.value = scale(opacityValues3.vidOpacity, 5000, 10000, -30, -24);
     oscFour.volume.value = scale(opacityValues4.vidOpacity, 5000, 10000, -30, -24);
 
-    // combination of the oscillators volume controls the pitch shifter
-    combinedPitchFeedback = (opacityValues.vidOpacity + opacityValues2.vidOpacity) / 10000;
-    if (combinedPitchFeedback >= 0 && combinedPitchFeedback <= 1) {
-      pitchShift.feedback.value = combinedPitchFeedback;
-    }
+    // // combination of the oscillators volume controls the pitch shifter
+    // combinedPitchFeedback = (opacityValues.vidOpacity + opacityValues2.vidOpacity) / 10000;
+    // if (combinedPitchFeedback >= 0 && combinedPitchFeedback <= 1) {
+    //   pitchShift.feedback.value = combinedPitchFeedback;
+    // }
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);
