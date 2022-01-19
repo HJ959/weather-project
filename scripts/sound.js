@@ -3,7 +3,7 @@
 
 // Tone JS vars
 let oscOne, oscTwo, oscThree, oscFour;
-let filter, filterTwo, filterThree, filterFour, pingPong;
+let filter, filterTwo, filterThree, filterFour, reverb;
 let pitchFilter;
 let noise, noiseHiPass;
 let pitchShift;
@@ -24,33 +24,33 @@ function droneSynth() {
   }).connect(pitchFilter);
 
 
-  // add some super nice mega ping pong delay
-  pingPong = new Tone.PingPongDelay({
-    "delayTime": currentDewPoint,
-    "feedback": 0.9,
+  reverb = new Tone.Reverb({
+    "decay": 10,
+    "wet": 1.0,
   }).toDestination();
+	
 
   // filter to make less horrible
   filter = new Tone.AutoFilter({
     "frequency": currentWindSpeed,
     "baseFrequency": dayOneHumidity,
      "octaves": octaves[dayOneMinTemp]
-    }).connect(pingPong);
+    }).connect(reverb);
   filterTwo = new Tone.AutoFilter({
     "frequency": dayOneWindSpeed,
     "baseFrequency": dayTwoHumidity,
      "octaves": octaves[dayTwoMinTemp]
-    }).connect(pingPong);
+    }).connect(reverb);
   filterThree = new Tone.AutoFilter({
     "frequency": dayTwoWindSpeed,
     "baseFrequency": dayThreeHumidity,
      "octaves": octaves[dayThreeMinTemp]
-    }).connect(pingPong);
+    }).connect(reverb);
   filterFour = new Tone.AutoFilter({
     "frequency": dayThreeWindSpeed,
     "baseFrequency": dayFourHumidity,
      "octaves": octaves[dayFourMinTemp]
-    }).connect(pingPong);
+    }).connect(reverb);
 
   // initialize the noise and start
   // noise will be blended into the piece as more 
