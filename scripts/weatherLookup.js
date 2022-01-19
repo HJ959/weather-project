@@ -18,7 +18,7 @@ let dayThreeWindSpeed = 0.11;
 
 let currentRainmm = "-24";
 
-let currentDewPoint = 50.6;
+let currentDewPoint = 20.6;
 
 let dayOneMaxTemp = 0
 let dayTwoMaxTemp = 1
@@ -85,7 +85,7 @@ weatherLookup(latLon).then((response) => {
     dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.01;
 
     // grab the dew point for the delay time of the ping pong delay
-    currentDewPoint = weatherJSON.current.dew_point;
+    currentDewPoint = scale(weatherJSON.current.dew_point, -20, 50, 0.7, 50);
 
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value
@@ -121,10 +121,10 @@ weatherLookup(latLon).then((response) => {
     dayFourMoonPhase = weatherJSON.daily[7].moon_phase;
 
     // humidity % controls the base frequency of the autofilters
-    dayOneHumidity = scale(weatherJSON.daily[0].humidity, 0, 100, 100, 1000);
+    dayOneHumidity = scale(weatherJSON.daily[0].humidity, 0, 100, 100, 500);
     dayTwoHumidity = scale(weatherJSON.daily[1].humidity, 0, 100, 100, 1000);
-    dayThreeHumidity = scale(weatherJSON.daily[2].humidity, 0, 100, 100, 1000);
-    dayFourHumidity = scale(weatherJSON.daily[3].humidity, 0, 100, 100, 1000);
+    dayThreeHumidity = scale(weatherJSON.daily[2].humidity, 0, 100, 100, 700);
+    dayFourHumidity = scale(weatherJSON.daily[3].humidity, 0, 100, 100, 400);
 
     // call the sound and video elements now we have the weather data
     droneSynth();

@@ -16,8 +16,8 @@ function droneSynth() {
 
   // create a pitch shift with some feedback
   pitchShift = new Tone.PitchShift({
-    delayTime: 0,
-    feedback: 0.7,
+    delayTime: dayOneMoonPhase,
+    feedback: dayTwoMoonPhase,
     pitch: 7,
     wet: 0.4,
     windowSize: 0.1
@@ -26,7 +26,7 @@ function droneSynth() {
 
   // add some super nice mega ping pong delay
   pingPong = new Tone.PingPongDelay({
-    "delayTime": 0.1,
+    "delayTime": currentDewPoint,
     "feedback": 0.9,
   }).toDestination();
 
