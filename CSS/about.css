@@ -99,9 +99,11 @@ th, td {
     color: white;
     font-family: 'Lexend', sans-serif;
     margin: 3vmax;
-    padding-right: 5%;
+    padding: 1%;
     font-size: 2.3vmax;
+    width: 33%;
 }
+
 
 @keyframes pulse {
 	0% {

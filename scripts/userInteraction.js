@@ -19,6 +19,7 @@ document.addEventListener("visibilitychange", event => {
     playerTwo.pauseVideo();
     playerThree.pauseVideo();
     playerFour.pauseVideo();
+
     startStopFlag = 'Start'
   }
 });
@@ -35,11 +36,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     noise.start();
 
     reverb.wet.value = 1.0
-
-    player.seekTo(getRandomInt(0, 10800));
-    playerTwo.seekTo(getRandomInt(0, 10800));
-    playerThree.seekTo(getRandomInt(0, 10800));
-    playerFour.seekTo(getRandomInt(0, 10800));
 
     player.playVideo();
     playerTwo.playVideo();

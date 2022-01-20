@@ -18,7 +18,7 @@ let dayThreeWindSpeed = 0.11;
 
 let currentRainmm = "-24";
 
-let currentDewPoint = 20.6;
+let currentDewPoint = 10;
 
 let dayOneMaxTemp = 0
 let dayTwoMaxTemp = 1
@@ -85,7 +85,7 @@ weatherLookup(latLon).then((response) => {
     dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.01;
 
     // grab the dew point for the delay time of the ping pong delay
-    currentDewPoint = scale(weatherJSON.current.dew_point, -20, 50, 0.7, 50);
+    currentDewPoint = scale(weatherJSON.current.dew_point, -20, 50, 1, 15);
 
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value
@@ -134,27 +134,6 @@ weatherLookup(latLon).then((response) => {
 }).catch((error) => {
   console.log('API error', error);
   // playing default values
-  window.requestAnimationFrame(step);
   droneSynth();
+  window.requestAnimationFrame(step);
 })
-
-// some useful functions
-//////////////////////////////////////////////////////////////////////////
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  //The maximum is exclusive and the minimum is inclusive
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-/////////////////////////////////////////////////////////////////////////
-function scale(number, inMin, inMax, outMin, outMax) {
-  return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
-}
-/////////////////////////////////////////////////////////////////////////////////
-function isEmpty(obj) {
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key))
-      return false;
-  }
-  return true;
-}
