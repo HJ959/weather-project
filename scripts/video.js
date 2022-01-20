@@ -40,7 +40,7 @@ let playersReady = 0;
 let countPlayersReady = 0;
 
 // List of random youtube embeded IDs
-let youtubeIDs = ['5NS_RGXqljA', 'lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9Ej-0VRWmI8', 'fh3EdeGNKus', 'nMAzchVWTis', 'UuWr5TCbumI', 'wnhvanMdx4s']
+let youtubeIDs = ['5NS_RGXqljA', 'lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9Ej-0VRWmI8', 'fh3EdeGNKus', 'nMAzchVWTis', 'UuWr5TCbumI', 'wnhvanMdx4s', 'ADt_RisXY0U', 'qZ0_aa6RxvQ', 'Hndf5JRwUL0']
 
 // rotate potential values
 let rotateValues = ['0', '180']
@@ -79,6 +79,7 @@ function onYouTubeIframeAPIReady() {
     startSeconds: getRandomInt(0, 10800),
     height: windowHeight,
     width: windowWidth,
+    loop: 1,
     events: {
       'onReady': onPlayerReady,
     }
@@ -89,6 +90,7 @@ function onYouTubeIframeAPIReady() {
     startSeconds: getRandomInt(0, 10800),
     height: windowHeight,
     width: windowWidth,
+    loop: 1,
     events: {
       'onReady': onPlayerReady,
     }
@@ -99,6 +101,7 @@ function onYouTubeIframeAPIReady() {
     startSeconds: getRandomInt(0, 10800),
     height: windowHeight,
     width: windowWidth,
+    loop: 1,
     events: {
       'onReady': onPlayerReady,
     }
@@ -109,6 +112,7 @@ function onYouTubeIframeAPIReady() {
     startSeconds: getRandomInt(0, 10800),
     height: windowHeight,
     width: windowWidth,
+    loop: 1,
     events: {
       'onReady': onPlayerReady,
     }
@@ -120,6 +124,7 @@ function onPlayerReady() {
   if (countPlayersReady === 3) {
     document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, tap screen to start, tap screen to stop!";
     playersReady = 1;
+    startStopFlag = 'Start'
   }
 }
 
@@ -129,26 +134,35 @@ function step(timestamp) {
   const elapsed = timestamp - start;
 
   if (previousTimeStamp !== timestamp) {
-      // iterate over 5 videos with different rates
-      opacityValues = opacityIter(opacityValues, video1, 10, currentClouds);
-      opacityValues2 = opacityIter(opacityValues2, video2, 10, dayOneClouds);
-      opacityValues3 = opacityIter(opacityValues3, video3, 10, dayTwoClouds);
-      opacityValues4 = opacityIter(opacityValues4, video4, 10, dayThreeClouds);
-      
-      if (playersReady === 1) {
+    // iterate over 5 videos with different rates
+    opacityValues = opacityIter(opacityValues, video1, dayOneMaxTempVidSpeed, currentClouds);
+    opacityValues2 = opacityIter(opacityValues2, video2, dayTwoMaxTempVidSpeed, dayOneClouds);
+    opacityValues3 = opacityIter(opacityValues3, video3, dayThreeMaxTempVidSpeed, dayTwoClouds);
+    opacityValues4 = opacityIter(opacityValues4, video4, dayFourMaxTempVidSpeed, dayThreeClouds);
+
+    if (playersReady === 1) {
+      try {
         player.setVolume(parseInt(opacityValues.vidOpacity * 0.01));
-        playerTwo.setVolume(parseInt(opacityValues.vidOpacity * 0.01));
-        playerThree.setVolume(parseInt(opacityValues.vidOpacity * 0.01));
-        playerFour.setVolume(parseInt(opacityValues.vidOpacity * 0.01));
+        playerTwo.setVolume(parseInt(opacityValues2.vidOpacity * 0.01));
+        playerThree.setVolume(parseInt(opacityValues3.vidOpacity * 0.01));
+        playerFour.setVolume(parseInt(opacityValues4.vidOpacity * 0.01));
+      } catch (e) {
+        if (e instanceof TypeError) {
+          // for some reason not always there just carry on
+        } else {
+          throw e; // re-throw the error unchanged
+        }
       }
 
-      oscOne.volume.value = scale(opacityValues.vidOpacity, 5000, 10000, -30, -24);
-      oscTwo.volume.value = scale(opacityValues2.vidOpacity, 5000, 10000, -30, -24);
-      oscThree.volume.value = scale(opacityValues3.vidOpacity, 5000, 10000, -30, -24);
-      oscFour.volume.value = scale(opacityValues4.vidOpacity, 5000, 10000, -30, -24);
+    }
 
-      // combination of the oscillators volume controls the pitch shifter
-      // pitchShift.feedback.value = opacityValues.vidOpacity + opacityValues2.vidOpacity
+    oscOne.volume.value = scale(opacityValues.vidOpacity, 5000, 10000, -30, -24);
+    oscTwo.volume.value = scale(opacityValues2.vidOpacity, 5000, 10000, -30, -24);
+    oscThree.volume.value = scale(opacityValues3.vidOpacity, 5000, 10000, -30, -24);
+    oscFour.volume.value = scale(opacityValues4.vidOpacity, 5000, 10000, -30, -24);
+
+    // combination of the oscillators volume controls the pitch shifter
+    pitchShift.feedback.value = scale((opacityValues.vidOpacity + opacityValues2.vidOpacity), 0, 20000, 0, 1);
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);

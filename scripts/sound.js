@@ -23,13 +23,11 @@ function droneSynth() {
     windowSize: 0.1
   }).connect(pitchFilter);
 
-
   reverb = new Tone.Reverb({
-    "decay": 10,
+    "decay": currentDewPoint,
     "wet": 1.0,
   }).toDestination();
 	
-
   // filter to make less horrible
   filter = new Tone.AutoFilter({
     "frequency": currentWindSpeed,

@@ -25,24 +25,29 @@
                 powered by YouTube's iframe API and some JavaScript to fade the videos. The weather API used is <a href="https://openweathermap.org/api/one-call-api" target="_blank"><b>Open Weather</b></a>.</h1>
         </div>
         <div class="header-three">
-            <h1 id="landing">If you would like to share your thoughts please fill out this <a href="https://forms.gle/S8EYyf9D1ArBHdwj7" target="_blank"><b>form</b></a>. Below is a mapping of the weather data to the parts of the piece</h1>
+            <h1 id="landing">If you would like to share your thoughts please <a href="https://forms.gle/S8EYyf9D1ArBHdwj7" target="_blank"><b>fill out this form</b></a>. Below is a mapping of the weather data to the parts of the piece</h1>
         </div>
         <div class="header-four">
             <table>
                 <tr>
-                    <th>Weather data</th>
-                    <th>Weather Drone</th>
-                    <th>Description</th>
+                    <th><b>Weather data</b></th>
+                    <th><b>WeatherHum</b></th>
+                    <th><b>Description</b></th>
                 </tr>
                 <tr>
-                    <td>Current cloudiness 0-100% and daily cloudiness</td>
-                    <td>Max opacity</td>
-                    <td>Cloudiness controls how vibrant the videos are</td>
+                    <td>Day 1-4 cloudiness (%)</td>
+                    <td>Video 1-4 max opacity</td>
+                    <td>Cloudiness controls how vibrant the videos are, it also controls other audio parameters below</td>
                 </tr>
                 <tr>
-                    <td>Current wind speed and future wind speed</td>
+                    <td>Day 1-4 wind speed</td>
                     <td>Auto filter LFO speeds</td>
                     <td>The faster the current and future wind the faster the filters oscillate</td>
+                </tr>
+                <tr>
+                    <td>Day 1-4 humidity (%)</td>
+                    <td>Controls the base frequency of the auto filters</td>
+                    <td>Humidity % controls where the auto filters begin oscillating at</td>
                 </tr>
                 <tr>
                     <td>Current rain in mm</td>
@@ -60,7 +65,12 @@
                     <td>An array of notes in the G-flat pentatonic scale and an array of octaves are used with the max and min temperature for the first 4 days forecast, each temperature is wrapped to 5 using the modulo operator.</td>
                 </tr>
                 <tr>
-                    <td>Day 1 to 4 daytime feels like temperature</td>
+                    <td>Day 1-4 max temperature</td>
+                    <td>Video fader step size</td>
+                    <td>Day 1-4 max temp is the step size for each video fader, controlling how quickly the piece pulses, Math.abs() is used to clean any negative numbers</td>
+                </tr>
+                <tr>
+                    <td>Day 1-4 daytime "feels like" temperature</td>
                     <td>Controls how detuned the oscillators are</td>
                     <td>The temperature is scaled by an order of magnitude and two of the oscillators have the temperature value inverted so to provide a better detuning effect sonically</td>
                 </tr>
@@ -68,11 +78,6 @@
                     <td>Day 1, 2, 4 and 7 moon phase</td>
                     <td>Controls the phase position of the oscillators</td>
                     <td>Moon phase directly corresponds to oscillator phase, should create some interesting phasing effect.</td>
-                </tr>
-                <tr>
-                    <td>Day 1, 2, 3 and 4 humidity %</td>
-                    <td>Controls the base frequency of the auto filters</td>
-                    <td>Humidity % controls where the auto filters begin oscillating at</td>
                 </tr>
                 <tr>
                     <td>Video opacity (connected to cloudiness)</td>

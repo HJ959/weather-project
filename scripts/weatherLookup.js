@@ -18,7 +18,7 @@ let dayThreeWindSpeed = 0.11;
 
 let currentRainmm = "-24";
 
-let currentDewPoint = 10;
+let currentDewPoint = 15;
 
 let dayOneMaxTemp = 0
 let dayTwoMaxTemp = 1
@@ -28,6 +28,11 @@ let dayOneMinTemp = 1
 let dayTwoMinTemp = 4
 let dayThreeMinTemp = 2
 let dayFourMinTemp = 4
+
+let dayOneMaxTempVidSpeed = 9;
+let dayTwoMaxTempVidSpeed = 12;
+let dayThreeMaxTempVidSpeed = 7;
+let dayFourMaxTempVidSpeed = 15;
 
 let dayOneFeelsLikeTemp = 20;
 let dayTwoFeelsLikeTemp = -10;
@@ -85,7 +90,7 @@ weatherLookup(latLon).then((response) => {
     dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.01;
 
     // grab the dew point for the delay time of the ping pong delay
-    currentDewPoint = scale(weatherJSON.current.dew_point, -20, 50, 1, 15);
+    currentDewPoint = Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1));
 
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value
@@ -106,6 +111,12 @@ weatherLookup(latLon).then((response) => {
     dayTwoMinTemp = parseInt(weatherJSON.daily[1].temp.min) % 5
     dayThreeMinTemp = parseInt(weatherJSON.daily[2].temp.min) % 5
     dayFourMinTemp = parseInt(weatherJSON.daily[3].temp.min) % 5
+
+    // grab the max temp again for controlling the speed of the video faders
+    dayOneMaxTempVidSpeed = weatherJSON.daily[0].temp.max
+    dayTwoMaxTempVidSpeed = weatherJSON.daily[1].temp.max
+    dayThreeMaxTempVidSpeed = weatherJSON.daily[2].temp.max
+    dayFourMaxTempVidSpeed = weatherJSON.daily[3].temp.max
 
     // grab the feels like temp for the next 4 days to set the oscillators tuning
     // make some numbers either negative or positive for better tuning

@@ -1,7 +1,7 @@
 "use strict";
 
 // user functionality vars
-let startStopFlag = 'Start';
+let startStopFlag = 'Loading';
 let pressToStartDiv = document.getElementById('pressToStartDiv');
 
 // if the user leaves the tab and it becomes inactive stop playing sound and video
