@@ -71,7 +71,8 @@ async function weatherLookup(data) {
   return await response.json();
 }
 
-weatherLookup(latLon).then((weatherJSON) => {
+weatherLookup(latLon).then((response) => {
+  weatherJSON = response;
   // organise the json data into some useful variables for use later
   if (isEmpty(weatherJSON) === false) {
     // cloudiness controls each max opacity for the videos
