@@ -75,7 +75,7 @@ async function weatherLookup(data) {
 }
 
 //attach a click listener to a play button
-document.querySelector('button')?.addEventListener('click', async () => {
+document.querySelector('#wholePage')?.addEventListener('click', async () => {
   if (startStopFlag === "readyForFirstClick") {
     await Tone.start()
     console.log('audio is ready')
