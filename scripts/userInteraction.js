@@ -1,9 +1,7 @@
 "use strict";
 
 // user functionality vars
-let startStopFlag = 'Loading';
 let pressToStartDiv = document.getElementById('pressToStartDiv');
-let isFirstClick = 0;
 
 // if the user leaves the tab and it becomes inactive stop playing sound and video
 document.addEventListener("visibilitychange", event => {
@@ -27,10 +25,6 @@ document.addEventListener("visibilitychange", event => {
 
 // if mousedown event un mute all youtube videos
 document.querySelector('#wholePage')?.addEventListener('mousedown', function (event) {
-  if (isFirstClick === 1) {
-    await Tone.start()
-   	console.log('audio is ready')
-  }
   // if mousedown and the flag is set to Start
   if (startStopFlag === 'Start') {
     pressToStartDiv.style.display = "none";

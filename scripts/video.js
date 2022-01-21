@@ -124,7 +124,7 @@ function onPlayerReady() {
   if (countPlayersReady === 3) {
     document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, tap screen to start, tap screen to stop!";
     playersReady = 1;
-    startStopFlag = 'Start'
+    startStopFlag = 'readyForFirstClick'
   }
 }
 
