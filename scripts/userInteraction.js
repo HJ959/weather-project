@@ -1,30 +1,40 @@
 "use strict";
 
 // user functionality vars
+let startStopFlag = 'Loading';
 let pressToStartDiv = document.getElementById('pressToStartDiv');
 
 // if the user leaves the tab and it becomes inactive stop playing sound and video
 document.addEventListener("visibilitychange", event => {
   if (document.visibilityState != "visible") {
-    filter.stop();
-    oscOne.stop();
-    oscTwo.stop();
-    oscThree.stop();
-    oscFour.stop();
-    noise.stop();
-    reverb.wet.value = 0
-    pitchShift.wet.value = 0.0
-    player.pauseVideo();
-    playerTwo.pauseVideo();
-    playerThree.pauseVideo();
-    playerFour.pauseVideo();
+    if (startStopFlag === 'Start') {
+      console.log("IT DIDNT GO IN HERE")
+      filter.stop();
+      oscOne.stop();
+      oscTwo.stop();
+      oscThree.stop();
+      oscFour.stop();
+      noise.stop();
+      reverb.wet.value = 0
+      pitchShift.wet.value = 0.0
+      player.pauseVideo();
+      playerTwo.pauseVideo();
+      playerThree.pauseVideo();
+      playerFour.pauseVideo();
 
-    startStopFlag = 'Start'
+      startStopFlag = 'Start'
+    }
   }
 });
 
 // if mousedown event un mute all youtube videos
 document.querySelector('#wholePage')?.addEventListener('mousedown', function (event) {
+  if (startStopFlag === "readyForFirstClick") {
+    // call the sound and video elements now we have the weather data
+    droneSynth();
+    window.requestAnimationFrame(step);
+    startStopFlag = 'Start';
+  }
   // if mousedown and the flag is set to Start
   if (startStopFlag === 'Start') {
     pressToStartDiv.style.display = "none";

@@ -1,8 +1,5 @@
 "use strict";
 
-// initial flag for loading weather data
-let isFirstClick = 0;
-
 // location vars
 let lat, lon;
 let weatherJSON;
@@ -74,85 +71,71 @@ async function weatherLookup(data) {
   return await response.json();
 }
 
-//attach a click listener to a play button
-document.querySelector('#wholePage')?.addEventListener('click', async () => {
-  if (startStopFlag === "readyForFirstClick") {
-    await Tone.start()
-    console.log('audio is ready')
+weatherLookup(latLon).then((weatherJSON) => {
+  // organise the json data into some useful variables for use later
+  if (isEmpty(weatherJSON) === false) {
+    // cloudiness controls each max opacity for the videos
+    currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 5000, 10000);
+    dayOneClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 5000, 10000);
+    dayTwoClouds = scale((100 - weatherJSON.daily[2].clouds), 0, 100, 5000, 10000);
+    dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 5000, 10000);
 
-    weatherLookup(latLon).then((weatherJSON) => {
-      // organise the json data into some useful variables for use later
-      if (isEmpty(weatherJSON) === false) {
-        // cloudiness controls each max opacity for the videos
-        currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 5000, 10000);
-        dayOneClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 5000, 10000);
-        dayTwoClouds = scale((100 - weatherJSON.daily[2].clouds), 0, 100, 5000, 10000);
-        dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 5000, 10000);
+    // wind speed controls each auto filter frequency
+    currentWindSpeed = weatherJSON.current.wind_speed * 0.01;
+    dayOneWindSpeed = weatherJSON.daily[1].wind_speed * 0.01;
+    dayTwoWindSpeed = weatherJSON.daily[2].wind_speed * 0.01;
+    dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.01;
 
-        // wind speed controls each auto filter frequency
-        currentWindSpeed = weatherJSON.current.wind_speed * 0.01;
-        dayOneWindSpeed = weatherJSON.daily[1].wind_speed * 0.01;
-        dayTwoWindSpeed = weatherJSON.daily[2].wind_speed * 0.01;
-        dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.01;
+    // grab the dew point for the delay time of the ping pong delay
+    currentDewPoint = Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1));
 
-        // grab the dew point for the delay time of the ping pong delay
-        currentDewPoint = Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1));
+    // if there is no current rain the API leaves the field out I think
+    // so if no field then no rain in mm so set to lowest value
+    if (typeof weatherJSON.current.rain == 'undefined') {
+      currentRainmm = "-36";
+    }
+    // turn rain in mm from 0.0 - 1.5 into decibles -36db to 0db string
+    else {
+      currentRainmm = "-" + String(scale(weatherJSON.current.rain["1h"], 0.0, 1.5, 36, 1));
+    }
 
-        // if there is no current rain the API leaves the field out I think
-        // so if no field then no rain in mm so set to lowest value
-        if (typeof weatherJSON.current.rain == 'undefined') {
-          currentRainmm = "-36";
-        }
-        // turn rain in mm from 0.0 - 1.5 into decibles -36db to 0db string
-        else {
-          currentRainmm = "-" + String(scale(weatherJSON.current.rain["1h"], 0.0, 1.5, 36, 1));
-        }
+    // grab the max min temps then wrap 5 so that they can pick somethign from the array
+    dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 5
+    dayTwoMaxTemp = parseInt(weatherJSON.daily[1].temp.max) % 5
+    dayThreeMaxTemp = parseInt(weatherJSON.daily[2].temp.max) % 5
+    dayFourMaxTemp = parseInt(weatherJSON.daily[3].temp.max) % 5
+    dayOneMinTemp = parseInt(weatherJSON.daily[0].temp.min) % 5
+    dayTwoMinTemp = parseInt(weatherJSON.daily[1].temp.min) % 5
+    dayThreeMinTemp = parseInt(weatherJSON.daily[2].temp.min) % 5
+    dayFourMinTemp = parseInt(weatherJSON.daily[3].temp.min) % 5
 
-        // grab the max min temps then wrap 5 so that they can pick somethign from the array
-        dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 5
-        dayTwoMaxTemp = parseInt(weatherJSON.daily[1].temp.max) % 5
-        dayThreeMaxTemp = parseInt(weatherJSON.daily[2].temp.max) % 5
-        dayFourMaxTemp = parseInt(weatherJSON.daily[3].temp.max) % 5
-        dayOneMinTemp = parseInt(weatherJSON.daily[0].temp.min) % 5
-        dayTwoMinTemp = parseInt(weatherJSON.daily[1].temp.min) % 5
-        dayThreeMinTemp = parseInt(weatherJSON.daily[2].temp.min) % 5
-        dayFourMinTemp = parseInt(weatherJSON.daily[3].temp.min) % 5
+    // grab the max temp again for controlling the speed of the video faders
+    dayOneMaxTempVidSpeed = weatherJSON.daily[0].temp.max
+    dayTwoMaxTempVidSpeed = weatherJSON.daily[1].temp.max
+    dayThreeMaxTempVidSpeed = weatherJSON.daily[2].temp.max
+    dayFourMaxTempVidSpeed = weatherJSON.daily[3].temp.max
 
-        // grab the max temp again for controlling the speed of the video faders
-        dayOneMaxTempVidSpeed = weatherJSON.daily[0].temp.max
-        dayTwoMaxTempVidSpeed = weatherJSON.daily[1].temp.max
-        dayThreeMaxTempVidSpeed = weatherJSON.daily[2].temp.max
-        dayFourMaxTempVidSpeed = weatherJSON.daily[3].temp.max
+    // grab the feels like temp for the next 4 days to set the oscillators tuning
+    // make some numbers either negative or positive for better tuning
+    dayOneFeelsLikeTemp = (weatherJSON.daily[0].feels_like.day) / 10
+    dayTwoFeelsLikeTemp = (weatherJSON.daily[1].feels_like.day * -1) / 10
+    dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day) / 10
+    dayFourFeelsLikeTemp = (weatherJSON.daily[3].feels_like.day * -1) / 10
 
-        // grab the feels like temp for the next 4 days to set the oscillators tuning
-        // make some numbers either negative or positive for better tuning
-        dayOneFeelsLikeTemp = (weatherJSON.daily[0].feels_like.day) / 10
-        dayTwoFeelsLikeTemp = (weatherJSON.daily[1].feels_like.day * -1) / 10
-        dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day) / 10
-        dayFourFeelsLikeTemp = (weatherJSON.daily[3].feels_like.day * -1) / 10
+    // control the phase of the oscillators with the daily moon phase
+    dayOneMoonPhase = weatherJSON.daily[0].moon_phase;
+    dayTwoMoonPhase = weatherJSON.daily[2].moon_phase;
+    dayThreeMoonPhase = weatherJSON.daily[4].moon_phase;
+    dayFourMoonPhase = weatherJSON.daily[7].moon_phase;
 
-        // control the phase of the oscillators with the daily moon phase
-        dayOneMoonPhase = weatherJSON.daily[0].moon_phase;
-        dayTwoMoonPhase = weatherJSON.daily[2].moon_phase;
-        dayThreeMoonPhase = weatherJSON.daily[4].moon_phase;
-        dayFourMoonPhase = weatherJSON.daily[7].moon_phase;
-
-        // humidity % controls the base frequency of the autofilters
-        dayOneHumidity = scale(weatherJSON.daily[0].humidity, 0, 100, 100, 500);
-        dayTwoHumidity = scale(weatherJSON.daily[1].humidity, 0, 100, 100, 1000);
-        dayThreeHumidity = scale(weatherJSON.daily[2].humidity, 0, 100, 100, 700);
-        dayFourHumidity = scale(weatherJSON.daily[3].humidity, 0, 100, 100, 400);
-
-        // call the sound and video elements now we have the weather data
-        droneSynth();
-        window.requestAnimationFrame(step);
-      }
-      // set app state
-    }).catch((error) => {
-      console.log('API error', error);
-      // playing default values
-      droneSynth();
-      window.requestAnimationFrame(step);
-    });
+    // humidity % controls the base frequency of the autofilters
+    dayOneHumidity = scale(weatherJSON.daily[0].humidity, 0, 100, 100, 500);
+    dayTwoHumidity = scale(weatherJSON.daily[1].humidity, 0, 100, 100, 1000);
+    dayThreeHumidity = scale(weatherJSON.daily[2].humidity, 0, 100, 100, 700);
+    dayFourHumidity = scale(weatherJSON.daily[3].humidity, 0, 100, 100, 400);
   }
+  // set app state
+}).catch((error) => {
+  console.log('API error', error);
+  // playing default values
 });

@@ -1,5 +1,4 @@
 // some useful functions
-let startStopFlag = 'Loading';
 //////////////////////////////////////////////////////////////////////////
 function getRandomInt(min, max) {
     min = Math.ceil(min);
