@@ -7,8 +7,7 @@ let pressToStartDiv = document.getElementById('pressToStartDiv');
 // if the user leaves the tab and it becomes inactive stop playing sound and video
 document.addEventListener("visibilitychange", event => {
   if (document.visibilityState != "visible") {
-    if (startStopFlag === 'Start') {
-      console.log("IT DIDNT GO IN HERE")
+    if (startStopFlag === 'Stop') {
       filter.stop();
       oscOne.stop();
       oscTwo.stop();
@@ -30,6 +29,8 @@ document.addEventListener("visibilitychange", event => {
 // if mousedown event un mute all youtube videos
 document.querySelector('#wholePage')?.addEventListener('mousedown', function (event) {
   if (startStopFlag === "readyForFirstClick") {
+    Tone.start()
+  	console.log('audio is ready')
     // call the sound and video elements now we have the weather data
     droneSynth();
     window.requestAnimationFrame(step);
