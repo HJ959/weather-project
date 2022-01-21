@@ -11,6 +11,8 @@ let pitchShift;
 function droneSynth() {
   "use strict";
 
+  await Tone.start();
+
   // main filter pitch shift
   pitchFilter = new Tone.AutoFilter(0.01).toDestination()
 
