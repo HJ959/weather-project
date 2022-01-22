@@ -13,12 +13,12 @@ function droneSynth() {
   
   reverbTwo = new Tone.Reverb({
     "decay": currentDewPoint,
-    "wet": 1.0,
+    "wet": 0.7,
   }).toDestination();
   
   reverb = new Tone.Reverb({
     "decay": currentDewPoint,
-    "wet": 1.0,
+    "wet": 0.7,
   }).connect(reverbTwo);
 
   // main filter pitch shift

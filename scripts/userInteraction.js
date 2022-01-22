@@ -14,8 +14,9 @@ document.addEventListener("visibilitychange", event => {
       oscThree.stop();
       oscFour.stop();
       noise.stop();
-      reverb.wet.value = 0
-      pitchShift.wet.value = 0.0
+      reverb.wet.value = 0;
+      reverbTwo.wet.value = 0;
+      pitchShift.wet.value = 0.0;
       player.pauseVideo();
       playerTwo.pauseVideo();
       playerThree.pauseVideo();
@@ -45,7 +46,8 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscFour.start();
     noise.start();
 
-    reverb.wet.value = 1.0
+    reverb.wet.value = 0.7
+    reverbTwo.wet.value = 0.7
 
     player.playVideo();
     playerTwo.playVideo();
@@ -69,9 +71,10 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscFour.stop();
     noise.stop();
 
-    reverb.wet.value = 0
-    pitchShift.wet.value = 0.0
-    pitchShift.feedback.value = 0.0
+    reverb.wet.value = 0;
+    reverbTwo.wet.value = 0;
+    pitchShift.wet.value = 0;
+    pitchShift.feedback.value = 0;
 
     player.pauseVideo();
     playerTwo.pauseVideo();
