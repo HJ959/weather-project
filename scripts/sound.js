@@ -10,9 +10,19 @@ let pitchShift;
 
 function droneSynth() {
   "use strict";
+  
+  reverbTwo = new Tone.Reverb({
+    "decay": currentDewPoint,
+    "wet": 1.0,
+  }).toDestination();
+  
+  reverb = new Tone.Reverb({
+    "decay": currentDewPoint,
+    "wet": 1.0,
+  }).connect(reverbTwo);
 
   // main filter pitch shift
-  pitchFilter = new Tone.AutoFilter(0.01).toDestination()
+  pitchFilter = new Tone.AutoFilter(0.01).connect(reverbTwo);
 
   // create a pitch shift with some feedback
   pitchShift = new Tone.PitchShift({
@@ -22,16 +32,6 @@ function droneSynth() {
     wet: 0.4,
     windowSize: 0.1
   }).connect(pitchFilter);
-
-  reverbTwo = new Tone.Reverb({
-    "decay": currentDewPoint,
-    "wet": 1.0,
-  }).toDestination();
-
-  reverb = new Tone.Reverb({
-    "decay": currentDewPoint,
-    "wet": 1.0,
-  }).connect(reverbTwo);
 
   // filter to make less horrible
   filter = new Tone.AutoFilter({
