@@ -19,6 +19,7 @@ let dayThreeWindSpeed = 0.11;
 let currentRainmm = "-24";
 
 let currentDewPoint = 15;
+let dayTwoDewPoint = 10;
 
 let dayOneMaxTemp = 0
 let dayTwoMaxTemp = 1
@@ -89,6 +90,7 @@ weatherLookup(latLon).then((response) => {
 
     // grab the dew point for the delay time of the ping pong delay
     currentDewPoint = Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1));
+    dayTwoDewPoint = Math.abs(scale(weatherJSON.daily[1].dew_point, -20, 50, 100, 1));
 
     // if there is no current rain the API leaves the field out I think
     // so if no field then no rain in mm so set to lowest value

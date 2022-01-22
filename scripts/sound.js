@@ -3,7 +3,7 @@
 
 // Tone JS vars
 let oscOne, oscTwo, oscThree, oscFour;
-let filter, filterTwo, filterThree, filterFour, reverb;
+let filter, filterTwo, filterThree, filterFour, reverb, reverbTwo;
 let pitchFilter;
 let noise, noiseHiPass;
 let pitchShift;
@@ -23,32 +23,37 @@ function droneSynth() {
     windowSize: 0.1
   }).connect(pitchFilter);
 
-  reverb = new Tone.Reverb({
+  reverbTwo = new Tone.Reverb({
     "decay": currentDewPoint,
     "wet": 1.0,
   }).toDestination();
-	
+
+  reverb = new Tone.Reverb({
+    "decay": currentDewPoint,
+    "wet": 1.0,
+  }).connect(reverbTwo);
+
   // filter to make less horrible
   filter = new Tone.AutoFilter({
     "frequency": currentWindSpeed,
     "baseFrequency": dayOneHumidity,
-     "octaves": octaves[dayOneMinTemp]
-    }).connect(reverb);
+    "octaves": octaves[dayOneMinTemp]
+  }).connect(reverb);
   filterTwo = new Tone.AutoFilter({
     "frequency": dayOneWindSpeed,
     "baseFrequency": dayTwoHumidity,
-     "octaves": octaves[dayTwoMinTemp]
-    }).connect(reverb);
+    "octaves": octaves[dayTwoMinTemp]
+  }).connect(reverb);
   filterThree = new Tone.AutoFilter({
     "frequency": dayTwoWindSpeed,
     "baseFrequency": dayThreeHumidity,
-     "octaves": octaves[dayThreeMinTemp]
-    }).connect(reverb);
+    "octaves": octaves[dayThreeMinTemp]
+  }).connect(reverb);
   filterFour = new Tone.AutoFilter({
     "frequency": dayThreeWindSpeed,
     "baseFrequency": dayFourHumidity,
-     "octaves": octaves[dayFourMinTemp]
-    }).connect(reverb);
+    "octaves": octaves[dayFourMinTemp]
+  }).connect(reverb);
 
   // initialize the noise and start
   // noise will be blended into the piece as more 
