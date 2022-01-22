@@ -42,6 +42,8 @@
 
 .header-four {
     grid-area: header-four;
+    width: 100%;
+    height: 100%;
 }
 
 .header-five {
