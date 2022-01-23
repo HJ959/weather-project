@@ -111,9 +111,12 @@ th, td {
     width: 33%;
 }
 
-img {
+#diagramAudio {
     width: 80%;
     height: 80%;
+    color: white;
+    transform: rotate(-90deg);
+    margin: 3vmax;
 }
 
 @keyframes pulse {
