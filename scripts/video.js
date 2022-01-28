@@ -48,20 +48,23 @@ let rotateValues = ['0', '180']
 // grab the videos
 video1 = document.getElementById('video1');
 video2 = document.getElementById('video2');
-video3 = document.getElementById('video3');
-video4 = document.getElementById('video4');
 
 // to rotate the videos randomly to create interesting overlaps
 video1.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
 video2.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
-video3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
-video4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
 
 // randomize which ones at the forefront
 video1.style.zIndex = String(getRandomInt(0, 5));
 video2.style.zIndex = String(getRandomInt(0, 5));
-video3.style.zIndex = String(getRandomInt(0, 5));
-video4.style.zIndex = String(getRandomInt(0, 5));
+
+if (isMobile === false) {
+  video3 = document.getElementById('video3');
+  video4 = document.getElementById('video4');
+  video3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+  video4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
+  video3.style.zIndex = String(getRandomInt(0, 5));
+  video4.style.zIndex = String(getRandomInt(0, 5));
+}
 
 // 2. This code loads the IFrame Player API code asynchronously.
 tag = document.createElement('script');
@@ -95,33 +98,40 @@ function onYouTubeIframeAPIReady() {
       'onReady': onPlayerReady,
     }
   });
-  playerThree = new YT.Player('playerThree', {
-    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-    playerVars: playerVars,
-    startSeconds: getRandomInt(0, 10800),
-    height: windowHeight,
-    width: windowWidth,
-    loop: 1,
-    events: {
-      'onReady': onPlayerReady,
-    }
-  });
-  playerFour = new YT.Player('playerFour', {
-    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
-    playerVars: playerVars,
-    startSeconds: getRandomInt(0, 10800),
-    height: windowHeight,
-    width: windowWidth,
-    loop: 1,
-    events: {
-      'onReady': onPlayerReady,
-    }
-  });
+  if (isMobile === false) {
+    playerThree = new YT.Player('playerThree', {
+      videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+      playerVars: playerVars,
+      startSeconds: getRandomInt(0, 10800),
+      height: windowHeight,
+      width: windowWidth,
+      loop: 1,
+      events: {
+        'onReady': onPlayerReady,
+      }
+    });
+    playerFour = new YT.Player('playerFour', {
+      videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+      playerVars: playerVars,
+      startSeconds: getRandomInt(0, 10800),
+      height: windowHeight,
+      width: windowWidth,
+      loop: 1,
+      events: {
+        'onReady': onPlayerReady,
+      }
+    });
+  }
 }
 
 function onPlayerReady() {
   countPlayersReady++;
-  if (countPlayersReady === 3) {
+  if (countPlayersReady === 3 && isMobile === false) {
+    document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, tap screen to start, tap screen to stop!";
+    playersReady = 1;
+    startStopFlag = 'readyForFirstClick'
+  }
+  if (countPlayersReady === 1 && isMobile === true) {
     document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, tap screen to start, tap screen to stop!";
     playersReady = 1;
     startStopFlag = 'readyForFirstClick'
@@ -137,15 +147,19 @@ function step(timestamp) {
     // iterate over 5 videos with different rates
     opacityValues = opacityIter(opacityValues, video1, dayOneMaxTempVidSpeed, currentClouds);
     opacityValues2 = opacityIter(opacityValues2, video2, dayTwoMaxTempVidSpeed, dayOneClouds);
-    opacityValues3 = opacityIter(opacityValues3, video3, dayThreeMaxTempVidSpeed, dayTwoClouds);
-    opacityValues4 = opacityIter(opacityValues4, video4, dayFourMaxTempVidSpeed, dayThreeClouds);
+    if (isMobile === false) {
+      opacityValues3 = opacityIter(opacityValues3, video3, dayThreeMaxTempVidSpeed, dayTwoClouds);
+      opacityValues4 = opacityIter(opacityValues4, video4, dayFourMaxTempVidSpeed, dayThreeClouds);
+    }
 
     if (playersReady === 1) {
       try {
         player.setVolume(parseInt(opacityValues.vidOpacity * 0.01));
         playerTwo.setVolume(parseInt(opacityValues2.vidOpacity * 0.01));
-        playerThree.setVolume(parseInt(opacityValues3.vidOpacity * 0.01));
-        playerFour.setVolume(parseInt(opacityValues4.vidOpacity * 0.01));
+        if (isMobile === false) {
+          playerThree.setVolume(parseInt(opacityValues3.vidOpacity * 0.01));
+          playerFour.setVolume(parseInt(opacityValues4.vidOpacity * 0.01));
+        }
       } catch (e) {
         if (e instanceof TypeError) {
           // for some reason not always there just carry on
@@ -158,8 +172,14 @@ function step(timestamp) {
 
     oscOne.volume.value = scale(opacityValues.vidOpacity, 5000, 10000, -30, -24);
     oscTwo.volume.value = scale(opacityValues2.vidOpacity, 5000, 10000, -30, -24);
-    oscThree.volume.value = scale(opacityValues3.vidOpacity, 5000, 10000, -30, -24);
-    oscFour.volume.value = scale(opacityValues4.vidOpacity, 5000, 10000, -30, -24);
+    if (isMobile === false) {
+      oscThree.volume.value = scale(opacityValues3.vidOpacity, 5000, 10000, -30, -24);
+      oscFour.volume.value = scale(opacityValues4.vidOpacity, 5000, 10000, -30, -24);
+    }
+    if (isMobile === true) {
+      oscThree.volume.value = scale(opacityValues.vidOpacity, 5000, 10000, -30, -24);
+      oscFour.volume.value = scale(opacityValues2.vidOpacity, 5000, 10000, -30, -24);
+    }
 
     // combination of the oscillators volume controls the pitch shifter
     pitchShift.feedback.value = scale((opacityValues.vidOpacity + opacityValues2.vidOpacity), 0, 20000, 0, 1);
