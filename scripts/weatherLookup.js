@@ -51,8 +51,8 @@ let dayThreeHumidity = 300;
 let dayFourHumidity = 400;
 
 // create some consts for picking notes 
-const notes = ["F#", "G#", "A#", "C#", "D#"]
-const octaves = ["2", "3", "4", "3", "2"]
+const notes = ["F#", "G#", "A#", "C#", "D#", "A#", "C#", "D#", "F#", "G#", "A#"]
+const octaves = ["2", "3", "4", "3", "2", "3", "4", "3", "2", "3", "4"]
 
 // grab the latLon from the window hash send from the landing page
 let windowHashAttributes = windowHash.split("#");
@@ -103,14 +103,14 @@ weatherLookup(latLon).then((response) => {
     }
 
     // grab the max min temps then wrap 5 so that they can pick somethign from the array
-    dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 5
-    dayTwoMaxTemp = parseInt(weatherJSON.daily[1].temp.max) % 5
-    dayThreeMaxTemp = parseInt(weatherJSON.daily[2].temp.max) % 5
-    dayFourMaxTemp = parseInt(weatherJSON.daily[3].temp.max) % 5
-    dayOneMinTemp = parseInt(weatherJSON.daily[0].temp.min) % 5
-    dayTwoMinTemp = parseInt(weatherJSON.daily[1].temp.min) % 5
-    dayThreeMinTemp = parseInt(weatherJSON.daily[2].temp.min) % 5
-    dayFourMinTemp = parseInt(weatherJSON.daily[3].temp.min) % 5
+    dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 11
+    dayTwoMaxTemp = parseInt(weatherJSON.daily[1].temp.max) % 11
+    dayThreeMaxTemp = parseInt(weatherJSON.daily[2].temp.max) % 11
+    dayFourMaxTemp = parseInt(weatherJSON.daily[3].temp.max) % 11
+    dayOneMinTemp = parseInt(weatherJSON.daily[0].temp.min) % 11
+    dayTwoMinTemp = parseInt(weatherJSON.daily[1].temp.min) % 11
+    dayThreeMinTemp = parseInt(weatherJSON.daily[2].temp.min) % 11
+    dayFourMinTemp = parseInt(weatherJSON.daily[3].temp.min) % 11
 
     // grab the max temp again for controlling the speed of the video faders
     dayOneMaxTempVidSpeed = weatherJSON.daily[0].temp.max
@@ -120,10 +120,10 @@ weatherLookup(latLon).then((response) => {
 
     // grab the feels like temp for the next 4 days to set the oscillators tuning
     // make some numbers either negative or positive for better tuning
-    dayOneFeelsLikeTemp = (weatherJSON.daily[0].feels_like.day) / 10
-    dayTwoFeelsLikeTemp = (weatherJSON.daily[1].feels_like.day * -1) / 10
-    dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day) / 10
-    dayFourFeelsLikeTemp = (weatherJSON.daily[3].feels_like.day * -1) / 10
+    dayOneFeelsLikeTemp = (weatherJSON.daily[0].feels_like.day) * 0.1
+    dayTwoFeelsLikeTemp = (weatherJSON.daily[1].feels_like.day * -1) * 0.1
+    dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day) * 0.1
+    dayFourFeelsLikeTemp = (weatherJSON.daily[3].feels_like.day * -1) * 0.1
 
     // control the phase of the oscillators with the daily moon phase
     dayOneMoonPhase = weatherJSON.daily[0].moon_phase;

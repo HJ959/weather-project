@@ -29,7 +29,7 @@ Below is a mapping of the weather data to the parts of the piece
 
 ### Daily min and max temperature
 #### Selected notes for the oscillators
-##### An array of notes in the G-flat pentatonic scale and an array of octaves are used with the max and min temperature for the first 4 days forecast, each temperature is wrapped to 5 using the modulo operator.
+##### An array of 11 notes in the G-flat pentatonic scale and an array of 11 octaves are used with the max and min temperature for the first 4 days forecast, each temperature is wrapped to 5 using the modulo operator.
 
 ### Day 1-4 max temperature
 #### Video fader step size
