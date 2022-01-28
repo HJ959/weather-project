@@ -1,17 +1,14 @@
 /*===============================================================*/
 /* Mobile Styles */
-@media only screen and (max-width: 600px) {
-}
+@media only screen and (max-width: 600px) {}
 
 /*===============================================================*/
 /* Tablet Styles */
-@media only screen and (min-width: 601px) and (max-width: 960px) {
-}
+@media only screen and (min-width: 601px) and (max-width: 960px) {}
 
 /*===============================================================*/
 /* Desktop Styles */
-@media only screen and (min-width: 961px) {
-}
+@media only screen and (min-width: 961px) {}
 
 /* ------ GRID stuff ------ */
 .container {
@@ -78,6 +75,16 @@ a:active {
     /* width: 96%;
     height: 96%; */
     margin: 3vmax;
+
+    -webkit-animation: fadein 2s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 2s;
+    /* Internet Explorer */
+    -o-animation: fadein 2s;
+    /* Opera < 12.1 */
+    animation: fadein 2s;
 }
 
 #back {
@@ -92,16 +99,18 @@ a:active {
 
 table {
     margin: 3vmax;
-    padding-right: 5%; 
+    padding-right: 5%;
 }
 
-a, u {
+a,
+u {
     text-decoration: none;
     color: rgb(157, 234, 236);
     animation: pulse 1s 3s;
-  }
+}
 
-th, td {
+th,
+td {
     border: 1px solid rgb(255, 255, 255);
     color: white;
     font-family: 'Lexend', sans-serif;
@@ -120,18 +129,18 @@ th, td {
 }
 
 @keyframes pulse {
-	0% {
-		transform: scale(1.2);
-		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-	}
+    0% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
 
-	70% {
-		transform: scale(1);
-		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.6);
-	}
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.6);
+    }
 
-	100% {
-		transform: scale(1.2);
-		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
-	}
+    100% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+    }
 }
