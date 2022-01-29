@@ -10,99 +10,176 @@ let autoPan1, autoPan2, autoPan3, autoPan4;
 function droneSynth() {
   "use strict";
 
-  reverbTwo = new Tone.Reverb({
-    "decay": currentDewPoint,
-    "wet": 0.7,
-  }).toDestination();
 
-  reverb = new Tone.Reverb({
-    "decay": currentDewPoint,
-    "wet": 0.7,
-  }).connect(reverbTwo);
+  // not mobile version
+  if (isMobile === false) {
+    reverbTwo = new Tone.Reverb({
+      "decay": currentDewPoint,
+      "wet": 0.7,
+    }).toDestination();
 
-  // create some auto panners for the oscillators
-  autoPan1 = new Tone.AutoPanner({
-    "frequency": currentWindSpeed,
-    "depth": 1
-  }).connect(reverb).start();
-  autoPan2 = new Tone.AutoPanner({
-    "frequency": dayOneWindSpeed,
-    "depth": 1
-  }).connect(reverb).start();
-  autoPan3 = new Tone.AutoPanner({
-    "frequency": dayTwoWindSpeed,
-    "depth": 1
-  }).connect(reverb).start();
-  autoPan4 = new Tone.AutoPanner({
-    "frequency": dayThreeWindSpeed,
-    "depth": 1
-  }).connect(reverb).start();
+    reverb = new Tone.Reverb({
+      "decay": currentDewPoint,
+      "wet": 0.7,
+    }).connect(reverbTwo);
 
-  phaser = new Tone.Phaser({
-    frequency: currentWindSpeed,
-    octaves: octaves[dayOneMinTemp],
-    baseFrequency: 1000
-  }).connect(autoPan1).connect(autoPan2).connect(autoPan3).connect(autoPan4);
+    // create some auto panners for the oscillators
+    autoPan1 = new Tone.AutoPanner({
+      "frequency": currentWindSpeed,
+      "depth": 1
+    }).connect(reverb).start();
+    autoPan2 = new Tone.AutoPanner({
+      "frequency": dayOneWindSpeed,
+      "depth": 1
+    }).connect(reverb).start();
+    autoPan3 = new Tone.AutoPanner({
+      "frequency": dayTwoWindSpeed,
+      "depth": 1
+    }).connect(reverb).start();
+    autoPan4 = new Tone.AutoPanner({
+      "frequency": dayThreeWindSpeed,
+      "depth": 1
+    }).connect(reverb).start();
 
-  // filter to make less horrible
-  filter = new Tone.AutoFilter({
-    "frequency": currentWindSpeed,
-    "baseFrequency": dayOneHumidity,
-    "octaves": octaves[dayOneMinTemp]
-  }).connect(phaser);
+    phaser = new Tone.Phaser({
+      frequency: currentWindSpeed,
+      octaves: octaves[dayOneMinTemp],
+      baseFrequency: 1000
+    }).connect(autoPan1).connect(autoPan2).connect(autoPan3).connect(autoPan4);
 
-  filterTwo = new Tone.AutoFilter({
-    "frequency": dayOneWindSpeed,
-    "baseFrequency": dayTwoHumidity,
-    "octaves": octaves[dayTwoMinTemp]
-  }).connect(phaser);
+    // filter to make less horrible
+    filter = new Tone.AutoFilter({
+      "frequency": currentWindSpeed,
+      "baseFrequency": dayOneHumidity,
+      "octaves": octaves[dayOneMinTemp]
+    }).connect(phaser).start();
 
-  filterThree = new Tone.AutoFilter({
-    "frequency": dayTwoWindSpeed,
-    "baseFrequency": dayThreeHumidity,
-    "octaves": octaves[dayThreeMinTemp]
-  }).connect(phaser);
+    filterTwo = new Tone.AutoFilter({
+      "frequency": dayOneWindSpeed,
+      "baseFrequency": dayTwoHumidity,
+      "octaves": octaves[dayTwoMinTemp]
+    }).connect(phaser).start();
 
-  filterFour = new Tone.AutoFilter({
-    "frequency": dayThreeWindSpeed,
-    "baseFrequency": dayFourHumidity,
-    "octaves": octaves[dayFourMinTemp]
-  }).connect(phaser);
+    filterThree = new Tone.AutoFilter({
+      "frequency": dayTwoWindSpeed,
+      "baseFrequency": dayThreeHumidity,
+      "octaves": octaves[dayThreeMinTemp]
+    }).connect(phaser).start();
 
-  // create ocsillator one
-  oscOne = new Tone.PulseOscillator({
-    "detune": dayOneFeelsLikeTemp,
-    "frequency": notes[dayOneMaxTemp] + octaves[dayOneMinTemp],
-    "phase": dayOneMoonPhase,
-    "volume": -24
-  }).connect(filter);
+    filterFour = new Tone.AutoFilter({
+      "frequency": dayThreeWindSpeed,
+      "baseFrequency": dayFourHumidity,
+      "octaves": octaves[dayFourMinTemp]
+    }).connect(phaser).start();
 
-  // create ocsillator two
-  oscTwo = new Tone.FatOscillator({
-    "type": "sawtooth",
-    "spread": 20,
-    "detune": dayTwoFeelsLikeTemp,
-    "frequency": notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp],
-    "phase": dayTwoMoonPhase,
-    "volume": -24
-  }).connect(filterTwo);
+    // create ocsillator one
+    oscOne = new Tone.PulseOscillator({
+      "detune": dayOneFeelsLikeTemp,
+      "frequency": notes[dayOneMaxTemp] + octaves[dayOneMinTemp],
+      "phase": dayOneMoonPhase,
+      "volume": -24
+    }).connect(filter);
 
-  // create ocsillator three
-  oscThree = new Tone.FatOscillator({
-    "type": "square32",
-    "spread": 20,
-    "detune": dayThreeFeelsLikeTemp,
-    "frequency": notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp],
-    "phase": dayThreeMoonPhase,
-    "volume": -24
-  }).connect(filterTwo);
+    // create ocsillator two
+    oscTwo = new Tone.FatOscillator({
+      "type": "sawtooth",
+      "spread": 20,
+      "detune": dayTwoFeelsLikeTemp,
+      "frequency": notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp],
+      "phase": dayTwoMoonPhase,
+      "volume": -24
+    }).connect(filterTwo);
 
-  // create ocsillator four
-  oscFour = new Tone.PulseOscillator({
-    "detune": dayFourFeelsLikeTemp,
-    "frequency": notes[dayFourMaxTemp] + octaves[dayFourMinTemp],
-    "phase": dayFourMoonPhase,
-    "volume": -24
-  }).connect(filterFour);
+    // create ocsillator three
+    oscThree = new Tone.FatOscillator({
+      "type": "square32",
+      "spread": 20,
+      "detune": dayThreeFeelsLikeTemp,
+      "frequency": notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp],
+      "phase": dayThreeMoonPhase,
+      "volume": -24
+    }).connect(filterTwo);
+
+    // create ocsillator four
+    oscFour = new Tone.PulseOscillator({
+      "detune": dayFourFeelsLikeTemp,
+      "frequency": notes[dayFourMaxTemp] + octaves[dayFourMinTemp],
+      "phase": dayFourMoonPhase,
+      "volume": -24
+    }).connect(filterFour);
+  }
+
+  // mobile version
+  if (isMobile === false) {
+    reverb = new Tone.Reverb({
+      "decay": currentDewPoint,
+      "wet": 0.7,
+    }).toDestination();
+
+    // create some auto panners for the oscillators
+    autoPan1 = new Tone.AutoPanner({
+      "frequency": currentWindSpeed,
+      "depth": 1
+    }).connect(reverb).start();
+    autoPan2 = new Tone.AutoPanner({
+      "frequency": dayOneWindSpeed,
+      "depth": 1
+    }).connect(reverb).start();
+
+    phaser = new Tone.Phaser({
+      frequency: currentWindSpeed,
+      octaves: octaves[dayOneMinTemp],
+      baseFrequency: 1000
+    }).connect(autoPan1).connect(autoPan2);
+
+    // filter to make less horrible
+    filter = new Tone.AutoFilter({
+      "frequency": currentWindSpeed,
+      "baseFrequency": dayOneHumidity,
+      "octaves": octaves[dayOneMinTemp]
+    }).connect(phaser).start();
+
+    filterTwo = new Tone.AutoFilter({
+      "frequency": dayOneWindSpeed,
+      "baseFrequency": dayTwoHumidity,
+      "octaves": octaves[dayTwoMinTemp]
+    }).connect(phaser).start();
+
+    // create ocsillator one
+    oscOne = new Tone.PulseOscillator({
+      "detune": dayOneFeelsLikeTemp,
+      "frequency": notes[dayOneMaxTemp] + octaves[dayOneMinTemp],
+      "phase": dayOneMoonPhase,
+      "volume": -24
+    }).connect(filter);
+
+    // create ocsillator two
+    oscTwo = new Tone.FatOscillator({
+      "type": "sawtooth",
+      "spread": 20,
+      "detune": dayTwoFeelsLikeTemp,
+      "frequency": notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp],
+      "phase": dayTwoMoonPhase,
+      "volume": -24
+    }).connect(filterTwo);
+
+    // create ocsillator three
+    oscThree = new Tone.FatOscillator({
+      "type": "square32",
+      "spread": 20,
+      "detune": dayThreeFeelsLikeTemp,
+      "frequency": notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp],
+      "phase": dayThreeMoonPhase,
+      "volume": -24
+    }).connect(filter);
+
+    // create ocsillator four
+    oscFour = new Tone.PulseOscillator({
+      "detune": dayFourFeelsLikeTemp,
+      "frequency": notes[dayFourMaxTemp] + octaves[dayFourMinTemp],
+      "phase": dayFourMoonPhase,
+      "volume": -24
+    }).connect(filterTwo);
+  }
 }
 /////////////////////////////////////////////////////////////////////////////////

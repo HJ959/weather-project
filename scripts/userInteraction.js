@@ -14,12 +14,12 @@ document.addEventListener("visibilitychange", event => {
       oscThree.stop();
       oscFour.stop();
       reverb.wet.value = 0;
-      reverbTwo.wet.value = 0;
       player.pauseVideo();
       playerTwo.pauseVideo();
       if (isMobile === false) {
         playerThree.pauseVideo();
         playerFour.pauseVideo();
+        reverbTwo.wet.value = 0;
       }
 
       startStopFlag = 'Start'
@@ -53,18 +53,19 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscFour.start();
 
     reverb.wet.value = 0.7
-    reverbTwo.wet.value = 0.7
-
+    
     player.playVideo();
     playerTwo.playVideo();
     player.unMute();
     playerTwo.unMute();
-
+    
     if (isMobile === false) {
       playerThree.playVideo();
       playerFour.playVideo();
       playerThree.unMute();
       playerFour.unMute();
+
+      reverbTwo.wet.value = 0.7
     }
     startStopFlag = 'Stop'
 
@@ -74,20 +75,20 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
   if (startStopFlag === 'Stop') {
     pressToStartDiv.style.display = "grid";
     document.getElementById('waitingText').innerHTML = "Paused, tap screen to start, tap screen to stop!";
-    filter.stop();
     oscOne.stop();
     oscTwo.stop();
     oscThree.stop();
     oscFour.stop();
 
     reverb.wet.value = 0;
-    reverbTwo.wet.value = 0;
-
+    
     player.pauseVideo();
     playerTwo.pauseVideo();
     if (isMobile === false) {
       playerThree.pauseVideo();
       playerFour.pauseVideo();
+
+      reverbTwo.wet.value = 0;
     }
 
     startStopFlag = 'Start'
