@@ -18,21 +18,17 @@
 <body>
     <main class="container">
         <div class="header-one">
-            <h1 id="back"><a href="index.html"><b><<<<<<<<<</b></a></h1> 
-            <h1 id="landing">Created by <a href="https://linktr.ee/henry.james" target="_blank"><b>Henry James</b></a></h1>
+            <h1 class="landing" id="back"><a href="index.html"><b>Tap here to return home</b></a></h1> 
+            <h1 class="landing">Created by Henry James, to view more of my projects <a href="https://linktr.ee/henry.james" target="_blank"><b>tap here</b></a></h1>
         </div>
         <div class="header-two">
-            <h1 id="landing">The synth is powered by <a href="https://tonejs.github.io/"><b>Tone.js</b></a> and the visuals
-                powered by YouTube's iframe API and some JavaScript to fade the videos. The weather API used is <a href="https://openweathermap.org/api/one-call-api" target="_blank"><b>Open Weather</b></a>.</h1>
+            <h1 class="landing">The synth is powered by <a href="https://tonejs.github.io/"><b>Tone.js</b></a> and the visuals
+                powered by <a href="https://developers.google.com/youtube/iframe_api_reference" target="_blank"><b>YouTube's iframe API</b></a> and some JavaScript to fade the videos. The weather API used is <a href="https://openweathermap.org/api/one-call-api" target="_blank"><b>Open Weather</b></a>.</h1>
         </div>
         <div class="header-three">
-            <h1 id="landing">If you would like to share your thoughts please <a href="https://forms.gle/S8EYyf9D1ArBHdwj7" target="_blank"><b>fill out this form</b></a>. Below is a mapping of the weather data to the parts of the piece</h1>
+            <h1 class="landing">If you would like to share your thoughts please <a href="https://forms.gle/S8EYyf9D1ArBHdwj7" target="_blank"><b>fill out this form</b></a>. Below is a mapping of the weather data to the parts of the piece</h1>
         </div>
         <div class="header-four">
-            <h1 id="landing">Audio routing diagram</h1>
-            <object id="diagramAudio" data="media/weatherHumAudioDiagram.svg" type="image/svg+xml"></object>
-        </div>
-        <div class="header-five">
             <table>
                 <tr>
                     <th><b>Weather data</b></th>
@@ -53,11 +49,6 @@
                     <td>Day 1-4 humidity (%)</td>
                     <td>Controls the base frequency of the auto filters</td>
                     <td>Humidity % controls where the auto filters begin oscillating at</td>
-                </tr>
-                <tr>
-                    <td>Current rain in mm</td>
-                    <td>Pink noise volume</td>
-                    <td>The more rain per mm the louder the pink noise becomes</td>
                 </tr>
                 <tr>
                     <td>Current dew point and day 2 dew point</td>
@@ -95,6 +86,10 @@
                     <td>Creates a swell as videos 1 and 2 take precedence together in the piece</td>
                 </tr>
             </table>
+        </div>
+        <div class="header-five">
+            <h1 class="landing">Audio routing diagram</h1>
+            <object id="diagramAudio" data="media/weatherHumAudioDiagram.svg" type="image/svg+xml"></object>
         </div>
     </main>
 </body>
