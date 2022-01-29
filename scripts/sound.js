@@ -110,7 +110,7 @@ function droneSynth() {
   }
 
   // mobile version
-  if (isMobile === false) {
+  if (isMobile === true) {
     reverb = new Tone.Reverb({
       "decay": currentDewPoint,
       "wet": 0.7,
