@@ -110,10 +110,9 @@ td {
 }
 
 #diagramAudio {
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     color: white;
-    transform: rotate(-90deg);
     margin: 3vmax;
 }
 
