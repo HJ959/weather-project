@@ -41,7 +41,7 @@ let playersReady = 0;
 let countPlayersReady = 0;
 
 // List of random youtube embeded IDs
-let youtubeIDs = ['5NS_RGXqljA', 'lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9Ej-0VRWmI8', 'fh3EdeGNKus', 'nMAzchVWTis', 'UuWr5TCbumI', 'wnhvanMdx4s', 'ADt_RisXY0U', 'qZ0_aa6RxvQ', 'Hndf5JRwUL0']
+let youtubeIDs = ['5NS_RGXqljA', 'lXoH1oQJvHo', '3rDjPLvOShM', 'Y53k5YCL93c', '9Ej-0VRWmI8', 'fh3EdeGNKus', 'nMAzchVWTis', 'UuWr5TCbumI', 'wnhvanMdx4s', 'ADt_RisXY0U', 'qZ0_aa6RxvQ']
 
 // rotate potential values
 let rotateValues = ['0', '180']
