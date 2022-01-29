@@ -168,22 +168,18 @@ function step(timestamp) {
           throw e; // re-throw the error unchanged
         }
       }
-
     }
 
-    oscOne.volume.value = scale(opacityValues.vidOpacity, 5000, 10000, -30, -24);
-    oscTwo.volume.value = scale(opacityValues2.vidOpacity, 5000, 10000, -30, -24);
+    oscOne.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -24);
+    oscTwo.volume.value = scale(opacityValues2.vidOpacity, 0, 10000, -36, -24);
     if (isMobile === false) {
-      oscThree.volume.value = scale(opacityValues3.vidOpacity, 5000, 10000, -30, -24);
-      oscFour.volume.value = scale(opacityValues4.vidOpacity, 5000, 10000, -30, -24);
+      oscThree.volume.value = scale(opacityValues3.vidOpacity, 0, 10000, -36, -24);
+      oscFour.volume.value = scale(opacityValues4.vidOpacity, 0, 10000, -36, -24);
     }
     if (isMobile === true) {
-      oscThree.volume.value = scale(opacityValues.vidOpacity, 5000, 10000, -30, -24);
-      oscFour.volume.value = scale(opacityValues2.vidOpacity, 5000, 10000, -30, -24);
+      oscThree.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -24);
+      oscFour.volume.value = scale(opacityValues2.vidOpacity, 0, 10000, -36, -24);
     }
-
-    // combination of the oscillators volume controls the pitch shifter
-    pitchShift.feedback.value = scale((opacityValues.vidOpacity + opacityValues2.vidOpacity), 0, 20000, 0, 1);
   }
   previousTimeStamp = timestamp
   window.requestAnimationFrame(step);

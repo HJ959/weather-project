@@ -11,6 +11,8 @@ let dayOneClouds = 6000;
 let dayTwoClouds = 5000;
 let dayThreeClouds = 8000;
 
+let currentCloudsBrightness = 2.0;
+
 let currentWindSpeed = 0.13;
 let dayOneWindSpeed = 0.05;
 let dayTwoWindSpeed = 0.07;
@@ -79,6 +81,9 @@ weatherLookup(latLon).then((response) => {
     dayOneClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 5000, 10000);
     dayTwoClouds = scale((100 - weatherJSON.daily[2].clouds), 0, 100, 5000, 10000);
     dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 5000, 10000);
+
+    // brightness for the videos
+    currentCloudsBrightness =  scale((100 - weatherJSON.current.clouds), 0, 100, 0, 4);
 
     // wind speed controls each auto filter frequency
     currentWindSpeed = weatherJSON.current.wind_speed * 0.01;

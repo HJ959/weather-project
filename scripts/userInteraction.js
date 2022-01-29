@@ -15,7 +15,6 @@ document.addEventListener("visibilitychange", event => {
       oscFour.stop();
       reverb.wet.value = 0;
       reverbTwo.wet.value = 0;
-      pitchShift.wet.value = 0.0;
       player.pauseVideo();
       playerTwo.pauseVideo();
       if (isMobile === false) {
@@ -83,8 +82,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
 
     reverb.wet.value = 0;
     reverbTwo.wet.value = 0;
-    pitchShift.wet.value = 0;
-    pitchShift.feedback.value = 0;
 
     player.pauseVideo();
     playerTwo.pauseVideo();

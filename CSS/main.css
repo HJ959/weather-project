@@ -120,7 +120,7 @@ iframe {
 #playerThree,
 #playerFour {
     opacity: 0.6;
-    filter: blur(40px) saturate(4);
+    filter: blur(35px) saturate(3) contrast(1.5) brightness(3);
 }
 
 /* Format the landing page */
