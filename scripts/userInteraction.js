@@ -13,7 +13,6 @@ document.addEventListener("visibilitychange", event => {
       oscTwo.stop();
       oscThree.stop();
       oscFour.stop();
-      noise.stop();
       reverb.wet.value = 0;
       reverbTwo.wet.value = 0;
       pitchShift.wet.value = 0.0;
@@ -46,7 +45,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscTwo.start();
     oscThree.start();
     oscFour.start();
-    noise.start();
 
     reverb.wet.value = 0.7
     reverbTwo.wet.value = 0.7
@@ -73,7 +71,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscTwo.stop();
     oscThree.stop();
     oscFour.stop();
-    noise.stop();
 
     reverb.wet.value = 0;
     reverbTwo.wet.value = 0;

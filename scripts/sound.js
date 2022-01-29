@@ -5,7 +5,6 @@
 let oscOne, oscTwo, oscThree, oscFour;
 let filter, filterTwo, filterThree, filterFour, reverb, reverbTwo;
 let pitchFilter;
-let noise, noiseHiPass;
 let pitchShift;
 
 function droneSynth() {
@@ -54,15 +53,6 @@ function droneSynth() {
     "baseFrequency": dayFourHumidity,
     "octaves": octaves[dayFourMinTemp]
   }).connect(reverb);
-
-  // initialize the noise and start
-  // noise will be blended into the piece as more 
-  // percipitation is present in the local weather
-  noiseHiPass = new Tone.Filter(4000, "bandpass", "-24").connect(filter).connect(filterTwo).connect(filterThree).connect(filterFour);
-  noise = new Tone.Noise({
-    type: "pink",
-    volume: currentRainmm
-  }).connect(noiseHiPass);
 
   // create ocsillator one
   oscOne = new Tone.PulseOscillator({

@@ -16,19 +16,17 @@ let dayOneWindSpeed = 0.05;
 let dayTwoWindSpeed = 0.07;
 let dayThreeWindSpeed = 0.11;
 
-let currentRainmm = "-24";
-
 let currentDewPoint = 15;
 let dayTwoDewPoint = 10;
 
-let dayOneMaxTemp = 0
-let dayTwoMaxTemp = 1
-let dayThreeMaxTemp = 2
-let dayFourMaxTemp = 4
-let dayOneMinTemp = 1
-let dayTwoMinTemp = 4
-let dayThreeMinTemp = 2
-let dayFourMinTemp = 4
+let dayOneMaxTemp = getRandomInt(0, 11);
+let dayTwoMaxTemp = getRandomInt(0, 11);
+let dayThreeMaxTemp = getRandomInt(0, 11);
+let dayFourMaxTemp = getRandomInt(0, 11);
+let dayOneMinTemp = getRandomInt(0, 11);
+let dayTwoMinTemp = getRandomInt(0, 11);
+let dayThreeMinTemp = getRandomInt(0, 11);
+let dayFourMinTemp = getRandomInt(0, 11);
 
 let dayOneMaxTempVidSpeed = 9;
 let dayTwoMaxTempVidSpeed = 12;
@@ -91,16 +89,6 @@ weatherLookup(latLon).then((response) => {
     // grab the dew point for the delay time of the ping pong delay
     currentDewPoint = Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1));
     dayTwoDewPoint = Math.abs(scale(weatherJSON.daily[1].dew_point, -20, 50, 100, 1));
-
-    // if there is no current rain the API leaves the field out I think
-    // so if no field then no rain in mm so set to lowest value
-    if (typeof weatherJSON.current.rain == 'undefined') {
-      currentRainmm = "-36";
-    }
-    // turn rain in mm from 0.0 - 1.5 into decibles -36db to 0db string
-    else {
-      currentRainmm = "-" + String(scale(weatherJSON.current.rain["1h"], 0.0, 1.5, 36, 1));
-    }
 
     // grab the max min temps then wrap 5 so that they can pick somethign from the array
     dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 11

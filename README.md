@@ -19,10 +19,6 @@ Below is a mapping of the weather data to the parts of the piece
 #### Controls the base frequency of the auto filters
 ##### Humidity % controls where the auto filters begin oscillating at
 
-### Current rain in mm
-#### Pink noise volume
-##### The more rain per mm the louder the pink noise becomes
-
 ### Current dew point and day 2 dew point
 #### Reverb 1 and 2 decay time
 ##### Running the whole piece through two reverb should take off any harsh edges the higher the dew point the longer the decay time
