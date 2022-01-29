@@ -36,6 +36,13 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     // call the sound and video elements now we have the weather data
     droneSynth();
     window.requestAnimationFrame(step);
+    player.seekTo(getRandomInt(0,7200));
+    playerTwo.seekTo(getRandomInt(0,7200));
+    if (isMobile === false) {
+      playerThree.seekTo(getRandomInt(0,7200));
+      playerFour.seekTo(getRandomInt(0,7200));
+    }
+
     startStopFlag = 'Start';
   }
   // if mousedown and the flag is set to Start

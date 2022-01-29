@@ -9,6 +9,7 @@ let player = undefined,
 let vidElement1, vidElement2, vidElement3, vidElement4;
 let wholeScreen;
 let video1, video2, video3, video4;
+let vidID1, vidID2, vidID3, vidID4;
 let start, previousTimeStamp;
 let opacityValues = {
   vidOpacity: getRandomInt(1000, 4000),
@@ -76,10 +77,10 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 function onYouTubeIframeAPIReady() {
+  vidID1 = youtubeIDs[getRandomInt(0, youtubeIDs.length)];
   player = new YT.Player('playerOne', {
-    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+    videoId: vidID1,
     playerVars: playerVars,
-    startSeconds: getRandomInt(0, 10800),
     height: windowHeight,
     width: windowWidth,
     loop: 1,
@@ -87,10 +88,10 @@ function onYouTubeIframeAPIReady() {
       'onReady': onPlayerReady,
     }
   });
+  vidID2 = youtubeIDs[getRandomInt(0, youtubeIDs.length)];
   playerTwo = new YT.Player('playerTwo', {
-    videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+    videoId: vidID2,
     playerVars: playerVars,
-    startSeconds: getRandomInt(0, 10800),
     height: windowHeight,
     width: windowWidth,
     loop: 1,
@@ -99,10 +100,10 @@ function onYouTubeIframeAPIReady() {
     }
   });
   if (isMobile === false) {
+    vidID3 = youtubeIDs[getRandomInt(0, youtubeIDs.length)];
     playerThree = new YT.Player('playerThree', {
-      videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+      videoId: vidID3,
       playerVars: playerVars,
-      startSeconds: getRandomInt(0, 10800),
       height: windowHeight,
       width: windowWidth,
       loop: 1,
@@ -110,10 +111,10 @@ function onYouTubeIframeAPIReady() {
         'onReady': onPlayerReady,
       }
     });
+    vidID4 = youtubeIDs[getRandomInt(0, youtubeIDs.length)];
     playerFour = new YT.Player('playerFour', {
-      videoId: youtubeIDs[getRandomInt(0, youtubeIDs.length)],
+      videoId: vidID4,
       playerVars: playerVars,
-      startSeconds: getRandomInt(0, 10800),
       height: windowHeight,
       width: windowWidth,
       loop: 1,
