@@ -73,6 +73,8 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
   }
   // if mousedown and the flag is set to Start
   if (startStopFlag === 'Stop') {
+    pressToStartDiv.style.display = "grid";
+    document.getElementById('waitingText').innerHTML = "Paused, tap screen to start, tap screen to stop!";
     filter.stop();
     oscOne.stop();
     oscTwo.stop();
