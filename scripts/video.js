@@ -81,8 +81,6 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('playerOne', {
     videoId: vidID1,
     playerVars: playerVars,
-    height: windowHeight,
-    width: windowWidth,
     loop: 1,
     events: {
       'onReady': onPlayerReady,
@@ -92,8 +90,6 @@ function onYouTubeIframeAPIReady() {
   playerTwo = new YT.Player('playerTwo', {
     videoId: vidID2,
     playerVars: playerVars,
-    height: windowHeight,
-    width: windowWidth,
     loop: 1,
     events: {
       'onReady': onPlayerReady,
@@ -104,8 +100,6 @@ function onYouTubeIframeAPIReady() {
     playerThree = new YT.Player('playerThree', {
       videoId: vidID3,
       playerVars: playerVars,
-      height: windowHeight,
-      width: windowWidth,
       loop: 1,
       events: {
         'onReady': onPlayerReady,
@@ -115,8 +109,6 @@ function onYouTubeIframeAPIReady() {
     playerFour = new YT.Player('playerFour', {
       videoId: vidID4,
       playerVars: playerVars,
-      height: windowHeight,
-      width: windowWidth,
       loop: 1,
       events: {
         'onReady': onPlayerReady,

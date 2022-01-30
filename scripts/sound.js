@@ -9,9 +9,10 @@ let autoPan1, autoPan2, autoPan3, autoPan4;
 
 function droneSynth() {
   "use strict";
-
-
-  // not mobile version
+  
+  // not mobile version //////////////////////////////////////////////////////
+  // not mobile version has 4 oscillators, two reverbs 
+  // and 4 auto panners and a phaser
   if (isMobile === false) {
     reverbTwo = new Tone.Reverb({
       "decay": currentDewPoint,
@@ -109,7 +110,7 @@ function droneSynth() {
     }).connect(filterFour);
   }
 
-  // mobile version
+  // mobile version //////////////////////////////////////////////////////////
   if (isMobile === true) {
     reverb = new Tone.Reverb({
       "decay": currentDewPoint,
