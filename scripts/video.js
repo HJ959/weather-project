@@ -195,7 +195,7 @@ function opacityIter(opacityValues, element, incrementValue, currentClouds) {
   // iterate down
   if (opacityValues.vidReverse === true) {
     // control the players opacity
-    element.style.opacity = String(opacityValues.vidOpacity / 10000);
+    element.style.opacity = String(opacityValues.vidOpacity * 0.0001);
     element.style.filter = 'alpha(opacity=' + String(opacityValues.vidOpacity);
     opacityValues.vidOpacity = opacityValues.vidOpacity - incrementValue;
     if (opacityValues.vidOpacity === 0 || opacityValues.vidOpacity < 0) {
