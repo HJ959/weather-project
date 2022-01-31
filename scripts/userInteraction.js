@@ -70,7 +70,7 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
   // if mousedown and the flag is set to Start
   if (startStopFlag === 'Stop') {
     pressToStartDiv.style.display = "grid";
-    document.getElementById('waitingText').innerHTML = "Paused, tap screen to start, tap screen to stop!";
+    document.getElementById('waitingText').innerHTML = "Paused, tap screen to start, tap screen to stop! Press spacebar or swipe up to view live mapping table.";
     oscOne.stop();
     oscTwo.stop();
     oscThree.stop();

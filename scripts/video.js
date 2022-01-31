@@ -103,12 +103,12 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady() {
   countPlayersReady++;
   if (countPlayersReady === 3 && isMobile === false) {
-    document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, tap screen to start, tap screen to stop!";
+    document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, tap screen to start, tap screen to stop! Press spacebar or swipe up to view live mapping table.";
     playersReady = 1;
     startStopFlag = 'readyForFirstClick'
   }
   if (countPlayersReady === 1 && isMobile === true) {
-    document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, tap screen to start, tap screen to stop!";
+    document.getElementById('waitingText').innerHTML = "Wear some headphones for the best experience, tap screen to start, tap screen to stop! Press spacebar or swipe up to view live mapping table.";
     playersReady = 1;
     startStopFlag = 'readyForFirstClick'
   }
