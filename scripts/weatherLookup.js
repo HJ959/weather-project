@@ -148,24 +148,24 @@ function updateLiveTable() {
       document.getElementById("weatherCloudiness").innerHTML = "Current: " + weatherJSON.current.clouds + "%<br>Day 1: " + weatherJSON.daily[1].clouds + "%<br>Day 2: " + weatherJSON.daily[2].clouds + "%<br>Day 3: " + weatherJSON.daily[3].clouds + "%";
       document.getElementById("mappedCloudiness").innerHTML = "Current: " + currentClouds + "<br>Day 1: " + dayOneClouds + "<br>Day 2: " + dayTwoClouds + "<br>Day 3: " + dayThreeClouds;
 
-      document.getElementById("weatherWindSpeed").innerHTML = "Current: " + weatherJSON.current.wind_speed;
-      document.getElementById("mappedWindSpeed").innerHTML = "default";
+      document.getElementById("weatherWindSpeed").innerHTML = "Current: " + weatherJSON.current.wind_speed + "m/s<br>Day 1: " + weatherJSON.daily[1].wind_speed + "m/s<br>Day 2: " + weatherJSON.daily[2].wind_speed + "m/s<br>Day 3: " + weatherJSON.daily[2].wind_speed + "m/s";
+      document.getElementById("mappedWindSpeed").innerHTML = "Current: " + currentWindSpeed + "m/s<br>Day 1: " + dayOneWindSpeed + "m/s<br>Day 2: " + dayTwoWindSpeed + "m/s<br>Day 3: " + dayThreeWindSpeed + "m/s";
 
-      document.getElementById("weatherHumidity").innerHTML = "default";
-      document.getElementById("mappedHumidity").innerHTML = "default";
+      document.getElementById("weatherHumidity").innerHTML = "still updating";
+      document.getElementById("mappedHumidity").innerHTML = "still updating";
 
-      document.getElementById("weatherDewPoint").innerHTML = "default";
-      document.getElementById("mappedDewPoint").innerHTML = "default";
+      document.getElementById("weatherDewPoint").innerHTML = "still updating";
+      document.getElementById("mappedDewPoint").innerHTML = "still updating";
 
-      document.getElementById("weatherMinMaxTemp").innerHTML = "default";
-      document.getElementById("mappedMinMaxTemp").innerHTML = "default";
+      document.getElementById("weatherMinMaxTemp").innerHTML = "still updating";
+      document.getElementById("mappedMinMaxTemp").innerHTML = "still updating";
 
-      document.getElementById("weatherMaxTemp").innerHTML = "default";
+      document.getElementById("weatherMaxTemp").innerHTML = "still updating";
 
-      document.getElementById("weatherFeelsLike").innerHTML = "default";
-      document.getElementById("mappedFeelsLike").innerHTML = "default";
+      document.getElementById("weatherFeelsLike").innerHTML = "still updating";
+      document.getElementById("mappedFeelsLike").innerHTML = "still updating";
 
-      document.getElementById("weatherMoonPhase").innerHTML = "default";
+      document.getElementById("weatherMoonPhase").innerHTML = "still updating";
     }
     if (loadedWeatherParams === false) {
       document.getElementById("weatherCloudiness").innerHTML = "default";
