@@ -31,70 +31,54 @@
                         <tr>
                             <th><b>Weather data</b></th>
                             <th><b>WeatherHum</b></th>
-                            <th><b>Description</b></th>
                             <th><b>Weather values</b></th>
                             <th><b>Mapped values</b></th>
                         </tr>
                         <tr>
                             <td>Day 1-4 cloudiness (%)</td>
                             <td>Video 1-4 max opacity and volume. As well as volume of the oscillators</td>
-                            <td>Cloudiness controls how vibrant the videos are and how loud the piece can be</td>
                             <td id="weatherCloudiness"></td>
                             <td id="mappedCloudiness"></td>
                         </tr>
                         <tr>
                             <td>Current wind speed and day 1-3 wind speed</td>
                             <td>Auto filter LFO speeds, phaser frequency and the frequency of the auto panners</td>
-                            <td>The faster the current and future wind the faster the filters oscillate, phaser phases
-                                and panners pan</td>
                             <td id="weatherWindSpeed"></td>
                             <td id="mappedWindSpeed"></td>
                         </tr>
                         <tr>
                             <td>Day 1-4 humidity (%)</td>
                             <td>Controls the base frequency of the auto filters</td>
-                            <td>Humidity % controls where the auto filters begin oscillating at</td>
                             <td id="weatherHumidity"></td>
                             <td id="mappedHumidity"></td>
                         </tr>
                         <tr>
                             <td>Current dew point and day 2 dew point</td>
                             <td>Reverb 1 and 2 decay time</td>
-                            <td>Running the whole piece through two reverb should take off any harsh edges the higher
-                                the dew point the longer the decay time</td>
                             <td id="weatherDewPoint"></td>
                             <td id="mappedDewPoint"></td>
                         </tr>
                         <tr>
                             <td>Daily min and max temperature</td>
                             <td>Selected notes for the oscillators</td>
-                            <td>An array of 11 notes in the G-flat pentatonic scale and an array of 11 octaves are used
-                                with the max and min temperature for the first 4 days forecast, each temperature is
-                                wrapped to 11 using the modulo operator.</td>
                             <td id="weatherMinMaxTemp"></td>
                             <td id="mappedMinMaxTemp"></td>
                         </tr>
                         <tr>
                             <td>Day 1-3 max temperature</td>
                             <td>Video fader step size</td>
-                            <td>Day 1-3 max temp is the step size for each video fader, controlling how quickly the
-                                piece pulses, Math.abs() is used to clean any negative numbers</td>
                             <td id="weatherMaxTemp"></td>
                             <td>1-1 mapping</td>
                         </tr>
                         <tr>
                             <td>Day 1-4 daytime "feels like" temperature</td>
                             <td>Controls how detuned the oscillators are</td>
-                            <td>The temperature is scaled by an order of magnitude and two of the oscillators have the
-                                temperature value inverted so to provide a better detuning effect sonically</td>
                             <td id="weatherFeelsLike"></td>
                             <td id="mappedFeelsLike"></td>
                         </tr>
                         <tr>
                             <td>Day 1, 2, 4 and 7 moon phase</td>
                             <td>Controls the phase position of the oscillators</td>
-                            <td>Moon phase directly corresponds to oscillator phase, should create some interesting
-                                phasing effect.</td>
                             <td id="weatherMoonPhase"></td>
                             <td>1-1 mapping</td>
                         </tr>
