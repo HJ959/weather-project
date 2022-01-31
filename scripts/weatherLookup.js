@@ -144,7 +144,7 @@ function updateLiveTable() {
   // updates them for the user to see
   if (pageLoadedFlag === true) {
     if (loadedWeatherParams === true) {
-      document.getElementById("weatherCloudiness").innerHTML = "Current: " + weatherJSON.current.clouds + "Day 1: " + weatherJSON.daily[1].clouds + "Day 2: " + weatherJSON.daily[2].clouds + "Day 3: " + weatherJSON.daily[3].clouds;
+      document.getElementById("weatherCloudiness").innerHTML = "Current: " + weatherJSON.current.clouds + "<br>Day 1: " + weatherJSON.daily[1].clouds + "<br>Day 2: " + weatherJSON.daily[2].clouds + "<br>Day 3: " + weatherJSON.daily[3].clouds;
     }
     if (loadedWeatherParams === false) {
       document.getElementById("weatherCloudiness").innerHTML = "default";
