@@ -87,7 +87,7 @@ weatherLookup(latLon).then((response) => {
     currentCloudsBrightness = scale((100 - weatherJSON.current.clouds), 0, 100, 0, 4);
 
     // wind speed controls each auto filter frequency
-    
+
     currentWindSpeed = +(weatherJSON.current.wind_speed * 0.01).toFixed(3);
     dayOneWindSpeed = +(weatherJSON.daily[1].wind_speed * 0.01).toFixed(3);
     dayTwoWindSpeed = +(weatherJSON.daily[2].wind_speed * 0.01).toFixed(3);
@@ -145,7 +145,7 @@ function updateLiveTable() {
   // updates them for the user to see
   if (pageLoadedFlag === true) {
     if (loadedWeatherParams === true) {
-      
+
       document.getElementById("weatherCloudiness").innerHTML = "Current: " + weatherJSON.current.clouds + "%<br>Day 1: " + weatherJSON.daily[1].clouds + "%<br>Day 2: " + weatherJSON.daily[2].clouds + "%<br>Day 3: " + weatherJSON.daily[3].clouds + "%";
       document.getElementById("mappedCloudiness").innerHTML = "Current: " + currentClouds + "<br>Day 1: " + dayOneClouds + "<br>Day 2: " + dayTwoClouds + "<br>Day 3: " + dayThreeClouds;
 
@@ -158,8 +158,8 @@ function updateLiveTable() {
       document.getElementById("weatherDewPoint").innerHTML = "Day 1: " + weatherJSON.current.dew_point + "°C<br>Day 2: " + weatherJSON.daily[1].dew_point + "°C";
       document.getElementById("mappedDewPoint").innerHTML = "Day 1: " + currentDewPoint + "<br>Day 2: " + dayTwoDewPoint;
 
-      document.getElementById("weatherMinMaxTemp").innerHTML = "still updating";
-      document.getElementById("mappedMinMaxTemp").innerHTML = "still updating";
+      document.getElementById("weatherMinMaxTemp").innerHTML = "Day 1: " + weatherJSON.daily[0].temp.max + "°C " + weatherJSON.daily[0].temp.min + "°C<br>Day 2: " + weatherJSON.daily[1].temp.max + "°C " + weatherJSON.daily[1].temp.min + "°C<br>Day 3: " + weatherJSON.daily[2].temp.max + "°C " + weatherJSON.daily[2].temp.min + "°C<br>Day 4: " + weatherJSON.daily[2].temp.max + "°C " + weatherJSON.daily[2].temp.min + "°C";
+        document.getElementById("mappedMinMaxTemp").innerHTML = "still updating";
 
       document.getElementById("weatherMaxTemp").innerHTML = "still updating";
 
