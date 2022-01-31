@@ -92,10 +92,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
 });
 
 // if space bar is pressed bring up the current data info screen and search
-window.onload = function () {
-  infoScreenFlag = false;
-}
-
 function toggleTableDiv() {
   if (infoScreenFlag === false) {
     document.getElementById("infoSearchScreen").style.display = "grid";
@@ -105,9 +101,13 @@ function toggleTableDiv() {
   infoScreenFlag = !infoScreenFlag;
 }
 
-let infoScreenFlag = "doesnttoggle";
+let firstSpacePress = true;
 document.body.onkeyup = function (e) {
   if (e.keyCode == 32 || e.key === ' ') {
+    if (firstSpacePress === true) {
+      updateLiveTable();
+      firstSpacePress = false;
+    } 
     toggleTableDiv();
   }
 }

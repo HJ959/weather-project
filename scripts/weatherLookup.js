@@ -4,6 +4,7 @@
 let lat, lon;
 let weatherJSON;
 let windowHash = window.location.hash;
+let loadedWeatherParams = false;
 
 // set up some default params for if the weather lookup fails
 let currentClouds = 7000;
@@ -83,7 +84,7 @@ weatherLookup(latLon).then((response) => {
     dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 5000, 10000);
 
     // brightness for the videos
-    currentCloudsBrightness =  scale((100 - weatherJSON.current.clouds), 0, 100, 0, 4);
+    currentCloudsBrightness = scale((100 - weatherJSON.current.clouds), 0, 100, 0, 4);
 
     // wind speed controls each auto filter frequency
     currentWindSpeed = weatherJSON.current.wind_speed * 0.01;
@@ -129,9 +130,24 @@ weatherLookup(latLon).then((response) => {
     dayTwoHumidity = scale(weatherJSON.daily[1].humidity, 0, 100, 100, 1000);
     dayThreeHumidity = scale(weatherJSON.daily[2].humidity, 0, 100, 100, 700);
     dayFourHumidity = scale(weatherJSON.daily[3].humidity, 0, 100, 100, 400);
+
+    loadedWeatherParams = true;
   }
   // set app state
 }).catch((error) => {
-  console.log('API error', error);
-  // playing default values
+  console.log('API error, using default values', error);
+  loadedWeatherParams = false;
 });
+
+function updateLiveTable() {
+  // function that takes all the weather variables and mapped vars and 
+  // updates them for the user to see
+  if (pageLoadedFlag === true) {
+    if (loadedWeatherParams === true) {
+      document.getElementById("weatherCloudiness").innerHTML = "Current: " + weatherJSON.current.clouds + "Day 1: " + weatherJSON.daily[1].clouds + "Day 2: " + weatherJSON.daily[2].clouds + "Day 3: " + weatherJSON.daily[3].clouds;
+    }
+    if (loadedWeatherParams === false) {
+      document.getElementById("weatherCloudiness").innerHTML = "default";
+    }
+  }
+}
