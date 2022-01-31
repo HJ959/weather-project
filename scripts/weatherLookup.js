@@ -94,8 +94,8 @@ weatherLookup(latLon).then((response) => {
     dayThreeWindSpeed = +(weatherJSON.daily[3].wind_speed * 0.01).toFixed(3);
 
     // grab the dew point for the delay time of the ping pong delay
-    currentDewPoint = Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1));
-    dayTwoDewPoint = Math.abs(scale(weatherJSON.daily[1].dew_point, -20, 50, 100, 1));
+    currentDewPoint = +(Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1))).toFixed(3);
+    dayTwoDewPoint = +(Math.abs(scale(weatherJSON.daily[1].dew_point, -20, 50, 100, 1))).toFixed(3);
 
     // grab the max min temps then wrap 5 so that they can pick somethign from the array
     dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 11
