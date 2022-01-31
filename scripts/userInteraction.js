@@ -114,8 +114,14 @@ let touchendY = 0;
 const slider = document.getElementById('wholePage');
 
 function handleGesture() {
-  if (touchendY < touchstartY) alert('swiped up!');
-  if (touchendY > touchstartY) alert('swiped down!');
+  if (touchendY < touchstartY) {
+    if (infoScreenFlag === false) {
+      document.getElementById("infoSearchScreen").style.display = "grid";
+    } else {
+      document.getElementById("infoSearchScreen").style.display = "none";
+    }
+    infoScreenFlag = !infoScreenFlag;
+  }
 }
 
 slider.addEventListener('touchstart', e => {
