@@ -111,7 +111,6 @@ weatherLookup(latLon).then((response) => {
     dayOneMaxTempVidSpeed = weatherJSON.daily[0].temp.max
     dayTwoMaxTempVidSpeed = weatherJSON.daily[1].temp.max
     dayThreeMaxTempVidSpeed = weatherJSON.daily[2].temp.max
-    dayFourMaxTempVidSpeed = weatherJSON.daily[3].temp.max
 
     // grab the feels like temp for the next 4 days to set the oscillators tuning
     // make some numbers either negative or positive for better tuning
@@ -159,9 +158,9 @@ function updateLiveTable() {
       document.getElementById("mappedDewPoint").innerHTML = "Day 1: " + currentDewPoint + "<br>Day 2: " + dayTwoDewPoint;
 
       document.getElementById("weatherMinMaxTemp").innerHTML = "Day 1: " + weatherJSON.daily[0].temp.max + "°C " + weatherJSON.daily[0].temp.min + "°C<br>Day 2: " + weatherJSON.daily[1].temp.max + "°C " + weatherJSON.daily[1].temp.min + "°C<br>Day 3: " + weatherJSON.daily[2].temp.max + "°C " + weatherJSON.daily[2].temp.min + "°C<br>Day 4: " + weatherJSON.daily[2].temp.max + "°C " + weatherJSON.daily[2].temp.min + "°C";
-      document.getElementById("mappedMinMaxTemp").innerHTML = "OSC1: " + notes[dayOneMaxTemp] + octaves[dayOneMinTemp] + "OSC2: " + notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp] + "OSC3: " + notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp] + "OSC4: " + notes[dayFourMaxTemp] + octaves[dayFourMinTemp];
+      document.getElementById("mappedMinMaxTemp").innerHTML = "OSC1: " + notes[dayOneMaxTemp] + octaves[dayOneMinTemp] + "<br>OSC2: " + notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp] + "<br>OSC3: " + notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp] + "<br>OSC4: " + notes[dayFourMaxTemp] + octaves[dayFourMinTemp];
 
-      document.getElementById("weatherMaxTemp").innerHTML = "still updating";
+      document.getElementById("weatherMaxTemp").innerHTML = "Day 1: " + dayOneMaxTempVidSpeed + "°C<br>Day 2: " + dayTwoMaxTempVidSpeed + "°C<br>Day 3: " + dayThreeMaxTempVidSpeed + "°C";
 
       document.getElementById("weatherFeelsLike").innerHTML = "still updating";
       document.getElementById("mappedFeelsLike").innerHTML = "still updating";
@@ -182,7 +181,7 @@ function updateLiveTable() {
       document.getElementById("mappedDewPoint").innerHTML = "default";
 
       document.getElementById("weatherMinMaxTemp").innerHTML = "default";
-      document.getElementById("mappedMinMaxTemp").innerHTML = "OSC1: " + notes[dayOneMaxTemp] + octaves[dayOneMinTemp] + "OSC2: " + notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp] + "OSC3: " + notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp] + "OSC4: " + notes[dayFourMaxTemp] + octaves[dayFourMinTemp];
+      document.getElementById("mappedMinMaxTemp").innerHTML = "OSC1: " + notes[dayOneMaxTemp] + octaves[dayOneMinTemp] + "<br>OSC2: " + notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp] + "<br>OSC3: " + notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp] + "<br>OSC4: " + notes[dayFourMaxTemp] + octaves[dayFourMinTemp];
 
       document.getElementById("weatherMaxTemp").innerHTML = "default";
 
