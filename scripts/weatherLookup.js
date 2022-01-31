@@ -151,8 +151,8 @@ function updateLiveTable() {
       document.getElementById("weatherWindSpeed").innerHTML = "Current: " + weatherJSON.current.wind_speed + "m/s<br>Day 1: " + weatherJSON.daily[1].wind_speed + "m/s<br>Day 2: " + weatherJSON.daily[2].wind_speed + "m/s<br>Day 3: " + weatherJSON.daily[2].wind_speed + "m/s";
       document.getElementById("mappedWindSpeed").innerHTML = "Current: " + currentWindSpeed + "m/s<br>Day 1: " + dayOneWindSpeed + "m/s<br>Day 2: " + dayTwoWindSpeed + "m/s<br>Day 3: " + dayThreeWindSpeed + "m/s";
 
-      document.getElementById("weatherHumidity").innerHTML = "still updating";
-      document.getElementById("mappedHumidity").innerHTML = "still updating";
+      document.getElementById("weatherHumidity").innerHTML = "Current: " + weatherJSON.daily[0].humidity + "%<br>Day 1: " + weatherJSON.daily[1].humidity + "%<br>Day 2: " + weatherJSON.daily[2].humidity + "%<br>Day 3: " + weatherJSON.daily[3].humidity + "%";
+      document.getElementById("mappedHumidity").innerHTML = "Current: " + dayOneHumidity + "%<br>Day 1: " + dayTwoHumidity + "%<br>Day 2: " + dayThreeHumidity + "%<br>Day 3: " + dayFourHumidity + "%";
 
       document.getElementById("weatherDewPoint").innerHTML = "still updating";
       document.getElementById("mappedDewPoint").innerHTML = "still updating";
