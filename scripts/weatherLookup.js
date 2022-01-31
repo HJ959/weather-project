@@ -159,7 +159,7 @@ function updateLiveTable() {
       document.getElementById("mappedDewPoint").innerHTML = "Day 1: " + currentDewPoint + "<br>Day 2: " + dayTwoDewPoint;
 
       document.getElementById("weatherMinMaxTemp").innerHTML = "Day 1: " + weatherJSON.daily[0].temp.max + "°C " + weatherJSON.daily[0].temp.min + "°C<br>Day 2: " + weatherJSON.daily[1].temp.max + "°C " + weatherJSON.daily[1].temp.min + "°C<br>Day 3: " + weatherJSON.daily[2].temp.max + "°C " + weatherJSON.daily[2].temp.min + "°C<br>Day 4: " + weatherJSON.daily[2].temp.max + "°C " + weatherJSON.daily[2].temp.min + "°C";
-        document.getElementById("mappedMinMaxTemp").innerHTML = "still updating";
+        document.getElementById("mappedMinMaxTemp").innerHTML = "Day 1: " + dayOneMaxTemp + "°C " + dayOneMinTemp + "°C<br>Day 2: " + dayTwoMaxTemp + "°C " + dayTwoMinTemp + "°C<br>Day 3: " + dayThreeMaxTemp + "°C " + dayThreeMinTemp + "°C<br>Day 4: " + dayFourMaxTemp + "°C " + dayFourMinTemp + "°C";
 
       document.getElementById("weatherMaxTemp").innerHTML = "still updating";
 
