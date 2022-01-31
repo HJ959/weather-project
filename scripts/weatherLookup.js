@@ -87,10 +87,11 @@ weatherLookup(latLon).then((response) => {
     currentCloudsBrightness = scale((100 - weatherJSON.current.clouds), 0, 100, 0, 4);
 
     // wind speed controls each auto filter frequency
-    currentWindSpeed = weatherJSON.current.wind_speed * 0.01;
-    dayOneWindSpeed = weatherJSON.daily[1].wind_speed * 0.01;
-    dayTwoWindSpeed = weatherJSON.daily[2].wind_speed * 0.01;
-    dayThreeWindSpeed = weatherJSON.daily[3].wind_speed * 0.01;
+    
+    currentWindSpeed = +(weatherJSON.current.wind_speed * 0.01).toFixed(3);
+    dayOneWindSpeed = +(weatherJSON.daily[1].wind_speed * 0.01).toFixed(3);
+    dayTwoWindSpeed = +(weatherJSON.daily[2].wind_speed * 0.01).toFixed(3);
+    dayThreeWindSpeed = +(weatherJSON.daily[3].wind_speed * 0.01).toFixed(3);
 
     // grab the dew point for the delay time of the ping pong delay
     currentDewPoint = Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1));
