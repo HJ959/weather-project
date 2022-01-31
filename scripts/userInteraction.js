@@ -91,8 +91,13 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
   }
 });
 
-// if space bar is pressed bring up the current data info screen and search
+// if space bar is pressed or a swipe up bring up the current data info screen and search
+let firstSpacePress = true;
 function toggleTableDiv() {
+  if (firstSpacePress === true) {
+    updateLiveTable();
+    firstSpacePress = false;
+  } 
   if (infoScreenFlag === false) {
     document.getElementById("infoSearchScreen").style.display = "grid";
   } else {
@@ -101,13 +106,8 @@ function toggleTableDiv() {
   infoScreenFlag = !infoScreenFlag;
 }
 
-let firstSpacePress = true;
 document.body.onkeyup = function (e) {
   if (e.keyCode == 32 || e.key === ' ') {
-    if (firstSpacePress === true) {
-      updateLiveTable();
-      firstSpacePress = false;
-    } 
     toggleTableDiv();
   }
 }
