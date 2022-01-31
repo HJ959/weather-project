@@ -18,7 +18,6 @@ document.addEventListener("visibilitychange", event => {
       playerTwo.pauseVideo();
       if (isMobile === false) {
         playerThree.pauseVideo();
-        playerFour.pauseVideo();
         reverbTwo.wet.value = 0;
       }
 
@@ -39,7 +38,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     playerTwo.seekTo(getRandomInt(0,7200));
     if (isMobile === false) {
       playerThree.seekTo(getRandomInt(0,7200));
-      playerFour.seekTo(getRandomInt(0,7200));
     }
 
     startStopFlag = 'Start';
@@ -61,9 +59,7 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     
     if (isMobile === false) {
       playerThree.playVideo();
-      playerFour.playVideo();
       playerThree.unMute();
-      playerFour.unMute();
 
       reverbTwo.wet.value = 0.7
     }
@@ -86,7 +82,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     playerTwo.pauseVideo();
     if (isMobile === false) {
       playerThree.pauseVideo();
-      playerFour.pauseVideo();
 
       reverbTwo.wet.value = 0;
     }

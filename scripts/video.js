@@ -4,12 +4,11 @@ let windowWidth = window.innerWidth;
 let windowHeight = window.innerHeight;
 let player = undefined,
   playerTwo = undefined,
-  playerThree = undefined,
-  playerFour = undefined;
-let vidElement1, vidElement2, vidElement3, vidElement4;
+  playerThree = undefined;
+let vidElement1, vidElement2, vidElement3;
 let wholeScreen;
-let video1, video2, video3, video4;
-let vidID1, vidID2, vidID3, vidID4;
+let video1, video2, video3;
+let vidID1, vidID2, vidID3;
 let start, previousTimeStamp;
 let opacityValues = {
   vidOpacity: getRandomInt(1000, 4000),
@@ -20,10 +19,6 @@ let opacityValues2 = {
   vidReverse: false
 };
 let opacityValues3 = {
-  vidOpacity: getRandomInt(1000, 4000),
-  vidReverse: false
-};
-let opacityValues4 = {
   vidOpacity: getRandomInt(1000, 4000),
   vidReverse: false
 };
@@ -60,11 +55,8 @@ video2.style.zIndex = String(getRandomInt(0, 5));
 
 if (isMobile === false) {
   video3 = document.getElementById('video3');
-  video4 = document.getElementById('video4');
   video3.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
-  video4.style.transform = 'rotate(' + rotateValues[getRandomInt(0, 2)] + 'deg)';
   video3.style.zIndex = String(getRandomInt(0, 5));
-  video4.style.zIndex = String(getRandomInt(0, 5));
 }
 
 // 2. This code loads the IFrame Player API code asynchronously.
@@ -105,15 +97,6 @@ function onYouTubeIframeAPIReady() {
         'onReady': onPlayerReady,
       }
     });
-    vidID4 = youtubeIDs[getRandomInt(0, youtubeIDs.length)];
-    playerFour = new YT.Player('playerFour', {
-      videoId: vidID4,
-      playerVars: playerVars,
-      loop: 1,
-      events: {
-        'onReady': onPlayerReady,
-      }
-    });
   }
 }
 
@@ -142,7 +125,6 @@ function step(timestamp) {
     opacityValues2 = opacityIter(opacityValues2, video2, dayTwoMaxTempVidSpeed, dayOneClouds);
     if (isMobile === false) {
       opacityValues3 = opacityIter(opacityValues3, video3, dayThreeMaxTempVidSpeed, dayTwoClouds);
-      opacityValues4 = opacityIter(opacityValues4, video4, dayFourMaxTempVidSpeed, dayThreeClouds);
     }
 
     if (playersReady === 1) {
@@ -151,7 +133,6 @@ function step(timestamp) {
         playerTwo.setVolume(parseInt(opacityValues2.vidOpacity * 0.01));
         if (isMobile === false) {
           playerThree.setVolume(parseInt(opacityValues3.vidOpacity * 0.01));
-          playerFour.setVolume(parseInt(opacityValues4.vidOpacity * 0.01));
         }
       } catch (e) {
         if (e instanceof TypeError) {
@@ -166,7 +147,7 @@ function step(timestamp) {
     oscTwo.volume.value = scale(opacityValues2.vidOpacity, 0, 10000, -36, -24);
     if (isMobile === false) {
       oscThree.volume.value = scale(opacityValues3.vidOpacity, 0, 10000, -36, -24);
-      oscFour.volume.value = scale(opacityValues4.vidOpacity, 0, 10000, -36, -24);
+      oscFour.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -24);
     }
     if (isMobile === true) {
       oscThree.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -24);
