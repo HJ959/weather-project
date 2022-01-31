@@ -95,15 +95,20 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
 window.onload = function () {
   infoScreenFlag = false;
 }
+
+function toggleTableDiv() {
+  if (infoScreenFlag === false) {
+    document.getElementById("infoSearchScreen").style.display = "grid";
+  } else {
+    document.getElementById("infoSearchScreen").style.display = "none";
+  }
+  infoScreenFlag = !infoScreenFlag;
+}
+
 let infoScreenFlag = "doesnttoggle";
 document.body.onkeyup = function (e) {
   if (e.keyCode == 32 || e.key === ' ') {
-    if (infoScreenFlag === false) {
-      document.getElementById("infoSearchScreen").style.display = "grid";
-    } else {
-      document.getElementById("infoSearchScreen").style.display = "none";
-    }
-    infoScreenFlag = !infoScreenFlag;
+    toggleTableDiv();
   }
 }
 
@@ -115,12 +120,7 @@ const slider = document.getElementById('wholePage');
 
 function handleGesture() {
   if (touchendY < touchstartY) {
-    if (infoScreenFlag === false) {
-      document.getElementById("infoSearchScreen").style.display = "grid";
-    } else {
-      document.getElementById("infoSearchScreen").style.display = "none";
-    }
-    infoScreenFlag = !infoScreenFlag;
+    toggleTableDiv();
   }
 }
 
