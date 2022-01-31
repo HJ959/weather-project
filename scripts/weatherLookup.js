@@ -144,10 +144,51 @@ function updateLiveTable() {
   // updates them for the user to see
   if (pageLoadedFlag === true) {
     if (loadedWeatherParams === true) {
+      
       document.getElementById("weatherCloudiness").innerHTML = "Current: " + weatherJSON.current.clouds + "%<br>Day 1: " + weatherJSON.daily[1].clouds + "%<br>Day 2: " + weatherJSON.daily[2].clouds + "%<br>Day 3: " + weatherJSON.daily[3].clouds + "%";
+      document.getElementById("mappedCloudiness").innerHTML = "Current: " + currentClouds + "<br>Day 1: " + dayOneClouds + "<br>Day 2: " + dayTwoClouds + "<br>Day 3: " + dayThreeClouds;
+
+      document.getElementById("weatherWindSpeed").innerHTML = "Current: " + weatherJSON.current.wind_speed;
+      document.getElementById("mappedWindSpeed").innerHTML = "default";
+
+      document.getElementById("weatherHumidity").innerHTML = "default";
+      document.getElementById("mappedHumidity").innerHTML = "default";
+
+      document.getElementById("weatherDewPoint").innerHTML = "default";
+      document.getElementById("mappedDewPoint").innerHTML = "default";
+
+      document.getElementById("weatherMinMaxTemp").innerHTML = "default";
+      document.getElementById("mappedMinMaxTemp").innerHTML = "default";
+
+      document.getElementById("weatherMaxTemp").innerHTML = "default";
+
+      document.getElementById("weatherFeelsLike").innerHTML = "default";
+      document.getElementById("mappedFeelsLike").innerHTML = "default";
+
+      document.getElementById("weatherMoonPhase").innerHTML = "default";
     }
     if (loadedWeatherParams === false) {
       document.getElementById("weatherCloudiness").innerHTML = "default";
+      document.getElementById("mappedCloudiness").innerHTML = "default";
+
+      document.getElementById("weatherWindSpeed").innerHTML = "default";
+      document.getElementById("mappedWindSpeed").innerHTML = "default";
+
+      document.getElementById("weatherHumidity").innerHTML = "default";
+      document.getElementById("mappedHumidity").innerHTML = "default";
+
+      document.getElementById("weatherDewPoint").innerHTML = "default";
+      document.getElementById("mappedDewPoint").innerHTML = "default";
+
+      document.getElementById("weatherMinMaxTemp").innerHTML = "default";
+      document.getElementById("mappedMinMaxTemp").innerHTML = "default";
+
+      document.getElementById("weatherMaxTemp").innerHTML = "default";
+
+      document.getElementById("weatherFeelsLike").innerHTML = "default";
+      document.getElementById("mappedFeelsLike").innerHTML = "default";
+
+      document.getElementById("weatherMoonPhase").innerHTML = "default";
     }
   }
 }
