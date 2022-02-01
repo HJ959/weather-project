@@ -162,8 +162,8 @@ function updateLiveTable() {
 
       document.getElementById("weatherMaxTemp").innerHTML = "Day 1: " + dayOneMaxTempVidSpeed + "°C<br>Day 2: " + dayTwoMaxTempVidSpeed + "°C<br>Day 3: " + dayThreeMaxTempVidSpeed + "°C";
 
-      document.getElementById("weatherFeelsLike").innerHTML = "still updating";
-      document.getElementById("mappedFeelsLike").innerHTML = "still updating";
+      document.getElementById("weatherFeelsLike").innerHTML = "Day 1: " + weatherJSON.daily[0].feels_like.day + "°C<br>Day 2: " + weatherJSON.daily[1].feels_like.day + "°C<br>Day 3: " + weatherJSON.daily[2].feels_like.day + "°C<br>Day 4: " + weatherJSON.daily[3].feels_like.day + "°C";
+      document.getElementById("mappedFeelsLike").innerHTML = "Day 1: " + dayOneFeelsLikeTemp + "cent<br>Day 2: " + dayTwoFeelsLikeTemp + "cent<br>Day 3: " + dayThreeFeelsLikeTemp + "cent<br>Day 4: " + dayFourFeelsLikeTemp + "cent";
 
       document.getElementById("weatherMoonPhase").innerHTML = "still updating";
     }
