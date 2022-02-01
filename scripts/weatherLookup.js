@@ -165,7 +165,7 @@ function updateLiveTable() {
       document.getElementById("weatherFeelsLike").innerHTML = "Day 1: " + weatherJSON.daily[0].feels_like.day + "°C<br>Day 2: " + weatherJSON.daily[1].feels_like.day + "°C<br>Day 3: " + weatherJSON.daily[2].feels_like.day + "°C<br>Day 4: " + weatherJSON.daily[3].feels_like.day + "°C";
       document.getElementById("mappedFeelsLike").innerHTML = "Day 1: " + dayOneFeelsLikeTemp + "cent<br>Day 2: " + dayTwoFeelsLikeTemp + "cent<br>Day 3: " + dayThreeFeelsLikeTemp + "cent<br>Day 4: " + dayFourFeelsLikeTemp + "cent";
 
-      document.getElementById("weatherMoonPhase").innerHTML = "still updating";
+      document.getElementById("weatherMoonPhase").innerHTML = "Day 1: " + weatherJSON.daily[0].moon_phase + "<br>Day 2: " + weatherJSON.daily[1].moon_phase + "<br>Day 3" + weatherJSON.daily[2].moon_phase + "<br>Day 4: " + weatherJSON.daily[0].moon_phase;
     }
     if (loadedWeatherParams === false) {
       document.getElementById("weatherCloudiness").innerHTML = "default";
