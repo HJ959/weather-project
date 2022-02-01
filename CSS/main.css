@@ -19,8 +19,10 @@
         width: 100%;
         height: 90%;
     }
-    
-    table, th, td {
+
+    table,
+    th,
+    td {
         border-collapse: collapse;
         border-spacing: 0;
         border: lightgrey 1px solid;
@@ -48,8 +50,10 @@
         width: 100%;
         height: 90%;
     }
-    
-    table, th, td {
+
+    table,
+    th,
+    td {
         border-collapse: collapse;
         border-spacing: 0;
         border: lightgrey 1px solid;
@@ -77,8 +81,10 @@
         width: 100%;
         height: 100%;
     }
-    
-    table, th, td {
+
+    table,
+    th,
+    td {
         border-collapse: collapse;
         border-spacing: 0;
         border: lightgrey 1px solid;
@@ -153,21 +159,10 @@ iframe {
     filter: blur(35px) saturate(3) contrast(1.5) brightness(3);
 }
 
-/* Format the landing page */
-
 a:hover,
 a:active {
     color: violet;
     cursor: pointer;
-}
-
-.svg {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    z-index: 3;
-    height: 7%;
-    width: 7%;
 }
 
 #pressToStartDiv {
@@ -180,8 +175,7 @@ a:active {
         ". . ."
         ". waitingText ."
         ". . .";
-    /* height: 100%;
-    width: 100%; */
+
     background-color: rgb(0, 0, 0);
 }
 
