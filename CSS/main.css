@@ -9,11 +9,6 @@
             "main";
     }
 
-    #crop {
-        border: 2rem solid rgb(0, 0, 0);
-        z-index: 10;
-    }
-
     #infoSearchScreen {
         z-index: 20;
         display: none;
@@ -72,12 +67,11 @@
             "main";
     }
 
-
     #infoSearchScreen {
         z-index: 20;
         display: none;
         text-align: center;
-        font-size: 3vmin;
+        font-size: 2vmin;
         color: white;
         background-color: rgb(0, 0, 0);
         width: 100%;
@@ -89,12 +83,9 @@
         border-spacing: 0;
         border: lightgrey 1px solid;
     }
-
 }
 
 /* ------ GRID stuff ------ */
-
-
 .item-a {
     grid-area: header;
 }
@@ -112,7 +103,6 @@
     grid-area: sidebar;
     justify-content: center;
 }
-
 
 /* ------ Body stuff ------ */
 html,
