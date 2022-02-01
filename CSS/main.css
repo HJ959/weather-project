@@ -43,16 +43,11 @@
             "main";
     }
 
-    #crop {
-        border: 5rem solid rgb(0, 0, 0);
-        z-index: 10;
-    }
-
     #infoSearchScreen {
         z-index: 20;
         display: none;
         text-align: center;
-        font-size: 3vmin;
+        font-size: 2vmin;
         color: white;
         background-color: rgb(0, 0, 0);
         width: 100%;
@@ -77,10 +72,6 @@
             "main";
     }
 
-    #crop {
-        border: 5rem solid rgb(0, 0, 0);
-        z-index: 10;
-    }
 
     #infoSearchScreen {
         z-index: 20;
