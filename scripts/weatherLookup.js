@@ -114,10 +114,10 @@ weatherLookup(latLon).then((response) => {
 
     // grab the feels like temp for the next 4 days to set the oscillators tuning
     // make some numbers either negative or positive for better tuning
-    dayOneFeelsLikeTemp = (weatherJSON.daily[0].feels_like.day) * 0.1
-    dayTwoFeelsLikeTemp = (weatherJSON.daily[1].feels_like.day * -1) * 0.1
-    dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day) * 0.1
-    dayFourFeelsLikeTemp = (weatherJSON.daily[3].feels_like.day * -1) * 0.1
+    dayOneFeelsLikeTemp = (weatherJSON.daily[0].feels_like.day)
+    dayTwoFeelsLikeTemp = (weatherJSON.daily[1].feels_like.day * -1)
+    dayThreeFeelsLikeTemp = (weatherJSON.daily[2].feels_like.day)
+    dayFourFeelsLikeTemp = (weatherJSON.daily[3].feels_like.day * -1)
 
     // control the phase of the oscillators with the daily moon phase
     dayOneMoonPhase = weatherJSON.daily[0].moon_phase;
