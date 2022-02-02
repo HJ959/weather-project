@@ -143,15 +143,15 @@ function step(timestamp) {
       }
     }
 
-    oscOne.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -24);
-    oscTwo.volume.value = scale(opacityValues2.vidOpacity, 0, 10000, -36, -24);
+    oscOne.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -28);
+    oscTwo.volume.value = scale(opacityValues2.vidOpacity, 0, 10000, -36, -28);
     if (isMobile === false) {
-      oscThree.volume.value = scale(opacityValues3.vidOpacity, 0, 10000, -36, -24);
-      oscFour.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -24);
+      oscThree.volume.value = scale(opacityValues3.vidOpacity, 0, 10000, -36, -28);
+      oscFour.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -28);
     }
     if (isMobile === true) {
-      oscThree.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -24);
-      oscFour.volume.value = scale(opacityValues2.vidOpacity, 0, 10000, -36, -24);
+      oscThree.volume.value = scale(opacityValues.vidOpacity, 0, 10000, -36, -28);
+      oscFour.volume.value = scale(opacityValues2.vidOpacity, 0, 10000, -36, -28);
     }
   }
   previousTimeStamp = timestamp
