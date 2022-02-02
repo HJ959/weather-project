@@ -3,7 +3,7 @@
 
 // Tone JS vars
 let oscOne, oscTwo, oscThree, oscFour;
-let filter, filterTwo, filterThree, filterFour, reverb, reverbTwo;
+let filter, filterTwo, filterThree, filterFour, reverb;
 let phaser;
 let autoPan1, autoPan2, autoPan3, autoPan4;
 
@@ -14,15 +14,10 @@ function droneSynth() {
   // not mobile version has 4 oscillators, two reverbs 
   // and 4 auto panners and a phaser
   if (isMobile === false) {
-    reverbTwo = new Tone.Reverb({
-      "decay": currentDewPoint,
-      "wet": 0.7,
-    }).toDestination();
-
     reverb = new Tone.Reverb({
       "decay": currentDewPoint,
       "wet": 0.7,
-    }).connect(reverbTwo);
+    }).toDestination();
 
     // create some auto panners for the oscillators
     autoPan1 = new Tone.AutoPanner({

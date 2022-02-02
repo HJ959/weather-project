@@ -18,7 +18,6 @@ document.addEventListener("visibilitychange", event => {
       playerTwo.pauseVideo();
       if (isMobile === false) {
         playerThree.pauseVideo();
-        reverbTwo.wet.value = 0;
       }
 
       startStopFlag = 'Start'
@@ -60,8 +59,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     if (isMobile === false) {
       playerThree.playVideo();
       playerThree.unMute();
-
-      reverbTwo.wet.value = 0.7
     }
     startStopFlag = 'Stop'
 
@@ -82,8 +79,6 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     playerTwo.pauseVideo();
     if (isMobile === false) {
       playerThree.pauseVideo();
-
-      reverbTwo.wet.value = 0;
     }
 
     startStopFlag = 'Start'

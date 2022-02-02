@@ -20,7 +20,6 @@ let dayTwoWindSpeed = 0.07;
 let dayThreeWindSpeed = 0.11;
 
 let currentDewPoint = 15;
-let dayTwoDewPoint = 10;
 
 let dayOneMaxTemp = getRandomInt(0, 11);
 let dayTwoMaxTemp = getRandomInt(0, 11);
@@ -95,7 +94,6 @@ weatherLookup(latLon).then((response) => {
 
     // grab the dew point for the delay time of the ping pong delay
     currentDewPoint = +(Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1))).toFixed(3);
-    dayTwoDewPoint = +(Math.abs(scale(weatherJSON.daily[1].dew_point, -20, 50, 100, 1))).toFixed(3);
 
     // grab the max min temps then wrap 5 so that they can pick somethign from the array
     dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 11
@@ -155,7 +153,7 @@ function updateLiveTable() {
       document.getElementById("mappedHumidity").innerHTML = "Current: " + dayOneHumidity + "<br>Day 1: " + dayTwoHumidity + "<br>Day 2: " + dayThreeHumidity + "<br>Day 3: " + dayFourHumidity;
 
       document.getElementById("weatherDewPoint").innerHTML = "Day 1: " + weatherJSON.current.dew_point + "°C<br>Day 2: " + weatherJSON.daily[1].dew_point + "°C";
-      document.getElementById("mappedDewPoint").innerHTML = "Day 1: " + currentDewPoint + "<br>Day 2: " + dayTwoDewPoint;
+      document.getElementById("mappedDewPoint").innerHTML = "Day 1: " + currentDewPoint;
 
       document.getElementById("weatherMinMaxTemp").innerHTML = "Day 1: " + weatherJSON.daily[0].temp.max + "°C " + weatherJSON.daily[0].temp.min + "°C<br>Day 2: " + weatherJSON.daily[1].temp.max + "°C " + weatherJSON.daily[1].temp.min + "°C<br>Day 3: " + weatherJSON.daily[2].temp.max + "°C " + weatherJSON.daily[2].temp.min + "°C<br>Day 4: " + weatherJSON.daily[2].temp.max + "°C " + weatherJSON.daily[2].temp.min + "°C";
       document.getElementById("mappedMinMaxTemp").innerHTML = "OSC1: " + notes[dayOneMaxTemp] + octaves[dayOneMinTemp] + "<br>OSC2: " + notes[dayTwoMaxTemp] + octaves[dayTwoMinTemp] + "<br>OSC3: " + notes[dayThreeMaxTemp] + octaves[dayThreeMinTemp] + "<br>OSC4: " + notes[dayFourMaxTemp] + octaves[dayFourMinTemp];
