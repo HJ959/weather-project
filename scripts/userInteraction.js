@@ -1,8 +1,38 @@
 "use strict";
 
-// user functionality vars
 let startStopFlag = 'Loading';
+
+// user functionality vars
 let pressToStartDiv = document.getElementById('pressToStartDiv');
+
+/* Get the documentElement (<html>) to display the page in fullscreen */
+var elem = document.documentElement;
+
+/* View in fullscreen */
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) {
+    /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) {
+    /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+/* Close fullscreen */
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    /* IE11 */
+    document.msExitFullscreen();
+  }
+}
 
 // if the user leaves the tab and it becomes inactive stop playing sound and video
 document.addEventListener("visibilitychange", event => {
@@ -33,16 +63,16 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     // call the sound and video elements now we have the weather data
     droneSynth();
     window.requestAnimationFrame(step);
-    
+
     player.seekTo(getRandomInt(0, 7200));
     playerTwo.seekTo(getRandomInt(0, 7200));
-    
+
     document.getElementById("playerOne").style.webkitFilter = currentCloudsCSSFilter;
     document.getElementById("playerOne").style.filter = currentCloudsCSSFilter;
 
     document.getElementById("playerTwo").style.webkitFilter = currentCloudsCSSFilter;
     document.getElementById("playerTwo").style.filter = currentCloudsCSSFilter;
-    
+
     if (isMobile === false) {
       playerThree.seekTo(getRandomInt(0, 7200));
       document.getElementById("playerThree").style.webkitFilter = currentCloudsCSSFilter;
@@ -59,18 +89,19 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscThree.start();
     oscFour.start();
 
-    
+
     player.playVideo();
     playerTwo.playVideo();
     player.unMute();
     playerTwo.unMute();
-    
+
     if (isMobile === false) {
       reverb.wet.value = 0.7
       playerThree.playVideo();
       playerThree.unMute();
     }
-    startStopFlag = 'Stop'
+    startStopFlag = 'Stop';
+    openFullscreen();
 
     return
   }
@@ -83,7 +114,7 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscThree.stop();
     oscFour.stop();
 
-    
+
     player.pauseVideo();
     playerTwo.pauseVideo();
     if (isMobile === false) {
@@ -92,17 +123,19 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     }
 
     startStopFlag = 'Start'
+    closeFullscreen();
     return
   }
 });
 
 // if space bar is pressed or a swipe up bring up the current data info screen and search
 let firstSpacePress = true;
+
 function toggleTableDiv() {
   if (firstSpacePress === true) {
     updateLiveTable();
     firstSpacePress = false;
-  } 
+  }
   if (infoScreenFlag === false) {
     document.getElementById("infoSearchScreen").style.display = "grid";
   } else {
