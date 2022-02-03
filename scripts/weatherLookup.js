@@ -151,7 +151,7 @@ function updateLiveTable() {
     if (loadedWeatherParams === true) {
 
       document.getElementById("weatherCloudiness").innerHTML = "Current: " + weatherJSON.current.clouds + "%<br>Day 1: " + weatherJSON.daily[1].clouds + "%<br>Day 2: " + weatherJSON.daily[2].clouds + "%<br>Day 3: " + weatherJSON.daily[3].clouds + "%";
-      document.getElementById("mappedCloudiness").innerHTML = "Current: " + currentClouds + "<br>Day 1: " + dayOneClouds + "<br>Day 2: " + dayTwoClouds + "<br>Day 3: " + dayThreeClouds;
+      document.getElementById("mappedCloudiness").innerHTML = "Current: " + currentClouds + "<br>Day 1: " + dayOneClouds + "<br>Day 2: " + dayTwoClouds + "<br>Day 3: " + dayThreeClouds + "<br>Video filters: " + currentCloudsCSSFilter;
 
       document.getElementById("weatherWindSpeed").innerHTML = "Current: " + weatherJSON.current.wind_speed + "m/s<br>Day 1: " + weatherJSON.daily[1].wind_speed + "m/s<br>Day 2: " + weatherJSON.daily[2].wind_speed + "m/s<br>Day 3: " + weatherJSON.daily[2].wind_speed + "m/s";
       document.getElementById("mappedWindSpeed").innerHTML = "Current: " + currentWindSpeed + "m/s<br>Day 1: " + dayOneWindSpeed + "m/s<br>Day 2: " + dayTwoWindSpeed + "m/s<br>Day 3: " + dayThreeWindSpeed + "m/s";
