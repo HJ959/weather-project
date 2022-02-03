@@ -107,20 +107,20 @@ function droneSynth() {
 
   // mobile version //////////////////////////////////////////////////////////
   if (isMobile === true) {
-    reverb = new Tone.Reverb({
-      "decay": currentDewPoint,
-      "wet": 0.7,
-    }).toDestination();
+    // reverb = new Tone.Reverb({
+    //   "decay": currentDewPoint,
+    //   "wet": 0.7,
+    // }).toDestination();
 
     // create some auto panners for the oscillators
     autoPan1 = new Tone.AutoPanner({
       "frequency": currentWindSpeed,
       "depth": 1
-    }).connect(reverb).start();
+    }).toDestination().start();
     autoPan2 = new Tone.AutoPanner({
       "frequency": dayOneWindSpeed,
       "depth": 1
-    }).connect(reverb).start();
+    }).toDestination().start();
 
     phaser = new Tone.Phaser({
       frequency: currentWindSpeed,

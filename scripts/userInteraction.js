@@ -13,11 +13,11 @@ document.addEventListener("visibilitychange", event => {
       oscTwo.stop();
       oscThree.stop();
       oscFour.stop();
-      reverb.wet.value = 0;
       player.pauseVideo();
       playerTwo.pauseVideo();
       if (isMobile === false) {
         playerThree.pauseVideo();
+        reverb.wet.value = 0;
       }
 
       startStopFlag = 'Start'
@@ -59,14 +59,14 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscThree.start();
     oscFour.start();
 
-    reverb.wet.value = 0.7
-
+    
     player.playVideo();
     playerTwo.playVideo();
     player.unMute();
     playerTwo.unMute();
-
+    
     if (isMobile === false) {
+      reverb.wet.value = 0.7
       playerThree.playVideo();
       playerThree.unMute();
     }
@@ -83,12 +83,12 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     oscThree.stop();
     oscFour.stop();
 
-    reverb.wet.value = 0;
-
+    
     player.pauseVideo();
     playerTwo.pauseVideo();
     if (isMobile === false) {
       playerThree.pauseVideo();
+      reverb.wet.value = 0;
     }
 
     startStopFlag = 'Start'
