@@ -7,8 +7,8 @@ Below is a mapping of the weather data to the parts of the piece
 
 ## You are advised to wear headphones :)
 
-### Day 1-4 cloudiness (%)
-#### Video 1-4 max opacity and volume. As well as volume of the oscillators
+### Day 1-3 cloudiness (%)
+#### Video 1-3 max opacity and volume. As well as volume of the oscillators
 ##### Cloudiness controls how vibrant the videos are and how loud the piece can be
 
 ### Current wind speed and day 1-3 wind speed
@@ -27,9 +27,9 @@ Below is a mapping of the weather data to the parts of the piece
 #### Selected notes for the oscillators
 ##### An array of 11 notes in the G-flat pentatonic scale and an array of 11 octaves are used with the max and min temperature for the first 4 days forecast, each temperature is wrapped to 11 using the modulo operator.
 
-### Day 1-4 max temperature
+### Day 1-3 max temperature
 #### Video fader step size
-##### Day 1-4 max temp is the step size for each video fader, controlling how quickly the piece pulses, Math.abs() is used to clean any negative numbers
+##### Day 1-3 max temp is the step size for each video fader, controlling how quickly the piece pulses, Math.abs() is used to clean any negative numbers
 
 ### Day 1-4 daytime "feels like" temperature
 #### Controls how detuned the oscillators are

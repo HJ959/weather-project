@@ -10,9 +10,12 @@ let loadedWeatherParams = false;
 let currentClouds = 7000;
 let dayOneClouds = 6000;
 let dayTwoClouds = 5000;
-let dayThreeClouds = 8000;
 
-let currentCloudsBrightness = 2.0;
+let currentCloudsBrightness = "brightness(2)";
+let currentCloudsSaturation = "saturate(3)";
+let currentCloudsContrast = "contrast(1.5)";
+let currentCloudsBlur = "blur(35px)";
+let currentCloudsCSSFilter = "blur(35px) saturate(3) contrast(1) brightness(3)";
 
 let currentWindSpeed = 0.13;
 let dayOneWindSpeed = 0.05;
@@ -82,8 +85,12 @@ weatherLookup(latLon).then((response) => {
     dayTwoClouds = scale((100 - weatherJSON.daily[2].clouds), 0, 100, 5000, 10000);
     dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 5000, 10000);
 
-    // brightness for the videos
-    currentCloudsBrightness = scale((100 - weatherJSON.current.clouds), 0, 100, 0, 4);
+    // video css filter variables
+    currentCloudsBrightness = scale((100 - weatherJSON.current.clouds), 0, 100, 1, 4);
+    currentCloudsSaturation = scale((100 - weatherJSON.current.clouds), 0, 100, 1.5, 4);
+    currentCloudsContrast = scale((100 - weatherJSON.current.clouds), 0, 100, 0.75, 1.5);
+    currentCloudsBlur = scale((100 - weatherJSON.current.clouds), 0, 100, 40, 20);
+    currentCloudsCSSFilter = currentCloudsBlur + " " + currentCloudsSaturation + " " + currentCloudsContrast + " " + currentCloudsBrightness;
 
     // wind speed controls each auto filter frequency
 

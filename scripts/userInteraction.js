@@ -7,7 +7,7 @@ let pressToStartDiv = document.getElementById('pressToStartDiv');
 // if the user leaves the tab and it becomes inactive stop playing sound and video
 document.addEventListener("visibilitychange", event => {
   if (document.visibilityState != "visible") {
-    if (startStopFlag === 'Stop') {
+    if (startStopFlag === 'Stop' && pageLoadedFlag === true) {
       filter.stop();
       oscOne.stop();
       oscTwo.stop();
@@ -27,16 +27,26 @@ document.addEventListener("visibilitychange", event => {
 
 // if mousedown event un mute all youtube videos
 document.querySelector('#wholePage')?.addEventListener('mousedown', function (event) {
-  if (startStopFlag === "readyForFirstClick") {
+  if (startStopFlag === "readyForFirstClick" && pageLoadedFlag === true) {
     Tone.start()
     console.log('audio is ready')
     // call the sound and video elements now we have the weather data
     droneSynth();
     window.requestAnimationFrame(step);
+    
     player.seekTo(getRandomInt(0, 7200));
     playerTwo.seekTo(getRandomInt(0, 7200));
+    
+    document.getElementById("playerOne").style.webkitFilter = currentCloudsCSSFilter;
+    document.getElementById("playerOne").style.filter = currentCloudsCSSFilter;
+
+    document.getElementById("playerTwo").style.webkitFilter = currentCloudsCSSFilter;
+    document.getElementById("playerTwo").style.filter = currentCloudsCSSFilter;
+    
     if (isMobile === false) {
       playerThree.seekTo(getRandomInt(0, 7200));
+      document.getElementById("playerThree").style.webkitFilter = currentCloudsCSSFilter;
+      document.getElementById("playerThree").style.filter = currentCloudsCSSFilter;
     }
 
     startStopFlag = 'Start';
