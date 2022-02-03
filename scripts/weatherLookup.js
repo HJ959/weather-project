@@ -15,7 +15,8 @@ let currentCloudsBrightness = "brightness(2)";
 let currentCloudsSaturation = "saturate(3)";
 let currentCloudsContrast = "contrast(1.5)";
 let currentCloudsBlur = "blur(35px)";
-let currentCloudsCSSFilter = "blur(35px) saturate(3) contrast(1) brightness(3)";
+let currentCloudsCSSFilter = "blur(20px) saturate(4) contrast(1.2) brightness(4)";
+// let currentCloudsCSSFilter = "blur(37px) saturate(1.5) contrast(0.75) brightness(1)";
 
 let currentWindSpeed = 0.13;
 let dayOneWindSpeed = 0.05;
@@ -80,16 +81,16 @@ weatherLookup(latLon).then((response) => {
   // organise the json data into some useful variables for use later
   if (isEmpty(weatherJSON) === false) {
     // cloudiness controls each max opacity for the videos
-    currentClouds = scale((100 - weatherJSON.current.clouds), 0, 100, 5000, 10000);
-    dayOneClouds = scale((100 - weatherJSON.daily[1].clouds), 0, 100, 5000, 10000);
-    dayTwoClouds = scale((100 - weatherJSON.daily[2].clouds), 0, 100, 5000, 10000);
-    dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 5000, 10000);
+    currentClouds = scale((weatherJSON.current.clouds), 100, 0, 5000, 10000);
+    dayOneClouds = scale((weatherJSON.daily[1].clouds), 100, 0, 5000, 10000);
+    dayTwoClouds = scale((weatherJSON.daily[2].clouds), 100, 0, 5000, 10000);
+    dayThreeClouds = scale((weatherJSON.daily[3].clouds), 100, 0, 5000, 10000);
 
     // video css filter variables
-    currentCloudsBrightness = "brightness(" + scale((100 - weatherJSON.current.clouds), 0, 100, 1, 5) + ")";
-    currentCloudsSaturation = "saturate(" + scale((100 - weatherJSON.current.clouds), 0, 100, 1.5, 4) + ")";
-    currentCloudsContrast = "contrast(" + scale((100 - weatherJSON.current.clouds), 0, 100, 0.75, 1.25) + ")";
-    currentCloudsBlur = "blur(" + scale((100 - weatherJSON.current.clouds), 0, 100, 40, 20) + ")";
+    currentCloudsBrightness = "brightness(" + scale((weatherJSON.current.clouds), 100, 0, 1, 5) + ")";
+    currentCloudsSaturation = "saturate(" + scale((weatherJSON.current.clouds), 100, 0, 1.5, 4) + ")";
+    currentCloudsContrast = "contrast(" + scale((weatherJSON.current.clouds), 100, 0, 0.75, 1.5) + ")";
+    currentCloudsBlur = "blur(" + scale((weatherJSON.current.clouds), 100, 0, 37, 20) + "px)";
     currentCloudsCSSFilter = currentCloudsBlur + " " + currentCloudsSaturation + " " + currentCloudsContrast + " " + currentCloudsBrightness;
 
     // wind speed controls each auto filter frequency
