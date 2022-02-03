@@ -86,9 +86,9 @@ weatherLookup(latLon).then((response) => {
     dayThreeClouds = scale((100 - weatherJSON.daily[3].clouds), 0, 100, 5000, 10000);
 
     // video css filter variables
-    currentCloudsBrightness = "brightness(" + scale((100 - weatherJSON.current.clouds), 0, 100, 1, 4) + ")";
+    currentCloudsBrightness = "brightness(" + scale((100 - weatherJSON.current.clouds), 0, 100, 1, 5) + ")";
     currentCloudsSaturation = "saturate(" + scale((100 - weatherJSON.current.clouds), 0, 100, 1.5, 4) + ")";
-    currentCloudsContrast = "contrast(" + scale((100 - weatherJSON.current.clouds), 0, 100, 0.75, 1.5) + ")";
+    currentCloudsContrast = "contrast(" + scale((100 - weatherJSON.current.clouds), 0, 100, 0.75, 1.25) + ")";
     currentCloudsBlur = "blur(" + scale((100 - weatherJSON.current.clouds), 0, 100, 40, 20) + ")";
     currentCloudsCSSFilter = currentCloudsBlur + " " + currentCloudsSaturation + " " + currentCloudsContrast + " " + currentCloudsBrightness;
 
