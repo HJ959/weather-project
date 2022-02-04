@@ -19,6 +19,7 @@ function openFullscreen() {
     /* IE11 */
     elem.msRequestFullscreen();
   }
+  document.body.style.cursor = 'none';
 }
 
 /* Close fullscreen */
@@ -28,10 +29,12 @@ function closeFullscreen() {
   } else if (document.webkitExitFullscreen) {
     /* Safari */
     document.webkitExitFullscreen();
+    
   } else if (document.msExitFullscreen) {
     /* IE11 */
     document.msExitFullscreen();
   }
+  document.body.style.cursor = 'auto';
 }
 
 // if the user leaves the tab and it becomes inactive stop playing sound and video
