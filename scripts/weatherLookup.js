@@ -114,9 +114,9 @@ weatherLookup(latLon).then((response) => {
     dayFourMinTemp = Math.abs(parseInt(weatherJSON.daily[3].temp.min)) % 11
 
     // grab the max temp again for controlling the speed of the video faders
-    dayOneMaxTempVidSpeed = weatherJSON.daily[0].temp.max
-    dayTwoMaxTempVidSpeed = weatherJSON.daily[1].temp.max
-    dayThreeMaxTempVidSpeed = weatherJSON.daily[2].temp.max
+    dayOneMaxTempVidSpeed = Math.abs(weatherJSON.daily[0].temp.max)
+    dayTwoMaxTempVidSpeed = Math.abs(weatherJSON.daily[1].temp.max)
+    dayThreeMaxTempVidSpeed = Math.abs(weatherJSON.daily[2].temp.max)
 
     // grab the feels like temp for the next 4 days to set the oscillators tuning
     // make some numbers either negative or positive for better tuning
