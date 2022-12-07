@@ -104,14 +104,14 @@ weatherLookup(latLon).then((response) => {
     currentDewPoint = +(Math.abs(scale(weatherJSON.current.dew_point, -20, 50, 100, 1))).toFixed(3);
 
     // grab the max min temps then wrap 5 so that they can pick somethign from the array
-    dayOneMaxTemp = parseInt(weatherJSON.daily[0].temp.max) % 11
-    dayTwoMaxTemp = parseInt(weatherJSON.daily[1].temp.max) % 11
-    dayThreeMaxTemp = parseInt(weatherJSON.daily[2].temp.max) % 11
-    dayFourMaxTemp = parseInt(weatherJSON.daily[3].temp.max) % 11
-    dayOneMinTemp = parseInt(weatherJSON.daily[0].temp.min) % 11
-    dayTwoMinTemp = parseInt(weatherJSON.daily[1].temp.min) % 11
-    dayThreeMinTemp = parseInt(weatherJSON.daily[2].temp.min) % 11
-    dayFourMinTemp = parseInt(weatherJSON.daily[3].temp.min) % 11
+    dayOneMaxTemp = Math.abs(parseInt(weatherJSON.daily[0].temp.max)) % 11
+    dayTwoMaxTemp = Math.abs(parseInt(weatherJSON.daily[1].temp.max)) % 11
+    dayThreeMaxTemp = Math.abs(parseInt(weatherJSON.daily[2].temp.max)) % 11
+    dayFourMaxTemp = Math.abs(parseInt(weatherJSON.daily[3].temp.max)) % 11
+    dayOneMinTemp = Math.abs(parseInt(weatherJSON.daily[0].temp.min)) % 11
+    dayTwoMinTemp = Math.abs(parseInt(weatherJSON.daily[1].temp.min)) % 11
+    dayThreeMinTemp = Math.abs(parseInt(weatherJSON.daily[2].temp.min)) % 11
+    dayFourMinTemp = Math.abs(parseInt(weatherJSON.daily[3].temp.min)) % 11
 
     // grab the max temp again for controlling the speed of the video faders
     dayOneMaxTempVidSpeed = weatherJSON.daily[0].temp.max

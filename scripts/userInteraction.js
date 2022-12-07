@@ -70,15 +70,12 @@ document.querySelector('#wholePage')?.addEventListener('mousedown', function (ev
     player.seekTo(getRandomInt(0, 7200));
     playerTwo.seekTo(getRandomInt(0, 7200));
 
-    document.getElementById("playerOne").style.webkitFilter = currentCloudsCSSFilter;
     document.getElementById("playerOne").style.filter = currentCloudsCSSFilter;
 
-    document.getElementById("playerTwo").style.webkitFilter = currentCloudsCSSFilter;
     document.getElementById("playerTwo").style.filter = currentCloudsCSSFilter;
 
     if (isMobile === false) {
       playerThree.seekTo(getRandomInt(0, 7200));
-      document.getElementById("playerThree").style.webkitFilter = currentCloudsCSSFilter;
       document.getElementById("playerThree").style.filter = currentCloudsCSSFilter;
     }
 
